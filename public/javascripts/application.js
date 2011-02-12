@@ -1,3 +1,5 @@
 $(function(){
 
+	$("nav a").anchorAnimate();
+
 });
