@@ -13,13 +13,23 @@ html, body {
 #sidebar {
   nav {
     font: 2em 'SilkscreenNormal', Arial, sans-serif;
+
+    li {
+      margin:10px 0;
+    
+      a {
+        text-decoration:none;
+        background: url("/images/white.jpg") repeat scroll 0 0 #202020;
+        color: black;
+      }
+    }
   }
 }
 
 // DEBUG stuff
 
 section, nav {
-  border: 1px solid red;
+/*  border: 1px solid red;*/
 }
 
 #content section {
