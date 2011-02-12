@@ -1,0 +1,19 @@
+#container {
+	width: 800px;
+	margin: 0 auto;
+	
+	#content {
+  	width: 600px;
+  	float: left;
+  }
+
+  #sidebar {
+  	float: left;
+  	
+  	nav {
+    	width: 200px;
+    	position: fixed;
+    }
+  }
+  
+}

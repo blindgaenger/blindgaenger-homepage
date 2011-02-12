@@ -1,3 +1,21 @@
 * {
   font: 1em 'SilkscreenNormal', Arial, sans-serif;
 }
+
+h1 {
+  font: 5em 'SilkscreenBold', Arial, sans-serif;
+}
+
+nav {
+  font: 2em 'SilkscreenNormal', Arial, sans-serif;
+}
+
+// DEBUG stuff
+
+section, nav {
+  border: 1px solid red;
+}
+
+#content section {
+  height: 800px;
+}
