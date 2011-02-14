@@ -6,22 +6,39 @@ html, body {
 
 #content {
   h1 {
-    font: 5em 'SilkscreenBold', Arial, sans-serif;
+    font-size: 5em;
   }
 }
 
 #sidebar {
   nav {
-    font: 2em 'SilkscreenNormal', Arial, sans-serif;
+    font-size: 2em;
 
     li {
+      list-style:none inside;
       margin:10px 0;
     
       a {
         text-decoration:none;
         background: url("/images/white.jpg") repeat scroll 0 0 #202020;
         color: black;
+        
+        &.current {
+          background: url("/images/red.jpg") repeat scroll 0 0 #202020;
+          color:white;
+        }
       }
+    }
+  }
+}
+
+#icon {
+  img {
+    background: url("/images/red.jpg") repeat scroll 0 0 #202020;
+    display:none;
+    
+    &.current {
+      display:block;    
     }
   }
 }

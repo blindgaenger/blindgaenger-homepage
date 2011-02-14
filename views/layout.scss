@@ -16,4 +16,15 @@
     }
   }
   
+  #icon {
+  	float: left;
+  	
+  	img {
+    	width: 200px;
+    	height: 200px;
+    	position: fixed;
+    	bottom:0;
+    }
+  }
+  
 }
