@@ -22,14 +22,11 @@ jQuery.fn.anchorScroll = function(callback) {
 
 $(document).ready(function() {
   
-  $("nav a").anchorAnimate();
+  $("nav a").anchorAnimate({speed : 700});
   
-  $("a[id]").anchorScroll(function(anchorId) {
-    $('nav a').removeClass('current')
-    $('nav a[href="#' + anchorId + '"]').addClass('current')
-    
-    $('#icon img').removeClass('current')
-    $('#icon img[alt="' + anchorId + '"]').addClass('current')
+  $("h1 a[id]").anchorScroll(function(anchorId) {
+    $('nav a').selectCurrent('[href=#' + anchorId + ']');
+    $('#icon img').selectCurrent('[alt=' + anchorId + ']');
   });
   
 });
