@@ -1,14 +1,19 @@
 /**
  * selects the matching elements and adds a `current` class
  *
- *   $('nav a').selectCurrent(function(el) {
- *     return el.attr('href') == '#foobar'
- *   })
+ *   $('#icon img').selectCurrent('[alt=' + anchorId + ']');
+ *   $('#icon img').selectCurrent('[alt=' + anchorId + ']', {currentClass : 'active'});
+ *   $('#icon img').selectCurrent(function(index) {
+ *     return index == 4;
+ *   }, {currentClass : 'selected'});
  */
 (function($){
   
-  $.fn.selectCurrent = function(selector) {
-    return $(this).removeClass('current').filter(selector).addClass('current');
+  $.fn.selectCurrent = function(selector, settings) {
+    settings = $.extend({
+  		currentClass : 'current'
+  	}, settings);
+    return $(this).removeClass(settings.currentClass).filter(selector).addClass(settings.currentClass);
   }
   
 })(jQuery);
