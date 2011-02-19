@@ -6,7 +6,6 @@
     %link(rel='stylesheet' href='stylesheets/layout.css')
     %link(rel='stylesheet' href='stylesheets/fonts.css')
     %link(rel='stylesheet' href='stylesheets/style.css')
-    %link(rel='stylesheet' href='stylesheets/test.css')
     %script(src='javascripts/jquery.js')
     %script(src='javascripts/jquery.anchor.js')
     %script(src='javascripts/jquery.scroll.js')
@@ -18,45 +17,17 @@
     #container
     
       #content
-        %section
-          %h1
-            %a#start Start
-        %section
-          %h1 
-            %a#blog Blog
-        %section
-          %h1 
-            %a#twitter Twitter
-        %section
-          %h1 
-            %a#posterous Posterous
-        %section
-          %h1 
-            %a#facebook Facebook
-        %section
-          %h1
-            %a#github Github
+        %section= haml :start
+        %section= haml :blog
+        %section= haml :twitter
+        %section= haml :posterous
+        %section= haml :facebook
+        %section= haml :github
 
       #sidebar
         %nav
           %ul
-            %li 
-              %a.current(href='#start') Start
-            %li
-              %a(href='#blog') Blog
-            %li 
-              %a(href='#twitter')Twitter
-            %li 
-              %a(href='#posterous') Posterous
-            %li 
-              %a(href='#facebook') Facebook
-            %li 
-              %a(href='#github') Github
+            = yield_content :navigation
 
       #icon
-        %img.current(src='/images/start.png' alt='start')
-        %img(src='/images/blog.png' alt='blog')
-        %img(src='/images/twitter.png' alt='twitter')
-        %img(src='/images/posterous.png' alt='posterous')
-        %img(src='/images/facebook.png' alt='facebook')
-        %img(src='/images/github.png' alt='github')
+        = yield_content :icon
