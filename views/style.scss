@@ -1,11 +1,3 @@
-$sky_light: #9AC3F7;
-$cloud_light: #fff;
-$cloud_dark: #CBCCC8;
-$sun_light: #E6DE11;
-$sun_dark: #C6BE0C;
-$grass_light: #4F9D30;
-$glass_dark: #3C791C;
-
 @mixin box-shadow($options) {
   -webkit-box-shadow: $options;
      -moz-box-shadow: $options;
@@ -13,11 +5,25 @@ $glass_dark: #3C791C;
           box-shadow: $options;
 }
 
+@mixin box-shadow2($first, $second) {
+  -webkit-box-shadow: $first, $second;
+     -moz-box-shadow: $first, $second;
+       -o-box-shadow: $first, $second;
+          box-shadow: $first, $second;
+}
+
 @mixin text-shadow($options) {
   -webkit-text-shadow: $options;
      -moz-text-shadow: $options;
        -o-text-shadow: $options;
           text-shadow: $options;
+}
+
+@mixin text-shadow2($first, $second) {
+  -webkit-text-shadow: $first, $second;
+     -moz-text-shadow: $first, $second;
+       -o-text-shadow: $first, $second;
+          text-shadow: $first, $second;
 }
 
 @mixin border-radius($options) {
@@ -34,17 +40,53 @@ $glass_dark: #3C791C;
           transition: $options;
 }
 
+$cloud_light: #FFFFFF;
+$cloud_dark: #CBCCC8;
+$sun_light: #E6DE11;
+$sun_dark: #C6BE0C;
+$grass_light: #4F9D30;
+$glass_dark: #3C791C;
+
+$blue: #9ac3f7;
+$white: #fff;
+$red: #c0321e;
+$gray: #bbb;
+$black: #202020;
+
 html, body {
   font: 1em 'SilkscreenNormal', Arial, sans-serif;
-  background: url("/images/blue.png") repeat scroll 0 0 $sky_light;
+  background: url("/images/blue.png") repeat scroll 0 0 $blue;
   color:white;
+  background: url("/images/black.png") repeat scroll 0 0 $black;
+}
+
+a {
+  outline: 0;
 }
 
 #content {
   h1 {
-    font-size: 5em;
-    @include text-shadow(10px 10px 0 #000);
+    font-size: 6em;
+    letter-spacing: -0.1em;
+    margin-bottom: 0.2em;
+    color: white;
+    @include text-shadow2(2px 2px 0 $gray, 5px 5px 0 #000);
   }
+  
+  .text {
+    background-color: $white;
+    border: 2px solid #bbb;
+    padding: 0.5em;
+    font-family: Tahoma, Arial, sans-serif;
+    @include box-shadow(10px 10px 0 #000);
+    
+    p {
+      color:black;
+      margin-bottom:0.5em;
+    }
+  }
+  
+  
 }
 
 #navigation {
@@ -53,20 +95,22 @@ html, body {
 
     li {
       list-style:none inside;
-      margin:15px 0;
+      margin:20px 0;
     
       a {
         text-decoration:none;
-        background: url("/images/white.png") repeat scroll 0 0 #fff;
+        background: url("/images/white.png") repeat scroll 0 0 $white;
         color: black;
         padding: 0 4px;
+        border: 2px solid #bbb;
         @include box-shadow(10px 10px 0 #000);
 
         &:hover,
         &:focus,
         &.current {
-          background: url("/images/red.png") repeat scroll 0 0 #c0321e;
+          background: url("/images/red.png") repeat scroll 0 0 $red;
           color:white;
+          border-color: #c0321e;
           @include text-shadow(2px 2px 0 #000);
         }
       }

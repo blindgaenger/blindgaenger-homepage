@@ -4,7 +4,7 @@ $(document).ready(function() {
   
   $("h1 a[id]").anchorScroll(function() {
     var anchorId = this.id;
-    $('nav a').selectCurrent('[href=#' + anchorId + ']');
+    $('nav a').blur().selectCurrent('[href=#' + anchorId + ']');
     $('#icon img').selectCurrent('[alt=' + anchorId + ']');
   });
   
