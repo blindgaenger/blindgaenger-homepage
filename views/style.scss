@@ -1,6 +1,6 @@
 html, body {
   font: 1em 'SilkscreenNormal', Arial, sans-serif;
-  background: url("/images/black.jpg") repeat scroll 0 0 #202020;
+  background: url("/images/blue.png") repeat scroll 0 0 #202020;
   color:white;
 }
 
@@ -20,11 +20,11 @@ html, body {
     
       a {
         text-decoration:none;
-        background: url("/images/white.jpg") repeat scroll 0 0 #202020;
+        background: url("/images/white.png") repeat scroll 0 0 #202020;
         color: black;
         
         &.current {
-          background: url("/images/red.jpg") repeat scroll 0 0 #202020;
+          background: url("/images/red.png") repeat scroll 0 0 #202020;
           color:white;
         }
       }
