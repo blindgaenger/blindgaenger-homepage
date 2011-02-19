@@ -27,6 +27,13 @@ $glass_dark: #3C791C;
           border-radius: $options;
 }
 
+@mixin transition($options) {
+  -webkit-transition: $options;
+     -moz-transition: $options;
+       -o-transition: $options;
+          transition: $options;
+}
+
 html, body {
   font: 1em 'SilkscreenNormal', Arial, sans-serif;
   background: url("/images/blue.png") repeat scroll 0 0 $sky_light;
@@ -50,13 +57,15 @@ html, body {
     
       a {
         text-decoration:none;
-        background: url("/images/white.png") repeat scroll 0 0 #202020;
+        background: url("/images/white.png") repeat scroll 0 0 #fff;
         color: black;
-        @include box-shadow(10px 10px 0 #000);
         padding: 0 4px;
-        
+        @include box-shadow(10px 10px 0 #000);
+
+        &:hover,
+        &:focus,
         &.current {
-          background: url("/images/red.png") repeat scroll 0 0 #202020;
+          background: url("/images/red.png") repeat scroll 0 0 #c0321e;
           color:white;
           @include text-shadow(2px 2px 0 #000);
         }
@@ -67,10 +76,11 @@ html, body {
 
 #icon {
   img {
-    display:none;
+    opacity: 0.0;
+    @include transition(opacity 0.5s ease-out);
     
     &.current {
-      display:block;    
+      opacity: 1.0;
     }
   }
 }
