@@ -20,12 +20,11 @@
   #icon {
   	float: left;
   	
-  	img {
-    	width: 200px;
-    	height: 200px;
+  	#paper {
     	position: fixed;
     	bottom:0;
+      width:180px;
+      height:180px;
     }
   }
-  
 }

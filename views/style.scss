@@ -130,17 +130,6 @@ a {
   }
 }
 
-#icon {
-  img {
-    opacity: 0.0;
-    @include transition(opacity 0.5s ease-out);
-    
-    &.current {
-      opacity: 1.0;
-    }
-  }
-}
-
 // DEBUG stuff
 
 #content section { height: 800px; }

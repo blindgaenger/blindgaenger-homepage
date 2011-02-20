@@ -12,6 +12,8 @@
     %script(src='javascripts/jquery.current.js')
     %script(src='javascripts/bigtext.js')
     %script(src='javascripts/jquery.text.js')
+    %script(src='javascripts/raphael.js')
+    %script(src='javascripts/icons.js')
     %script(src='javascripts/application.js')
     
   %body
@@ -26,10 +28,12 @@
         = haml :facebook
         = haml :github
 
+      #icon
+        #paper
+        //= yield_content :icon
+
       #navigation
         %nav
           %ul
             = yield_content :navigation
 
-      #icon
-        = yield_content :icon
