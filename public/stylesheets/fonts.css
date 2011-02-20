@@ -19,3 +19,14 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'SketchRockwellRegular';
+    src: url('/fonts/sketchrockwell-bold-webfont.eot?') format('eot'),
+         url('/fonts/sketchrockwell-bold-webfont.woff') format('woff'),
+         url('/fonts/sketchrockwell-bold-webfont.ttf') format('truetype'),
+         url('/fonts/sketchrockwell-bold-webfont.svg#webfontvXJoooDF') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
