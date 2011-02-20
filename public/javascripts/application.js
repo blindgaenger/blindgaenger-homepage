@@ -13,4 +13,5 @@ $(document).ready(function() {
   if (currentAnchor.length == 0) currentAnchor = sectionAnchors.first();
   currentAnchor.each(updateScrollObserver);
   sectionAnchors.anchorScroll(updateScrollObserver);
+
 });
