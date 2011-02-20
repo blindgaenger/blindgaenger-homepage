@@ -135,6 +135,8 @@ section, nav {
 /*  border: 1px solid red;*/
 }
 
-#content section {
-  height: 800px;
-}
+#content section { height: 800px; }
+#content section#blog { height: 400px; }
+#content section#twitter { height: 1600px; }
+
+

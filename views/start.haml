@@ -1,14 +1,11 @@
 - content_for :navigation do
   %li 
-    %a.current(href='#start') Start
+    %a(href='#start') Start
 
 - content_for :icon do
-  %img.current(src='/images/start.png' alt='start')
+  %img(src='/images/start.png' alt='start')
 
-%h1
-  %a#start blindgaenger
-
-.text
+%section#start
   %p This is the homepage of my alter ego blindgaenger.
   %p I'm interested in various aspects of software.
   %p So check out my Blog about development and some life-hacking.
