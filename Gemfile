@@ -7,3 +7,7 @@ gem "sinatra-content-for2", "0.2.3"
 group :development do
   gem "sinatra-reloader", "0.5.0"
 end
+
+group :production do
+  gem "heroku", "1.17.16"
+end
