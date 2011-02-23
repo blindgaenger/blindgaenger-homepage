@@ -1,5 +1,6 @@
 # https://gist.github.com/667693
 package_path: assets # (defaults to assets)
+gzip_assets: off # (on off)
 
 javascripts:
   all:

@@ -3,6 +3,7 @@ namespace :generate do
   desc "generates scss files"  
   task :scss do
     system <<-SCRIPT
+      rm tmp/*.css
       cp public/stylesheets/*.css tmp/
       sass views/css3.scss tmp/css3.css
       sass views/layout.scss tmp/layout.css
@@ -12,11 +13,9 @@ namespace :generate do
   
   desc "generates assets files"  
   task :assets => :scss do
-    system <<-SCRIPT
-      rm -r public/assets/
-      jammit
-      rm tmp/*.css
-    SCRIPT
+    system "rm -r public/assets/"
+    require 'jammit'
+    Jammit.package!
   end
 
 end
