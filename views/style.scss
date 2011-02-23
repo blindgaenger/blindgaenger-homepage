@@ -1,44 +1,4 @@
-@mixin box-shadow($options) {
-  -webkit-box-shadow: $options;
-     -moz-box-shadow: $options;
-       -o-box-shadow: $options;
-          box-shadow: $options;
-}
-
-@mixin box-shadow2($first, $second) {
-  -webkit-box-shadow: $first, $second;
-     -moz-box-shadow: $first, $second;
-       -o-box-shadow: $first, $second;
-          box-shadow: $first, $second;
-}
-
-@mixin text-shadow($options) {
-  -webkit-text-shadow: $options;
-     -moz-text-shadow: $options;
-       -o-text-shadow: $options;
-          text-shadow: $options;
-}
-
-@mixin text-shadow2($first, $second) {
-  -webkit-text-shadow: $first, $second;
-     -moz-text-shadow: $first, $second;
-       -o-text-shadow: $first, $second;
-          text-shadow: $first, $second;
-}
-
-@mixin border-radius($options) {
-  -webkit-border-radius: $options;
-     -moz-border-radius: $options;
-       -o-border-radius: $options;
-          border-radius: $options;
-}
-
-@mixin transition($options) {
-  -webkit-transition: $options;
-     -moz-transition: $options;
-       -o-transition: $options;
-          transition: $options;
-}
+@import "css3.scss";
 
 $cloud_light: #FFFFFF;
 $cloud_dark: #CBCCC8;
