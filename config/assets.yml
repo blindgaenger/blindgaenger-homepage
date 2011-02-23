@@ -1,6 +1,10 @@
 # https://gist.github.com/667693
 package_path: assets # (defaults to assets)
-gzip_assets: off # (on off)
+
+# for heroku the assets need to be stored in git
+# but generating the *.css.gz changes the files on each run
+# even if they contain the same css
+gzip_assets: off # (on off) 
 
 javascripts:
   all:
