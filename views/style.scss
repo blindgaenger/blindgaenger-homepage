@@ -55,8 +55,8 @@ $black: #202020;
 
 html, body {
   background: url("/images/black.png") repeat scroll 0 0 $black;
-  font: 14px "SketchRockwellRegular", Rockwell, "Courier New", Courier, Georgia, Times, "Times New Roman", serif;
   color:white;
+  font: 18px 'Lobster', arial, serif;
 }
 
 a {
@@ -65,7 +65,7 @@ a {
 
 #content {
   h1, h2 {
-    @include text-shadow2(2px 2px 0 $gray, 5px 5px 0 #000);
+    @include text-shadow2(3px 3px 0 $black, 6px 6px 0 $gray);
   }
   
   h2 {
