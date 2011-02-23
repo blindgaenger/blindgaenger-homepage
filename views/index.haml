@@ -2,17 +2,21 @@
 %html
   %head
     %title blindgaenger
-    %link(rel='stylesheet' href='stylesheets/reset.css')
-    %link(rel='stylesheet' href='stylesheets/layout.css')
-    %link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster')
-    %link(rel='stylesheet' href='stylesheets/style.css')
-    %script(src='javascripts/jquery.js')
-    %script(src='javascripts/jquery.anchor.js')
-    %script(src='javascripts/jquery.scroll.js')
-    %script(src='javascripts/jquery.current.js')
-    %script(src='javascripts/raphael.js')
-    %script(src='javascripts/icons.js')
-    %script(src='javascripts/application.js')
+    - if production?
+      %link(rel='stylesheet' href='assets/all.css')
+      %script(src='assets/all.js')
+    - else
+      %link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster')
+      %link(rel='stylesheet' href='stylesheets/reset.css')
+      %link(rel='stylesheet' href='stylesheets/layout.css')
+      %link(rel='stylesheet' href='stylesheets/style.css')
+      %script(src='javascripts/jquery.js')
+      %script(src='javascripts/jquery.anchor.js')
+      %script(src='javascripts/jquery.scroll.js')
+      %script(src='javascripts/jquery.current.js')
+      %script(src='javascripts/raphael.js')
+      %script(src='javascripts/icons.js')
+      %script(src='javascripts/application.js')
     
   %body
     

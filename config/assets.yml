@@ -1,0 +1,18 @@
+# https://gist.github.com/667693
+package_path: assets # (defaults to assets)
+
+javascripts:
+  all:
+    - public/javascripts/jquery.js
+    - public/javascripts/jquery.anchor.js
+    - public/javascripts/jquery.scroll.js
+    - public/javascripts/jquery.current.js
+    - public/javascripts/raphael.js
+    - public/javascripts/icons.js
+    - public/javascripts/application.js
+
+stylesheets:
+  all:
+    - tmp/reset.css
+    - tmp/layout.css
+    - tmp/style.css
