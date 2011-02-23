@@ -15,7 +15,7 @@ $black: #202020;
 
 html, body {
   background: url("/images/black.png") repeat scroll 0 0 $black;
-  color:white;
+  color: $white;
   font: 18px 'Lobster', arial, serif;
 }
 
@@ -25,19 +25,19 @@ a {
 
 #content {
   h1 {
-    @include text-shadow2(3px 3px 0 $black, 6px 6px 0 $gray);
+    @include text-shadow("3px 3px 0 #{$black}, 6px 6px 0 #{$gray}");
   }
   
   h2 {
     font-size: 5em;
     margin-bottom: 0.2em;
-    @include text-shadow2(2px 2px 0 $black, 4px 4px 0 $gray);
+    @include text-shadow("2px 2px 0 #{$black}, 4px 4px 0 #{$gray}");
   }
 
   hr {
-    height:2px;
-    background-color:white;
-    border:0px solid transparent;
+    height: 2px;
+    background-color: $white;
+    border: 0px solid transparent;
     margin: 2em auto;
     width: 300px;
   }
@@ -82,7 +82,7 @@ a {
         &:focus,
         &.current {
           background: url("/images/red.png") repeat scroll 0 0 $red;
-          color:white;
+          color: $white;
           border-color: $red;
           @include text-shadow(2px 2px 0 #000);
         }
