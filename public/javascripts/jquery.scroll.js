@@ -5,15 +5,19 @@
   
   $.fn.anchorScroll = function(callback) {
     $.contextAnchors = $(this).filter('[id]')
+    $.currentAnchorId = ' '
     
     $(window).scroll(function(){
       var scrollOffset = $(this).scrollTop();
       var viewportHeight = $(this).height();
       $.contextAnchors.filter(function() {
         var anchor = $(this);
-        if (scrollOffset >= anchor.offset().top - viewportHeight/2) {
-          if (scrollOffset <= anchor.offset().top + anchor.outerHeight(true)) {
-            return true
+        if (anchor.attr('id') != $.currentAnchorId) {
+          if (scrollOffset >= anchor.offset().top - viewportHeight/2) {
+            if (scrollOffset <= anchor.offset().top + anchor.outerHeight(true)) {
+              $.currentAnchorId = anchor.attr('id');
+              return true
+            }
           }
         }
         return false
