@@ -17,7 +17,7 @@ $(document).ready(function() {
   }
   
   $("nav a[href^='#']").anchorAnimate({speed : 700});
-  $("#content section[id]").anchorScroll(function() {
+  $("#content section[id]").viewport(function() {
     var anchorId = $(this).attr('id');
     $('nav a').blur().selectCurrent('[href=#' + anchorId + ']');
     drawIcon($.iconMap[anchorId])

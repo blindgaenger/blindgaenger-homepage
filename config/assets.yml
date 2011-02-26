@@ -10,7 +10,7 @@ javascripts:
   all:
     - public/javascripts/jquery.js
     - public/javascripts/jquery.anchor.js
-    - public/javascripts/jquery.scroll.js
+    - public/javascripts/jquery.viewport.js
     - public/javascripts/jquery.current.js
     - public/javascripts/raphael.js
     - public/javascripts/icons.js
