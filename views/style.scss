@@ -14,7 +14,7 @@ $gray: #666;
 $black: #202020;
 
 html, body {
-  background: url("/images/black.png") repeat scroll 0 0 $black;
+  background: url("/images/darkgrid.png") repeat scroll 0 0 $black;
   color: $white;
   font: 18px 'Lobster', arial, serif;
 }
@@ -26,6 +26,7 @@ a {
 #content {
   h1 {
     @include text-shadow("3px 3px 0 #{$black}, 6px 6px 0 #{$gray}");
+    letter-spacing:-0.1em;
   }
   
   h2 {
