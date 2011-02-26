@@ -13,7 +13,7 @@ javascripts:
     - public/javascripts/jquery.viewport.js
     - public/javascripts/jquery.current.js
     - public/javascripts/raphael.js
-    - public/javascripts/icons.js
+    - public/javascripts/jquery.icons.js
     - public/javascripts/application.js
 
 stylesheets:
