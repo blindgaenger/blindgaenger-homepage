@@ -5,6 +5,8 @@ gem "haml", "3.0.25"
 gem "sinatra-content-for2", "0.2.3"
 gem "jammit", "0.6.0"
 
+gem "twitter", "1.1.2"
+
 group :development do
   gem "sinatra-reloader", "0.5.0"
   gem "heroku", "1.17.16"

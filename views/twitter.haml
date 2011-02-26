@@ -4,3 +4,16 @@
 
 %section#twitter
   %h2 Twitter
+
+  %p My latest tweets at Twitter
+
+  - @tweets.each do |tweet|
+    .tweet
+      %a.icon(href="http://www.twitter.com/#{tweet.user}" target="_blank")
+        %img(src="#{tweet.icon}" alt="#{tweet.user}" width=48 height=48)
+      .content
+        %a.user(href="http://www.twitter.com/#{tweet.user}" target="_blank")= tweet.user
+        .text= tweet.text
+        %a.date(href="http://twitter.com/#{tweet.user}/status/#{tweet.id}" target="_blank")= tweet.time.strftime('%d %b')
+          
+  %p.more Read more @blindgaenger
