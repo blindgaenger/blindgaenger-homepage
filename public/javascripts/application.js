@@ -16,18 +16,11 @@ $(document).ready(function() {
     github:    {icon: 'github',  color: '#fff'}
   }
   
-  $("nav a").anchorAnimate({speed : 700});
-  
-  var updateScrollObserver = function() {
+  $("nav a[href^='#']").anchorAnimate({speed : 700});
+  $("#content section[id]").anchorScroll(function() {
     var anchorId = $(this).attr('id');
     $('nav a').blur().selectCurrent('[href=#' + anchorId + ']');
     drawIcon($.iconMap[anchorId])
-  }
-  
-  var sectionAnchors = $("#content [id]")
-  var currentAnchor = $(window.location.hash);
-  if (currentAnchor.length == 0) currentAnchor = sectionAnchors.first();
-  currentAnchor.each(updateScrollObserver);
-  sectionAnchors.anchorScroll(updateScrollObserver);
+  });
 
 });

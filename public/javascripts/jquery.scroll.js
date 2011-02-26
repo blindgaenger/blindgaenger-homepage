@@ -7,7 +7,7 @@
     $.contextAnchors = $(this).filter('[id]')
     $.currentAnchorId = ' '
     
-    $(window).scroll(function(){
+    var triggerScroll = function(){
       var scrollOffset = $(this).scrollTop();
       var viewportHeight = $(this).height();
       $.contextAnchors.filter(function() {
@@ -22,7 +22,9 @@
         }
         return false
       }).each(callback);
-    }) // window#scroll
+    }
+    $(window).scroll(triggerScroll)
+    triggerScroll();
     
   }; // anchorScroll
 
