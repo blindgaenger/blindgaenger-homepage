@@ -14,7 +14,7 @@ javascripts:
     - public/javascripts/jquery.current.js
     - public/javascripts/jquery.icons.js
     - public/javascripts/raphael.js
-    #- public/javascripts/application.js
+    - public/javascripts/application.js
 
 stylesheets:
   all:
