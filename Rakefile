@@ -15,7 +15,7 @@ namespace :generate do
   task :assets => :scss do
     system "rm -r public/assets/"
     require 'jammit'
-    Jammit.package!
+    Jammit.package!(:force => true)
   end
   
 end

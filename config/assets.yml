@@ -12,9 +12,9 @@ javascripts:
     - public/javascripts/jquery.anchor.js
     - public/javascripts/jquery.viewport.js
     - public/javascripts/jquery.current.js
-    - public/javascripts/raphael.js
     - public/javascripts/jquery.icons.js
-    - public/javascripts/application.js
+    - public/javascripts/raphael.js
+    #- public/javascripts/application.js
 
 stylesheets:
   all:

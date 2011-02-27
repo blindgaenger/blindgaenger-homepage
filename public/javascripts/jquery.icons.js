@@ -1,18 +1,17 @@
 (function($){
   
   $.fn.drawIcon = function(icon, attr) {
-    if (attr === undefined) attr = {}
     var path = $.icons[icon]
-    if (path === undefined) return
+    if (path === undefined) return this;
     
-    var WIDTH = 30
-    var HEIGHT = 30
+    var ICON_WIDTH = 30
+    var ICON_HEIGHT = 30
     
     return this.each(function() {
       var context = $(this)
       var width = context.width()
       var height = context.height()
-
+      
       // find or create the paper
       var paper = context.data('paper')
       if (paper == undefined) {
@@ -21,10 +20,10 @@
       }
 
       // stretch the icon on the paper
-      var scaleX = width / WIDTH
-      var scaleY = height / HEIGHT
-      var translateX = (width - WIDTH) / 2
-      var translateY = (height - HEIGHT) / 2
+      var scaleX = width / ICON_WIDTH;
+      var scaleY = height / ICON_WIDTH;
+      var translateX = (width - ICON_WIDTH) / 2;
+      var translateY = (height - ICON_WIDTH) / 2;
 
       // let's draw
       paper.clear()
