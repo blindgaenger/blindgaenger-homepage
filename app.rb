@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'haml'
@@ -26,6 +28,10 @@ get '/stylesheets/:file.css' do
 end
 
 helpers do
+  def separator
+    haml '.separator ★★★★'
+  end
+  
   Tweet = Struct.new(:id, :time, :user, :icon, :text, :html)
   def load_tweets
     @tweets = Twitter.user_timeline('blindgaenger', :count => 10, :include_rts => true).map do |t|

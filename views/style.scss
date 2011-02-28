@@ -62,9 +62,12 @@ p {
     margin: 2em auto;
     width: 300px;
   }
-  
-  section {
-    margin-bottom: 150px;
+
+  .separator {
+    color:$gray_light;
+    text-align:center;
+    font-size:2em;
+    margin: 100px 0;
   }
 
   #start {
