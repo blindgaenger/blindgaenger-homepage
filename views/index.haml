@@ -21,12 +21,12 @@
     #container
     
       #content
-        = haml :start
-        = haml :blog
-        = haml :twitter
-        = haml :posterous
-        = haml :facebook
-        = haml :github
+        = haml :section, :locals => { :id => 'start',     :name => 'Start' }
+        = haml :section, :locals => { :id => 'blog',      :name => 'Blog' }
+        = haml :section, :locals => { :id => 'twitter',   :name => 'Twitter' }
+        = haml :section, :locals => { :id => 'posterous', :name => 'Posterous' }
+        = haml :section, :locals => { :id => 'facebook',  :name => 'Facebook' }
+        = haml :section, :locals => { :id => 'github',    :name => 'Github' }
 
       #icon
         #paper
