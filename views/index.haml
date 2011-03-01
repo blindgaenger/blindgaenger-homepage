@@ -38,6 +38,7 @@
 
     - if production?
       %script(src='assets/all.js')
+      = haml :tracking, :locals => { :id => '128818' }
     - else
       %script(src='javascripts/jquery.js')
       %script(src='javascripts/jquery.anchor.js')
