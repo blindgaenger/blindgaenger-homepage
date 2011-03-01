@@ -18,8 +18,7 @@ configure do
 end
 
 get '/' do
-  @tweets = []
-  load_tweets
+  @tweets = load_tweets
   haml :index
 end
 
@@ -34,7 +33,8 @@ helpers do
   
   Tweet = Struct.new(:id, :time, :user, :icon, :text, :html)
   def load_tweets
-    @tweets = Twitter.user_timeline('blindgaenger', :count => 10, :include_rts => true).map do |t|
+    return [] if production?
+    tweets = Twitter.user_timeline('blindgaenger', :count => 10, :include_rts => true).map do |t|
       tweet = Tweet.new(t.id, Time.parse(t.created_at))
       status = t.retweeted_status ? t.retweeted_status : t
       tweet.user = status.user.screen_name
