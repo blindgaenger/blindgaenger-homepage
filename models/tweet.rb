@@ -1,11 +1,15 @@
 class Tweet < ActiveRecord::Base
+  BUNCH_SIZE = 10
+  
+  scope :history, :order => "tweet_id DESC"
+  
   class << self
-    def fetch_tweets!
+    def fetch!
       options = {
-        :count => 10,
+        :count => BUNCH_SIZE,
         :include_rts => true
       }
-      if latest_id = latest.try(:tweet_id)
+      if latest_id = self.latest.try(:tweet_id)
         options[:since_id] = latest_id
       end
       
@@ -20,11 +24,18 @@ class Tweet < ActiveRecord::Base
           :tweeted_at => Time.parse(tweet.created_at)
         )
       end
+      
+      Tweet.history.all(:offset => BUNCH_SIZE*2).each(&:delete)
+      
       tweets
     end
     
+    def bunch
+      self.history.all(:limit => BUNCH_SIZE)
+    end
+    
     def latest
-      self.first(:order => "tweet_id DESC")
+      self.history.first
     end
   end
 

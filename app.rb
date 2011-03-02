@@ -24,7 +24,7 @@ helpers do
 end
 
 get '/' do
-  @tweets = Tweet.all
+  @tweets = Tweet.bunch
   haml :index
 end
 

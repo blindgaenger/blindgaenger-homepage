@@ -60,7 +60,7 @@ end
 namespace :cron do
   desc "fetch new tweets"
   task :twitter => :environment do
-    tweets = Tweet.fetch_tweets!
+    tweets = Tweet.fetch!
     puts "fetched #{tweets.size} tweets"
   end
 end
