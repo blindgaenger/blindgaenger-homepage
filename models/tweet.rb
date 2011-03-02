@@ -1,7 +1,16 @@
 class Tweet < ActiveRecord::Base
   class << self
-    def fetch_tweets
-      Twitter.user_timeline('blindgaenger', :count => 10, :include_rts => true).each do |tweet|
+    def fetch_tweets!
+      options = {
+        :count => 10,
+        :include_rts => true
+      }
+      if latest_id = latest.try(:tweet_id)
+        options[:since_id] = latest_id
+      end
+      
+      tweets = Twitter.user_timeline('blindgaenger', options)
+      tweets.each do |tweet|
         status = tweet.retweeted_status ? tweet.retweeted_status : tweet
         Tweet.create(
           :tweet_id => tweet.id,
@@ -11,6 +20,11 @@ class Tweet < ActiveRecord::Base
           :tweeted_at => Time.parse(tweet.created_at)
         )
       end
+      tweets
+    end
+    
+    def latest
+      self.first(:order => "tweet_id DESC")
     end
   end
 

@@ -1,5 +1,8 @@
-namespace :generate do
+task :environment do
+  require File.expand_path(File.join('config', 'environment'), File.dirname(__FILE__))
+end
 
+namespace :generate do
   desc "generates scss files"  
   task :scss do
     system <<-SCRIPT
@@ -17,7 +20,6 @@ namespace :generate do
     require 'jammit'
     Jammit.package!(:force => true)
   end
-  
 end
 
 namespace :images do
@@ -52,6 +54,14 @@ namespace :images do
     end
 
     puts "TOTAL: #{sum.inject(0){|s,i|s+i}} bytes of #{sum.size} files"
+  end
+end
+
+namespace :cron do
+  desc "fetch new tweets"
+  task :twitter => :environment do
+    tweets = Tweet.fetch_tweets!
+    puts "fetched #{tweets.size} tweets"
   end
 end
 
