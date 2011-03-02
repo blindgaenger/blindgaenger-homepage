@@ -2,26 +2,6 @@ task :environment do
   require File.expand_path(File.join('config', 'environment'), File.dirname(__FILE__))
 end
 
-namespace :generate do
-  desc "generates scss files"  
-  task :scss do
-    system <<-SCRIPT
-      rm tmp/*.css
-      cp public/stylesheets/*.css tmp/
-      sass views/css3.scss tmp/css3.css
-      sass views/layout.scss tmp/layout.css
-      sass views/style.scss tmp/style.css
-    SCRIPT
-  end
-  
-  desc "generates assets files"  
-  task :assets => :scss do
-    system "rm -r public/assets/"
-    require 'jammit'
-    Jammit.package!(:force => true)
-  end
-end
-
 namespace :images do
   desc "crushes all PNGs in public/images"
   task :crush do
@@ -57,15 +37,37 @@ namespace :images do
   end
 end
 
+namespace :scss do
+  desc "generates scss files"  
+  task :generate do
+    system <<-SCRIPT
+      rm tmp/*.css
+      cp public/stylesheets/*.css tmp/
+      sass views/css3.scss tmp/css3.css
+      sass views/layout.scss tmp/layout.css
+      sass views/style.scss tmp/style.css
+    SCRIPT
+  end
+end
+
+namespace :assets do
+  desc "generates assets files"  
+  task :generate => "scss:generate" do
+    system "rm -r public/assets/"
+    require 'jammit'
+    Jammit.package!(:force => true)
+  end
+end
+
+desc "deploys to heroku, after generating production assets"  
+task :deploy => "assets:generate" do
+  system "git push heroku master"
+end
+
 namespace :cron do
   desc "fetch new tweets"
   task :twitter => :environment do
     tweets = Tweet.fetch!
     puts "fetched #{tweets.size} tweets"
   end
-end
-
-desc "deploys to heroku, after generating production assets"  
-task :deploy => "generate:assets" do
-  system "git push heroku master"
 end
