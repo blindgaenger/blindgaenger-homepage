@@ -15,14 +15,18 @@ class Tweet < ActiveRecord::Base
       
       tweets = Twitter.user_timeline('blindgaenger', options)
       tweets.each do |tweet|
-        status = tweet.retweeted_status ? tweet.retweeted_status : tweet
-        Tweet.create(
-          :tweet_id => tweet.id_str,
-          :screen_name => status.user.screen_name,
-          :profile_image_url => status.user.profile_image_url,
-          :text => status.text,
-          :tweeted_at => Time.parse(tweet.created_at)
-        )
+        begin
+          status = tweet.retweeted_status ? tweet.retweeted_status : tweet
+          Tweet.create(
+            :tweet_id => tweet.id_str,
+            :screen_name => status.user.screen_name,
+            :profile_image_url => status.user.profile_image_url,
+            :text => status.text,
+            :tweeted_at => Time.parse(tweet.created_at)
+          )
+        rescue => ex
+          warn "could not store tweet: #{ex.message}"
+        end
       end
       
       Tweet.history.all(:offset => BUNCH_SIZE*2).each(&:delete)

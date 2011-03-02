@@ -5,7 +5,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string :screen_name
       t.string :profile_image_url
       t.string :text
-      t.string :html
+      t.text :html
       t.datetime :tweeted_at
       t.timestamps
     end
