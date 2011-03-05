@@ -59,6 +59,16 @@ namespace :assets do
   end
 end
 
+namespace :db do
+  desc "migrate your database"
+  task :migrate => :environment do
+    ActiveRecord::Migrator.migrate(
+      'db/migrate',
+      ENV["VERSION"] ? ENV["VERSION"].to_i : nil
+    )
+  end
+end
+
 desc "deploys to heroku, after generating production assets"  
 task :deploy => "assets:generate" do
   system "git push heroku master"
@@ -69,5 +79,11 @@ namespace :cron do
   task :twitter => :environment do
     tweets = Tweet.fetch!
     puts "fetched #{tweets.size} tweets"
+  end
+  
+  desc "fetch github repos"
+  task :github => :environment do
+    repos = Repo.fetch!
+    puts "fetched #{repos.size} repos"
   end
 end

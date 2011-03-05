@@ -90,7 +90,6 @@ p {
   }
   
   #twitter {
-    
     p {
       &.follow { font-size: 2.50em; }
       &.screenname { font-size: 5.0em; }
@@ -181,8 +180,115 @@ p {
       
       } // .tweet
     } // .tweets
-    
-  }
+  } // #twitter
+  
+  #github {
+    ul.repos {
+      font: 13.34px helvetica,arial,freesans,clean,sans-serif;
+      line-height: 1.4em;
+      color: black;
+
+      * {
+        @include text-shadow(0px 0px 0 white); 
+      }
+      
+      li.repo {
+        border: 1px solid #DDDDDD;
+        border-radius: 4px 4px 4px 4px;
+        background-color: white;
+        list-style-type: none;
+        margin-bottom: 1em;
+        padding: 8px 10px 0;
+        background: url("/images/github/repo.png") no-repeat scroll 6px 9px white;
+        
+        &.fork {
+          background-image: url("/images/github/fork.png");
+        }
+        
+        ul.stats {
+          background: url("/images/github/actions_fade.png") no-repeat scroll 0 0 transparent;
+          border: medium none;
+          float: right;
+          font-size: 11px;
+          font-weight: bold;
+          padding-left: 15px;
+          position: relative;
+          z-index: 5;
+
+          li {
+            border: medium none;
+            color: #666666;
+            display: inline-block;
+            list-style-type: none;
+            margin: 0 !important;
+
+            a {
+              background-repeat: no-repeat;
+              border-left: 1px solid #DDDDDD;
+              display: inline-block;
+              height: 21px;
+              line-height: 21px;
+              padding: 0 5px 0 23px;
+              background-position: 5px -2px;
+              border: medium none;
+              color: #666666;
+            }
+
+            &.watchers a {
+              background-image: url("/images/github/repostat_watchers.png");
+            }
+
+            &.forks a {
+              background-image: url("/images/github/repostat_forks.png");
+            }
+
+          }
+
+        }
+
+        h3 {
+          font-size: 14px;
+          margin: 0;
+          padding-left: 18px;
+          white-space: nowrap;
+          
+          a, a:visited {
+            color: #4183C4;
+            text-decoration: none;
+            
+            &:active, &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .body {
+          background-color: #FAFAFA;
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          border-top: 1px solid #EEEEEE;
+          margin-left: -10px;
+          margin-top: 8px;
+          padding: 5px 10px;
+          width: 100%;
+
+          p.description {
+            color: #444444;
+            font-size: 12px;
+            margin: 0 0 5px;
+          }
+
+          p.pushed-at {
+            color: #888888;
+            font-size: 11px;
+            margin: 0;
+          }
+        }
+        
+      } // .repo
+    } // .repos
+  } // #github
+  
 }
 
 #navigation {

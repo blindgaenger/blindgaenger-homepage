@@ -17,7 +17,7 @@ class Tweet < ActiveRecord::Base
       tweets.each do |tweet|
         begin
           status = tweet.retweeted_status ? tweet.retweeted_status : tweet
-          Tweet.create(
+          self.create(
             :tweet_id => tweet.id_str,
             :screen_name => status.user.screen_name,
             :profile_image_url => status.user.profile_image_url,

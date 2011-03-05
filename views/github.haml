@@ -1,1 +1,18 @@
 %h2= name
+
+%ul.repos
+  - @repos.each_with_index do |repo, index|
+    %li.repo(class="#{repo.fork ? 'fork' : ''}")
+      %ul.stats
+        %li.language= repo.language
+        %li.watchers
+          %a(title="Watchers" href="/blindgaenger/acts_as_account/watchers")= repo.watchers
+        %li.forks
+          %a(title="Forks" href="/blindgaenger/acts_as_account/network")= repo.forks
+      %h3
+        %a(href="#{repo.url}")= repo.name
+      .body
+        %p.description= repo.description
+        %p.pushed-at
+          Last updated
+          %abbr(title="#{repo.pushed_at.strftime('%Y-%m-%d %H:%M:%S')}")= repo.pushed_at.strftime('%B %d, %Y')
