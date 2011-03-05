@@ -6,13 +6,16 @@
       %ul.stats
         %li.language= repo.language
         %li.watchers
-          %a(title="Watchers" href="/blindgaenger/acts_as_account/watchers")= repo.watchers
+          %a(title="Watchers" href="/blindgaenger/acts_as_account/watchers" target="_blank")= repo.watchers
         %li.forks
-          %a(title="Forks" href="/blindgaenger/acts_as_account/network")= repo.forks
+          %a(title="Forks" href="/blindgaenger/acts_as_account/network" target="_blank")= repo.forks
       %h3
-        %a(href="#{repo.url}")= repo.name
+        %a(href="#{repo.url}" target="_blank")= repo.name
       .body
         %p.description= repo.description
         %p.pushed-at
           Last updated
           %abbr(title="#{repo.pushed_at.strftime('%Y-%m-%d %H:%M:%S')}")= repo.pushed_at.strftime('%B %d, %Y')
+          
+%p.readmore
+  %a(href="http://github.com/blindgaenger") Fork me at GitHub
