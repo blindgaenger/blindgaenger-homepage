@@ -2,7 +2,7 @@
 
 %ul.repos
   - @repos.each_with_index do |repo, index|
-    %li.repo(class="#{repo.fork ? 'fork' : ''}")
+    %li.repo(class="scale-#{index} #{repo.fork ? 'fork' : ''}")
       %ul.stats
         %li.language= repo.language
         %li.watchers

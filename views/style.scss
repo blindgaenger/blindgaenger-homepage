@@ -70,23 +70,31 @@ p {
     margin: 100px 0;
   }
 
+  @for $index from 0 through 9 {
+    .scale-#{$index} {
+      $scale: 1.0 - $index / 10.0;
+      @include transform("scale(#{$scale})");
+    }
+  }
+
   p.readmore {
     text-align:center;
-    /*
+    
     a {
       padding: 0.25em;
       border: 2px solid $black;
       background-color: $gray_light;
       color: $black;
+      text-decoration: none;
       @include text-shadow(1px 1px 0 $white);
       
       &:hover {
         background: url("/images/red.png") repeat scroll 0 0 $red;
         color: $white;
         @include text-shadow(2px 2px 0 $black);
+        @include box-shadow(0px 0px 10px $white);
       }
     }
-    */
   } 
 
   #start {
@@ -128,13 +136,6 @@ p {
         color: black;
         background-color: white;
         font: 15px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
-      
-        @for $index from 0 through 9 {
-          &.tweet-#{$index} {
-            $scale: 1.0 - $index / 20.0;
-            @include transform("scale(#{$scale})");
-          }
-        }
       
         .icon {
           float: left;
@@ -183,6 +184,7 @@ p {
   
   #github {
     ul.repos {
+      margin: 1.5em 0;
       font: 13.34px helvetica,arial,freesans,clean,sans-serif;
       line-height: 1.4em;
       color: black;
@@ -318,12 +320,3 @@ p {
     }
   }
 }
-
-// DEBUG stuff
-
-/*
-#content section { border: 1px solid red; }
-#content section { height: 800px; }
-#content section#blog { height: 400px; }
-#content section#twitter { height: 1600px; }
-*/

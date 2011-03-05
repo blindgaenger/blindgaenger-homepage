@@ -7,7 +7,7 @@
 
 %ul.tweets
   - @tweets.each_with_index do |tweet, index|
-    %li.tweet(class="tweet-#{index}")
+    %li.tweet(class="scale-#{index}")
       %a.icon(href="#{tweet.profile_url}" target="_blank")
         %img(src="#{tweet.avatar_url}" alt="#{tweet.screen_name}" width=48 height=48)
       .content
@@ -16,4 +16,4 @@
         %a.date(href="#{tweet.tweet_url}" target="_blank")= tweet.tweeted_at.strftime('%d %b')
         
 %p.readmore
-  %a(href="http://twitter.com/blindgaenger") Read more @blindgaenger
+  %a(href="http://twitter.com/blindgaenger") Read more at Twitter

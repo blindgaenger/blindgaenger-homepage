@@ -1,5 +1,5 @@
 class Tweet < ActiveRecord::Base
-  BUNCH_SIZE = 10
+  BUNCH_SIZE = 5
   
   scope :history, :order => "tweet_id DESC"
   
