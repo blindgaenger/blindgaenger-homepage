@@ -2,9 +2,12 @@ task :environment do
   require File.expand_path(File.join('config', 'environment'), File.dirname(__FILE__))
 end
 
-namespace :images do
+desc "run all asset processings"
+task :assets => %w(assets:images assets:package)
+
+namespace :assets do
   desc "crushes all PNGs in public/images"
-  task :crush do
+  task :images do
     require 'find'
 
     sum = []
@@ -35,11 +38,9 @@ namespace :images do
 
     puts "TOTAL: #{sum.inject(0){|s,i|s+i}} bytes of #{sum.size} files"
   end
-end
-
-namespace :scss do
+  
   desc "generates scss files"  
-  task :generate do
+  task :scss do
     system <<-SCRIPT
       rm tmp/*.css
       cp public/stylesheets/*.css tmp/
@@ -48,11 +49,9 @@ namespace :scss do
       sass views/style.scss tmp/style.css
     SCRIPT
   end
-end
 
-namespace :assets do
-  desc "generates assets files"  
-  task :generate => "scss:generate" do
+  desc "packages asset files with jammit"  
+  task :package => :scss do
     system "rm -r public/assets/"
     require 'jammit'
     Jammit.package!(:force => true)
@@ -69,15 +68,8 @@ namespace :db do
   end
 end
 
-desc "deploys to heroku, after generating production assets"  
-task :deploy => "assets:generate" do
-  system "git push heroku master"
-  system "heroku rake db:migrate"
-  system "heroku rake cron"
-end
-
 desc "fetch all"
-task :cron => ["cron:twitter", "cron:posterous", "cron:github"]
+task :cron => %w(cron:twitter cron:posterous cron:github)
 
 namespace :cron do
   desc "fetch new tweets"
@@ -97,4 +89,11 @@ namespace :cron do
     repos = Repo.fetch!
     puts "fetched #{repos.size} repos"
   end
+end
+
+desc "deploys to heroku, after generating production assets"  
+task :deploy => :assets do
+  system "git push heroku master"
+  system "heroku rake db:migrate"
+  system "heroku rake cron"
 end
