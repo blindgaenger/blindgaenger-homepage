@@ -72,6 +72,8 @@ end
 desc "deploys to heroku, after generating production assets"  
 task :deploy => "assets:generate" do
   system "git push heroku master"
+  system "heroku rake db:migrate"
+  system "heroku rake cron"
 end
 
 desc "fetch all"

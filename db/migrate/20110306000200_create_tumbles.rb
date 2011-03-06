@@ -4,7 +4,7 @@ class CreateTumbles < ActiveRecord::Migration
       t.string :post_id
       t.string :title
       t.string :url
-      t.string :body
+      t.text :body
       t.datetime :posted_at
       t.timestamps
     end
