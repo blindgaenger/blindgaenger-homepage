@@ -1,12 +1,5 @@
 @import "css3.scss";
 
-$cloud_light: #FFFFFF;
-$cloud_dark: #CBCCC8;
-$sun_light: #E6DE11;
-$sun_dark: #C6BE0C;
-$grass_light: #4F9D30;
-$glass_dark: #3C791C;
-
 $blue: #9ac3f7;
 $white: #fff;
 $red: #c0321e;
@@ -188,6 +181,13 @@ p {
   } // #twitter
   
   #posterous {
+    p {
+      &.tumble {font-size: 2.4em;}
+      &.funny {font-size: 4.4em;}
+      &.special {font-size: 4.2em;}
+      
+    }
+    
     .tumbles {
       clear: both;
       margin: 1.5em 0;
@@ -197,10 +197,10 @@ p {
         float:left;
 
         a {
+          font: 13.34px helvetica,arial,freesans,clean,sans-serif;
           background: url("/images/white.png") repeat scroll 0 0 $white;
           border: 2px solid $gray;
-          color: $black;
-          font: 13.34px helvetica,arial,freesans,clean,sans-serif;
+          @include border-radius(5px);
 
           float: left;
           height: 125px;
@@ -211,13 +211,17 @@ p {
           overflow: hidden;
 
           &:hover, &:active {
-            background: url("/images/red.png") repeat scroll 0 0 $red;
-            color: $white;
-            @include text-shadow(2px 2px 0 $black);
+            background: url("/images/blue.png") repeat scroll 0 0 $blue;
             @include box-shadow(0px 0px 10px $white);
+            
+            h3 {
+              color: $white;
+              @include text-shadow(2px 2px 0 $black);
+            }
           }
 
           h3 {
+            color: $black;
             font-size: 2em;
             text-align: center;
             text-transform: uppercase;
@@ -225,13 +229,12 @@ p {
           }
 
           .posted-at {
-            color: $gray;
-
+            position: absolute;
             bottom: 10px;
             left: 0;
-            position: absolute;
-            text-align: center;
             width: 100%;
+            text-align: center;
+            color: $gray;
           }
         }
       
