@@ -23,10 +23,14 @@
   @include css3("border-radius", $options);
 }
 
+@mixin transition($options) {
+  @include css3("transition", $options);
+}
+
 @mixin transform($options) {
   @include css3("transform", $options);
 }
 
-@mixin transition($options) {
-  @include css3("transition", $options);
+@mixin rotate($options) {
+  @include transform("rotate(#{$options})");
 }

@@ -97,7 +97,7 @@ namespace :cron do
 end
 
 desc "deploys to heroku, after generating production assets"  
-task :deploy => :assets do
+task :deploy do
   system "git push heroku master"
   system "heroku rake db:migrate"
   system "heroku rake cron"
