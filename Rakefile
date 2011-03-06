@@ -74,6 +74,9 @@ task :deploy => "assets:generate" do
   system "git push heroku master"
 end
 
+desc "fetch all"
+task :cron => ["cron:twitter", "cron:posterous", "cron:github"]
+
 namespace :cron do
   desc "fetch new tweets"
   task :twitter => :environment do
