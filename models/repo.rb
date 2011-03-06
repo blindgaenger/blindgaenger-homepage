@@ -1,3 +1,5 @@
+require 'octokit'
+
 class Repo < ActiveRecord::Base
   BUNCH_SIZE = 5
   
@@ -27,7 +29,6 @@ class Repo < ActiveRecord::Base
     def bunch
       self.history.all(:limit => BUNCH_SIZE)
     end
-    
   end
   
 end

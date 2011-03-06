@@ -1,3 +1,5 @@
+require 'twitter'
+
 class Tweet < ActiveRecord::Base
   BUNCH_SIZE = 5
   
@@ -29,7 +31,7 @@ class Tweet < ActiveRecord::Base
         end
       end
       
-      Tweet.history.all(:offset => BUNCH_SIZE*2).each(&:delete)
+      self.history.all(:offset => BUNCH_SIZE*2).each(&:delete)
       
       tweets
     end

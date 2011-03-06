@@ -80,6 +80,12 @@ namespace :cron do
     tweets = Tweet.fetch!
     puts "fetched #{tweets.size} tweets"
   end
+
+  desc "fetch new tumbles"
+  task :posterous => :environment do
+    tumbles = Tumble.fetch!
+    puts "fetched #{tumbles.size} tumbles"
+  end
   
   desc "fetch github repos"
   task :github => :environment do

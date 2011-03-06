@@ -9,7 +9,6 @@ ActiveRecord::Base.logger.level = Logger::WARN
 ActiveRecord::Base.establish_connection(dbconfig[dbenv])
 
 $LOAD_PATH.unshift File.expand_path(File.join('..', 'models'), File.dirname(__FILE__))
-require 'twitter'
 require 'tweet'
-require 'octokit'
 require 'repo'
+require 'tumble'

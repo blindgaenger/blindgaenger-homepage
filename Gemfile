@@ -8,6 +8,7 @@ gem "activerecord", "3.0.5"
 gem "sqlite3", "1.3.3"
 gem "twitter", "1.1.2"
 gem "octokit", "0.5.2"
+gem "crack", "0.1.8"
 
 group :development do
   gem "sinatra-reloader", "0.5.0"

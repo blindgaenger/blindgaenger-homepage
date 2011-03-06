@@ -25,6 +25,7 @@ end
 
 get '/' do
   @tweets = Tweet.bunch
+  @tumbles = Tumble.bunch
   @repos = Repo.bunch
   haml :index
 end
