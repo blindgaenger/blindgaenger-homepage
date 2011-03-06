@@ -59,12 +59,17 @@ namespace :assets do
 end
 
 namespace :db do
-  desc "migrate your database"
+  desc "migrate the database"
   task :migrate => :environment do
     ActiveRecord::Migrator.migrate(
       'db/migrate',
       ENV["VERSION"] ? ENV["VERSION"].to_i : nil
     )
+  end
+  
+  desc "reset the database"
+  task :reset => :environment do
+    system "heroku pg:reset --db SHARED_DATABASE_URL"
   end
 end
 
