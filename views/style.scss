@@ -31,10 +31,9 @@ p {
   @include text-shadow(1px 1px 0 $gray);
   
   a {
-    text-decoration: underline;
     color: $gray_light;
     &:hover {
-      color: $white;
+      text-decoration: underline;
       @include text-shadow(1px 1px 0 $gray);
     }
   }
@@ -100,26 +99,26 @@ p {
     h1 {
       padding: 1.5em 0;
       
-      .blind   { font-size: 13.4em; }
-      .gaenger { font-size: 8.5em; }
+      .blind   { font-size: 13.60em; }
+      .gaenger { font-size: 8.75em; }
       &> div {
         line-height: 0.7em;
       }
     }
     
     p {
-      &.alterego { font-size: 2.40em; }
-      &.hamburg  { font-size: 2.38em; }
-      &.ruby     { font-size: 2.35em; }
-      &.happy    { font-size: 4.3em; }
+      &.alterego { font-size: 2.50em; }
+      &.hamburg  { font-size: 2.55em; }
+      &.ruby     { font-size: 2.55em; }
+      &.happy    { font-size: 4.50em; }
     }
   }
   
   #twitter {
     p {
-      &.follow { font-size: 2.50em; }
+      &.follow { font-size: 2.45em; }
       &.screenname { font-size: 5.0em; }
-      &.latest { font-size: 2.25em; }
+      &.latest { font-size: 2.20em; }
     }
     
     .tweets {
@@ -195,7 +194,6 @@ p {
       &.tumble {font-size: 2.4em;}
       &.funny {font-size: 4.4em;}
       &.special {font-size: 4.2em;}
-      
     }
     
     .tumbles {
@@ -253,6 +251,11 @@ p {
   } // #posterous
   
   #github {
+    p {
+      &.hack {font-size: 2.30em;}
+      &.host {font-size: 5.30em;}
+    }
+    
     ul.repos {
       margin: 1.5em 0;
       font: 13.34px helvetica,arial,freesans,clean,sans-serif;

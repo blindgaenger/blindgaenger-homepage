@@ -1,5 +1,8 @@
 %h2= name
 
+%p.hack What I'm currently hacking on
+%p.host Yep, I love Git
+
 %ul.repos
   - @repos.each_with_index do |repo, index|
     %li.repo(class="scale-#{index} #{repo.fork ? 'fork' : ''}")
