@@ -18,12 +18,14 @@ class Tweet < ActiveRecord::Base
       tweets = Twitter.user_timeline('blindgaenger', options)
       tweets.each do |tweet|
         begin
-          status = tweet.retweeted_status ? tweet.retweeted_status : tweet
+          retweeted = !tweet.retweeted_status.nil?
+          status = retweeted ? tweet.retweeted_status : tweet
           self.create(
             :tweet_id => tweet.id_str,
             :screen_name => status.user.screen_name,
             :profile_image_url => status.user.profile_image_url,
             :text => status.text,
+            :retweeted => retweeted,
             :tweeted_at => Time.parse(tweet.created_at)
           )
         rescue => ex

@@ -130,11 +130,20 @@ p {
         border: 2px solid $gray;
         @include box-shadow(10px 10px 0 #000);
         @include border-radius(5px);
+        position: relative;
 
         color: black;
         background-color: white;
         font: 15px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
       
+        .retweeted {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 24px;
+          height: 25px;
+        }
+        
         .icon {
           float: left;
           height: 48px;
