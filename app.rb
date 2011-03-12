@@ -12,12 +12,6 @@ configure do
   set :sass, :style => :compact # default Sass style is :nested, :expanded
 end
 
-helpers do
-  def separator
-    haml '.separator ★★★★'
-  end
-end
-
 get '/' do
   @tweets = Tweet.bunch
   @tumbles = Tumble.bunch
