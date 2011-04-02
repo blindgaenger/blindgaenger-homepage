@@ -1,63 +1,74 @@
-a#badge {
+#badge {
   position: absolute;
-  right: -65px;
-  top: 40px;
-  width: 250px;
-  height: 30px;
-  text-decoration: none;
-  @include rotate(45deg);
+  top: 0px;
+  right: 0px;
+  width: 175px;
+  height: 175px;
+  overflow: hidden;
   
-  span {
+  a {
     position: absolute;
-    left: 0;
+    top: 60px;
+    right: -50px;
     width: 250px;
-    text-align: center;
-    padding: 5px 0;
-    @include transition(opacity 1s linear);
-    font: 15px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
-    
-    &.front {
-      background: url("/images/white.png") repeat scroll 0 0 $white;
-      color: black;
-    }
-    &.back {
-      opacity: 0;
-      background: url("/images/red.png") repeat scroll 0 0 $red;
-      color: white;
-      @include text-shadow(2px 2px 0 black);
-      @include box-shadow(0px 0px 10px $white);
-    }
-  }
-
-  &:hover span {
-    &.front {
-      opacity: 0;
-    } 
-    &.back {
-      opacity: 1;
-    } 
-  }
+    height: 30px;
+    text-decoration: none;
+    @include rotate(45deg);
   
+    span {
+      position: absolute;
+      left: 0;
+      width: 250px;
+      text-align: center;
+      padding: 5px 0;
+      @include transition(opacity 1s linear);
+      font: 15px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
+    
+      &.front {
+        background: url("/images/white.png") repeat scroll 0 0 $white;
+        color: black;
+      }
+      &.back {
+        opacity: 0;
+        background: url("/images/red.png") repeat scroll 0 0 $red;
+        color: white;
+        @include text-shadow(2px 2px 0 black);
+        @include box-shadow(0px 0px 10px $white);
+      }
+    }
+
+    &:hover span {
+      &.front {
+        opacity: 0;
+      } 
+      &.back {
+        opacity: 1;
+      } 
+    }
+  
+  }
 }
 
 @media all and (-webkit-transform-3d) {
-  a#badge {
-    span {
-      opacity: 1 !important;
-      -webkit-backface-visibility: hidden;
-      -webkit-transition: -webkit-transform 1s;
+  #badge {
+    a {
+      span {
+        opacity: 1 !important;
+        -webkit-backface-visibility: hidden;
+        -webkit-transition: -webkit-transform 1s;
       
-      &.back {
-        -webkit-transform: rotateX(180deg);
+        &.back {
+          -webkit-transform: rotateX(180deg);
+        }
       }
-    }
     
-    &:hover span {
-      &.front {
-        -webkit-transform: rotateX(180deg);
-      }
-      &.back {
-        -webkit-transform: rotateX(360deg);
+      &:hover span {
+        &.front {
+          -webkit-transform: rotateX(180deg);
+        }
+        &.back {
+          -webkit-transform: rotateX(360deg);
+        }
       }
     }
   }
