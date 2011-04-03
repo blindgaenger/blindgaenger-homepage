@@ -39,6 +39,11 @@
         %nav
           %ul
             = yield_content :navigation
+          #switch
+            %p.label Turn the lights on?
+            .buttons
+              %a.button.first(href='http://bjuenger.de/') On
+              %a.button.last.active(href='#') Off
 
     - if production?
       %script(src='assets/all.js')
