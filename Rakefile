@@ -69,7 +69,7 @@ namespace :db do
 
   desc "reset the database"
   task :reset => :environment do
-    system "heroku pg:reset"
+    system "heroku pg:reset SHARED_DATABASE"
   end
 end
 
