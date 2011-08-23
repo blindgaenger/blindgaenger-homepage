@@ -38,8 +38,8 @@ namespace :assets do
 
     puts "TOTAL: #{sum.inject(0){|s,i|s+i}} bytes of #{sum.size} files"
   end
-  
-  desc "generates scss files"  
+
+  desc "generates scss files"
   task :scss do
     system <<-SCRIPT
       rm tmp/*.css
@@ -50,7 +50,7 @@ namespace :assets do
     SCRIPT
   end
 
-  desc "packages asset files with jammit"  
+  desc "packages asset files with jammit"
   task :package => :scss do
     system "rm -r public/assets/"
     require 'jammit'
@@ -66,10 +66,10 @@ namespace :db do
       ENV["VERSION"] ? ENV["VERSION"].to_i : nil
     )
   end
-  
+
   desc "reset the database"
   task :reset => :environment do
-    system "heroku pg:reset --db SHARED_DATABASE_URL"
+    system "heroku pg:reset"
   end
 end
 
@@ -90,7 +90,7 @@ namespace :cron do
     tumbles = Tumble.fetch!
     puts "fetched #{tumbles.size} tumbles"
   end
-  
+
   desc "fetch github repos"
   task :github => :environment do
     repos = Repo.fetch!
@@ -98,7 +98,7 @@ namespace :cron do
   end
 end
 
-desc "deploys to heroku, after generating production assets"  
+desc "deploys to heroku, after generating production assets"
 task :deploy do
   system "git push heroku master"
   system "heroku rake db:migrate"
