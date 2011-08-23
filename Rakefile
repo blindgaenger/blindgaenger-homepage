@@ -74,7 +74,9 @@ namespace :db do
 end
 
 desc "fetch all"
-task :cron => %w(cron:twitter cron:posterous cron:github)
+task :cron => %w(cron:twitter cron:posterous cron:github) do
+  puts "fetched all at #{Time.now.to_s}"
+end
 
 namespace :cron do
   desc "fetch new tweets"
