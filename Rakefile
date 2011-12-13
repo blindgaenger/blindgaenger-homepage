@@ -44,9 +44,9 @@ namespace :assets do
     system <<-SCRIPT
       rm tmp/*.css
       cp public/stylesheets/*.css tmp/
-      sass views/stylesheets/css3.scss tmp/css3.css
-      sass views/stylesheets/layout.scss tmp/layout.css
-      sass views/stylesheets/style.scss tmp/style.css
+      bundle exec sass views/stylesheets/css3.scss tmp/css3.css
+      bundle exec sass views/stylesheets/layout.scss tmp/layout.css
+      bundle exec sass views/stylesheets/style.scss tmp/style.css
     SCRIPT
   end
 
