@@ -1,9 +1,9 @@
 source :rubygems
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'haml'
 gem 'sass'
-gem 'sinatra-content-for2'
 gem 'jammit'
 gem 'activerecord'
 gem 'twitter'

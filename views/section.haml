@@ -1,9 +1,9 @@
 - content_for :navigation do
-  %li 
+  %li
     %a(href="##{id}")= name
 
 %section(id=id)
-  
+
   =haml id.to_sym, :locals => { :id => id, :name => name }
 
   .separator ★★★★

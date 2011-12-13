@@ -9,7 +9,7 @@
     %link(rel='openid.delegate' href='http://openid.claimid.com/blindgaenger')
     %link(rel="shortcut icon" href="/favicon.ico")
     %link(rel="apple-touch-icon" href="/apple-touch-icon.png")
-          
+
     %link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster')
     - if production?
       %link(rel='stylesheet' href='assets/all.css')
@@ -17,15 +17,15 @@
       %link(rel='stylesheet' href='stylesheets/reset.css')
       %link(rel='stylesheet' href='stylesheets/layout.css')
       %link(rel='stylesheet' href='stylesheets/style.css')
-    
+
   %body
     #badge
       %a(href="https://github.com/blindgaenger/homepage")
         %span.front This site on GitHub!
         %span.back Source for free!
-    
+
     #container
-    
+
       #content
         = haml :section, :locals => { :id => 'start',     :name => 'About' }
         = haml :section, :locals => { :id => 'github',    :name => 'Github' }
