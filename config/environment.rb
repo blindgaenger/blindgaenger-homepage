@@ -13,9 +13,9 @@ ActiveRecord::Base.establish_connection(
   :username => db.user,
   :password => db.password,
   :database => db.path[1..-1],
-  :encoding => 'utf8',
-  :min_messages => 'notice'
+  :encoding => 'utf8'
 )
+ActiveRecord::Base.connection.execute("SET client_min_messages TO 'notice'")
 
 $LOAD_PATH.unshift File.expand_path(File.join('..', 'models'), File.dirname(__FILE__))
 require 'tweet'
