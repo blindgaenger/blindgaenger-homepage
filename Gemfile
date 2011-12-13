@@ -10,13 +10,9 @@ gem 'twitter'
 gem 'octokit'
 gem 'crack'
 gem 'rake'
-
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 group :development do
   gem 'sinatra-reloader'
   gem 'heroku'
-  gem 'sqlite3'
 end
