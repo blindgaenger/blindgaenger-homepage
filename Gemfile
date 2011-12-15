@@ -15,4 +15,5 @@ gem 'pg'
 group :development do
   gem 'sinatra-reloader'
   gem 'heroku'
+  gem 'foreman'
 end
