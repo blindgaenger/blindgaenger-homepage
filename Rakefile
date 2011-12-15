@@ -98,9 +98,22 @@ namespace :cron do
   end
 end
 
+desc "setup the heroku instance"
+task :setup do
+  system "heroku create --stack cedar"
+
+  system "heroku addons:add custom_domains"
+  #system "heroku domains:remove blindgaenger.net --app old-blindgaenger-homepage"
+  system "heroku domains:add blindgaenger.net"
+
+  system "heroku addons:add cron:daily"
+
+  Rake::Task["deploy"].invoke
+end
+
 desc "deploys to heroku, after generating production assets"
 task :deploy do
   system "git push heroku master"
-  system "heroku rake db:migrate"
-  system "heroku rake cron"
+  system "heroku run rake db:migrate"
+  system "heroku run rake cron"
 end
