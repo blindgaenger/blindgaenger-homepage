@@ -1,6 +1,7 @@
 require 'twitter'
 
 class Tweet < ActiveRecord::Base
+  USER_ID = 'blindgaenger'
   BUNCH_SIZE = 5
 
   scope :history, :order => "tweet_id DESC"
@@ -15,7 +16,7 @@ class Tweet < ActiveRecord::Base
         options[:since_id] = latest_id
       end
 
-      tweets = Twitter.user_timeline('jboner', options)
+      tweets = Twitter.user_timeline(USER_ID, options)
       tweets.each do |tweet|
         begin
           retweeted = !tweet.attrs['retweeted_status'].nil?

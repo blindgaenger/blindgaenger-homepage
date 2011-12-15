@@ -1,13 +1,14 @@
 require 'octokit'
 
 class Repo < ActiveRecord::Base
+  USER_ID = 'blindgaenger'
   BUNCH_SIZE = 5
 
   scope :history, :order => "pushed_at DESC"
 
   class << self
     def fetch!
-      repos = Octokit.repositories('blindgaenger').reverse
+      repos = Octokit.repositories(USER_ID).reverse
       repos.map do |repo|
         model = self.find_by_name(repo.name) || self.new
         model.attributes = {
