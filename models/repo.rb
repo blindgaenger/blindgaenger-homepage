@@ -8,14 +8,14 @@ class Repo < ActiveRecord::Base
 
   class << self
     def fetch!
-      repos = Octokit.repositories(USER_ID).reverse
+      repos = Octokit.repositories(USER_ID).sort_by{|r| r.pushed_at}.reverse
       repos.map do |repo|
         model = self.find_by_name(repo.name) || self.new
         model.attributes = {
           :name => repo.name,
           :description => repo.description,
           :homepage => repo.homepage,
-          :url => repo.url,
+          :url => repo.html_url,
           :language => repo.language,
           :forks => repo.forks,
           :watchers => repo.watchers,
