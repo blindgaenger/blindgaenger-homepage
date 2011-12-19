@@ -8,9 +8,12 @@
   - @tumbles.each_with_index do |tumble, index|
     %li.tumble
       %a(href="#{tumble.url}" target="_blank")
-        %h3= tumble.title
+        - if tumble.body
+          %img(src="#{tumble.body}")
+        - else
+          %h3= tumble.title
         .posted-at= tumble.posted_at.strftime('%d %b')
 
 %p.readmore
-  %a(href="http://blindgaenger.posterous.com/") Tumble with me at Posterous
+  %a(href="https://gimmebar.com/loves/blindgaenger/collection/firehose") Tumble with me at Gimme Bar
 

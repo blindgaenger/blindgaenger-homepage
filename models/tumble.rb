@@ -20,7 +20,7 @@ class Tumble < ActiveRecord::Base
             :post_id => post['id'],
             :url => post['source'],
             :title => post['title'],
-            :body => post['content'].to_yaml,
+            :body => parse_content(post['asset_type'], post['content']),
             :posted_at => Time.at(post['date'])
           }
           model.save
@@ -40,6 +40,21 @@ class Tumble < ActiveRecord::Base
 
     def latest
       self.history.first
+    end
+
+    private
+
+    def parse_content(type, content)
+      case type
+      when 'image'
+        content['stash']
+      when 'embed'
+        content['thumbnail']
+      when 'page'
+        content['thumb']
+      when 'text'
+        nil # show the title
+      end
     end
   end
 

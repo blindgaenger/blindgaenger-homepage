@@ -11,7 +11,7 @@ html, body {
   background: url("/images/darkgrid.png") repeat scroll 0 0 $black;
   color: $white;
   font: 18px 'Lobster', arial, serif;
-  
+
   a {
     outline: 0;
     text-decoration: none;
@@ -27,7 +27,7 @@ html, body {
     @include text-shadow("3px 3px 0 #{$black}, 6px 6px 0 #{$gray}");
     letter-spacing:-0.1em;
   }
-  
+
   h2 {
     font-size: 5em;
     margin-bottom: 0.2em;
@@ -76,7 +76,7 @@ html, body {
 
   p.readmore {
     text-align:center;
-    
+
     a {
       padding: 0.25em;
       border: 2px solid $black;
@@ -84,7 +84,7 @@ html, body {
       color: $black;
       text-decoration: none;
       @include text-shadow(1px 1px 0 $white);
-      
+
       &:hover, &:active {
         background: url("/images/red.png") repeat scroll 0 0 $red;
         color: $white;
@@ -92,7 +92,7 @@ html, body {
         @include box-shadow(0px 0px 10px $white);
       }
     }
-  } 
+  }
 }
 
 @import "badge.scss";
@@ -100,6 +100,7 @@ html, body {
 @import "switch.scss";
 
 @import "start.scss";
-@import "twitter.scss";
-@import "posterous.scss";
 @import "github.scss";
+@import "twitter.scss";
+@import "tumbles.sass";
+

@@ -74,7 +74,7 @@ namespace :db do
 end
 
 desc "fetch all"
-task :cron => %w(cron:twitter cron:posterous cron:github) do
+task :cron => %w(cron:twitter cron:tumbles cron:github) do
   puts "fetched all at #{Time.now.to_s}"
 end
 
@@ -86,7 +86,7 @@ namespace :cron do
   end
 
   desc "fetch new tumbles"
-  task :posterous => :environment do
+  task :tumbles => :environment do
     tumbles = Tumble.fetch!
     puts "fetched #{tumbles.size} tumbles"
   end
