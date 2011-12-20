@@ -9,7 +9,7 @@ class CreateTumbles < ActiveRecord::Migration
       t.timestamps
     end
   end
-  
+
   def self.down
     drop_table :tumbles
   end

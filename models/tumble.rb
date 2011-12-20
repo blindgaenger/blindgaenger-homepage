@@ -20,6 +20,7 @@ class Tumble < ActiveRecord::Base
             :post_id => post['id'],
             :url => post['source'],
             :title => post['title'],
+            :body_type => parse_type(post['asset_type']),
             :body => parse_content(post['asset_type'], post['content']),
             :posted_at => Time.at(post['date'])
           }
@@ -44,6 +45,19 @@ class Tumble < ActiveRecord::Base
 
     private
 
+    def parse_type(type)
+      case type
+      when 'image'
+        'image'
+      when 'embed'
+        'video'
+      when 'page'
+        'image'
+      when 'text'
+        'text'
+      end
+    end
+
     def parse_content(type, content)
       case type
       when 'image'
@@ -56,9 +70,6 @@ class Tumble < ActiveRecord::Base
         nil # show the title
       end
     end
-  end
-
-  def text
   end
 
 end

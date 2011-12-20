@@ -30,12 +30,14 @@
         overflow: hidden
 
         &:hover, &:active
-          background: url("/images/blue.png") repeat scroll 0 0 $blue
           @include box-shadow(0px 0px 10px $white)
 
           h3
             color: $white
             @include text-shadow(2px 2px 0 $black)
+
+          .play-button
+            background: url("/images/tumbles/play_red.png") no-repeat scroll 0 0 transparent
 
         h3
           color: $black
@@ -45,6 +47,8 @@
           word-wrap: break-word
 
         img
+          display: block
+          margin: 0 auto
           width: 155px
 
         .posted-at
@@ -54,3 +58,14 @@
           width: 100%
           text-align: center
           color: $gray
+
+        .play-button
+          background: url("/images/tumbles/play_black.png") no-repeat scroll 0 0 transparent
+          display: block
+          height: 60px
+          left: 50%
+          margin: -30px 0 0 -30px
+          position: absolute
+          text-indent: -9999px
+          top: 50%
+          width: 60px

@@ -13,7 +13,8 @@
         - else
           %h3= tumble.title
         .posted-at= tumble.posted_at.strftime('%d %b')
+        - if tumble.body_type == 'video'
+          %span.play-button Play
 
 %p.readmore
   %a(href="https://gimmebar.com/loves/blindgaenger/collection/firehose") Tumble with me at Gimme Bar
-
