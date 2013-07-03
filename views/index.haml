@@ -11,7 +11,7 @@
     %link(rel="apple-touch-icon" href="/apple-touch-icon.png")
 
     %link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster')
-    - if production?
+    - if settings.production?
       %link(rel='stylesheet' href='assets/all.css')
     - else
       %link(rel='stylesheet' href='stylesheets/reset.css')
@@ -47,7 +47,7 @@
               %a.button.first(href='http://bjuenger.de/') On
               %a.button.last.active(href='#') Off
 
-    - if production?
+    - if settings.production?
       %script(src='assets/all.js')
       = haml :tracking, :locals => { :id => '128818' }
     - else
