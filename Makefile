@@ -1,5 +1,6 @@
 database:
-	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+	#pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+	postgres -D /usr/local/var/postgres
 
 server:
 	bundle exec ruby app.rb
