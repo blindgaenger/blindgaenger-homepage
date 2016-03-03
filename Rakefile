@@ -100,7 +100,7 @@ end
 
 desc "setup the heroku instance"
 task :setup do
-  system "heroku create --stack cedar"
+  system "heroku create --stack cedar-14"
 
   system "heroku addons:add custom_domains"
   #system "heroku domains:remove blindgaenger.net --app old-blindgaenger-homepage"
