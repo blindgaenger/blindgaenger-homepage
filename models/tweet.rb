@@ -57,7 +57,11 @@ class Tweet < ActiveRecord::Base
 
   before_save :replace_entities
 
-  alias_attribute :avatar_url, :profile_image_url
+  # alias_attribute :avatar_url, :profile_image_url
+
+  def avatar_url
+    profile_image_url.sub("http://", "https://") if profile_image_url
+  end
 
   def profile_url
     "https://www.twitter.com/#{screen_name}"
