@@ -43,10 +43,6 @@ class Tumble < ActiveRecord::Base
       self.history.first
     end
 
-    def preview_url
-      body.sub("http://", "https://") if body
-    end
-
     private
 
     def parse_type(type)
@@ -74,6 +70,10 @@ class Tumble < ActiveRecord::Base
         nil # show the title
       end
     end
+  end
+
+  def preview_url
+    body.sub("http://", "https://") if body
   end
 
 end
