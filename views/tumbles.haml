@@ -9,7 +9,7 @@
     %li.tumble
       %a(href="#{tumble.url}" target="_blank")
         - if tumble.body
-          %img(src="#{tumble.body}")
+          %img(src="#{tumble.preview_url}")
         - else
           %h3= tumble.title
         .posted-at= tumble.posted_at.strftime('%d %b')
