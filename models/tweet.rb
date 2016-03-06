@@ -60,11 +60,11 @@ class Tweet < ActiveRecord::Base
   alias_attribute :avatar_url, :profile_image_url
 
   def profile_url
-    "http://www.twitter.com/#{screen_name}"
+    "https://www.twitter.com/#{screen_name}"
   end
 
   def tweet_url
-    "http://twitter.com/#{screen_name}/status/#{tweet_id}"
+    "https://twitter.com/#{screen_name}/status/#{tweet_id}"
   end
 
   private
@@ -73,16 +73,16 @@ class Tweet < ActiveRecord::Base
     temp = self.text.dup
 
     temp = temp.gsub(/\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/) do |link|
-      schema = $2.match(/w/) ? "http://" : ""
+      schema = $2.match(/w/) ? "https://" : ""
       text = (link.length > 25) ? link[0..24] + "..." : link
       '<a class="link" href="' + schema+link + '" target="_blank">' + text + '</a>'
     end
 
     temp.gsub!(/\B#([a-zA-Z0-9_]{1,20})([\s,]|$)/,
-      '<a class="hash" href="http://twitter.com/search?q=%23\1" target="_blank">#\1</a>\2')
+      '<a class="hash" href="https://twitter.com/search?q=%23\1" target="_blank">#\1</a>\2')
 
     temp.gsub!(/\B@([a-zA-Z0-9_]{1,20})([\s,]|$)/,
-      '@<a class="mention" href="http://twitter.com/\1" target="_blank">\1</a>\2')
+      '@<a class="mention" href="https://twitter.com/\1" target="_blank">\1</a>\2')
 
     self.html = temp
   end
