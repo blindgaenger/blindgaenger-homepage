@@ -10,7 +10,7 @@ Notable JavaScript stuff is [Raphaël](http://raphaeljs.com/) for drawing the ic
 
 And I officially *tried* to use HTML5 and CSS3 correctly. But to be honest, currently it's more like a playground to me. No holds barred!
 
-    <!--[if lt IE 7]>SORRY!<![endif]--> 
+    <!--[if lt IE 7]>SORRY!<![endif]-->
 
 Apart from that, I still love [Heroku](http://heroku.com/) for hosting.
 

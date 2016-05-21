@@ -1,3 +1,4 @@
+# http://gohugo.io/overview/configuration/#configuration-variables
 baseurl = "http://blindgaenger.net/"
 languageCode = "en-us"
 title = "blindgaenger"
