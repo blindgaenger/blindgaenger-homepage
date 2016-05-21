@@ -1,2 +1,2 @@
 dev:
-	hugo server
+	hugo server --port 3000
