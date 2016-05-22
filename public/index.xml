@@ -6,7 +6,1497 @@
     <description>Recent content on blindgaenger</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 21 May 2016 14:13:52 +0200</lastBuildDate>
     <atom:link href="http://blindgaenger.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Foobar Title</title>
+      <link>http://blindgaenger.net/articles/yyy/</link>
+      <pubDate>Sat, 21 May 2016 14:13:52 +0200</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/yyy/</guid>
+      <description>
+
+&lt;h2 id=&#34;foobar-body:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Foobar Body&lt;/h2&gt;
+
+&lt;p&gt;Some foobar text&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello Title</title>
+      <link>http://blindgaenger.net/articles/xxx/</link>
+      <pubDate>Sat, 21 May 2016 14:13:52 +0200</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/xxx/</guid>
+      <description>
+
+&lt;h2 id=&#34;hello-body:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Hello Body&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;opensource.png&#34; alt=&#34;Open Source&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blindgaenger.net/path/to/img.jpg&#34; alt=&#34;Alt text&#34; title=&#34;Optional title&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>10 XXX One Liners to Impress Your Friends</title>
+      <link>http://blindgaenger.net/articles/2011-06-09-10-xxx-one-liners-to-impress-your-friends/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2011-06-09-10-xxx-one-liners-to-impress-your-friends/</guid>
+      <description>
+
+&lt;p&gt;There is some fascination to solve problems by writing as little code as possible. And even yesterday I visited the &lt;a href=&#34;http://hamburg.onruby.de/&#34;&gt;Rails Usergroup Hamburg&lt;/a&gt; where we played &lt;a href=&#34;https://github.com/chrisdb/rubygolfhh&#34;&gt;Ruby Golf&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s a great way to learn some not so common constructs of the language of your choice. Even if some of them don&amp;rsquo;t even try to be very expressive or elegant. But there&amp;rsquo;s always something you can learn from, right?&lt;/p&gt;
+
+&lt;p&gt;Last week there came up interesting posts to show you &amp;lsquo;10 XXX One Liners to Impress Your Friends&amp;rsquo;. So let&amp;rsquo;s put some Scala/Ruby/CoffeeScript/Python/Haskell side by side. But please don&amp;rsquo;t judge a language by these examples. It&amp;rsquo;s more an inspiration.&lt;/p&gt;
+
+&lt;p&gt;At the end of this article you&amp;rsquo;ll find a list of all original posts the code cames from. Have fun!&lt;/p&gt;
+
+&lt;h1 id=&#34;1-multiple-each-item-in-a-list-by-2:2953910b393c81e82635af7f2602b860&#34;&gt;1. Multiple Each Item in a List by 2&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;(1 to 10) map { _ * 2 }
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;(1..10).map { |n| n * 2 }
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;[1..10].map (i) -&amp;gt; i*2&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;i * 2 for i in [1..10]
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print map(lambda x: x * 2, range(1,11))
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  map (*2) [1..10]
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;2-sum-a-list-of-numbers:2953910b393c81e82635af7f2602b860&#34;&gt;2. Sum a List of Numbers&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;(1 to 1000).reduceLeft( _ + _ )
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;(1..1000).inject { |sum, n| sum + n }&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;(1..1000).inject(&amp;amp;:+)&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;(1..1000).inject(:+)
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;[1..1000].reduce (t, s) -&amp;gt; t + s
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print sum(range(1,1001))
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  foldl (+) 0 [1..1000]&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;sum [1..1000]
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;3-verify-if-exists-in-a-string:2953910b393c81e82635af7f2602b860&#34;&gt;3. Verify if Exists in a String&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;val wordlist = List(&amp;ldquo;scala&amp;rdquo;, &amp;ldquo;akka&amp;rdquo;, &amp;ldquo;play framework&amp;rdquo;, &amp;ldquo;sbt&amp;rdquo;, &amp;ldquo;typesafe&amp;rdquo;)
+  val tweet = &amp;ldquo;This is an example tweet talking about scala and sbt.&amp;rdquo;
+  (words.foldLeft(false)( _ || tweet.contains(_) ))
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;words = [&amp;ldquo;scala&amp;rdquo;, &amp;ldquo;akka&amp;rdquo;, &amp;ldquo;play framework&amp;rdquo;, &amp;ldquo;sbt&amp;rdquo;, &amp;ldquo;typesafe&amp;rdquo;]
+  tweet = &amp;ldquo;This is an example tweet talking about scala and sbt.&amp;rdquo;
+  words.any? { |word| tweet.include?(word) }
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;wordList = [&amp;ldquo;coffeescript&amp;rdquo;, &amp;ldquo;eko&amp;rdquo;, &amp;ldquo;play framework&amp;rdquo;, &amp;ldquo;and stuff&amp;rdquo;, &amp;ldquo;falsy&amp;rdquo;]
+  tweet = &amp;ldquo;This is an example tweet talking about javascript and stuff.&amp;rdquo;
+  wordList.some (word) -&amp;gt; ~tweet.indexOf word
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  wordlist = [&amp;ldquo;scala&amp;rdquo;, &amp;ldquo;akka&amp;rdquo;, &amp;ldquo;play framework&amp;rdquo;, &amp;ldquo;sbt&amp;rdquo;, &amp;ldquo;typesafe&amp;rdquo;]
+  tweet = &amp;ldquo;This is an example tweet talking about scala and sbt.&amp;rdquo;
+  print map(lambda x: x in tweet.split(),wordlist)
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  import Data.List
+  let wordlist = [&amp;ldquo;monad&amp;rdquo;, &amp;ldquo;monoid&amp;rdquo;, &amp;ldquo;Galois&amp;rdquo;, &amp;ldquo;ghc&amp;rdquo;, &amp;ldquo;SPJ&amp;rdquo;]
+  let tweet = &amp;ldquo;This is an example tweet talking about SPJ interviewing with Galois&amp;rdquo;
+  or $ map (flip isInfixOf tweet) wordlist&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;any (flip isInfixOf tweet) wordlist
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;4-read-in-a-file:2953910b393c81e82635af7f2602b860&#34;&gt;4. Read in a File&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;val fileText = io.Source.fromFile(&amp;ldquo;data.txt&amp;rdquo;).mkString
+  val fileLines = io.Source.fromFile(&amp;ldquo;data.txt&amp;rdquo;).getLines.toList
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;file_text = File.read(&amp;ldquo;data.txt&amp;rdquo;)
+  file_lines = File.readlines(&amp;ldquo;data.txt&amp;rdquo;)
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;fs.readFile &amp;lsquo;data.txt&amp;rsquo;, (err, data) -&amp;gt; fileText = data&lt;/p&gt;
+
+&lt;p&gt;OR (sync)&lt;/p&gt;
+
+&lt;p&gt;fileText = fs.readFileSync(&amp;lsquo;data.txt&amp;rsquo;).toString()
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print open(&amp;ldquo;ten_one_liners.py&amp;rdquo;).readlines()
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  fileText &amp;lt;- readFile &amp;ldquo;data.txt&amp;rdquo;
+  let fileLines = lines fileText&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;let fileLines = fmap lines $ readFile &amp;ldquo;data.txt&amp;rdquo;
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;5-happy-birthday-to-you:2953910b393c81e82635af7f2602b860&#34;&gt;5. Happy Birthday to You!&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;(1 to 4).map { i =&amp;gt; &amp;ldquo;Happy Birthday &amp;rdquo; + (if (i == 3) &amp;ldquo;dear NAME&amp;rdquo; else &amp;ldquo;to You&amp;rdquo;) }.foreach { println }
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;4.times { |n| puts &amp;ldquo;Happy Birthday #{n==2 ? &amp;ldquo;dear Tony&amp;rdquo; : &amp;ldquo;to You&amp;rdquo;}&amp;rdquo; }
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;[1..4].map (i) -&amp;gt; console.log &amp;ldquo;Happy Birthday &amp;rdquo; + (if i is 3 then &amp;ldquo;dear Robert&amp;rdquo; else &amp;ldquo;to You&amp;rdquo;)&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;console.log &amp;ldquo;Happy Birthday #{if i is 3 then &amp;ldquo;dear Robert&amp;rdquo; else &amp;ldquo;to You&amp;rdquo;}&amp;rdquo; for i in [1..4]
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print map(lambda x: &amp;ldquo;Happy Birthday to &amp;rdquo; + (&amp;ldquo;you&amp;rdquo; if x != 2 else &amp;ldquo;dear Name&amp;rdquo;),range(4))
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  mapM_ putStrLn [&amp;ldquo;Happy Birthday &amp;rdquo; ++ (if x == 3 then &amp;ldquo;dear NAME&amp;rdquo; else &amp;ldquo;to You&amp;rdquo;) | x &amp;lt;- [1..4]]
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;6-filter-list-of-numbers:2953910b393c81e82635af7f2602b860&#34;&gt;6. Filter list of numbers&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;val (passed, failed) = List(49, 58, 76, 82, 88, 90) partition ( _ &amp;gt; 60 )
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;[49, 58, 76, 82, 88, 90].partition { |n| n &amp;gt; 60 }
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;passed = []
+  failed = []
+  (if score &amp;gt; 60 then passed else failed).push score for score in [49, 58, 76, 82, 88, 90]&lt;/p&gt;
+
+&lt;p&gt;}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print reduce(lambda(a,b),c: (a+[c],b) if c &amp;gt; 60 else (a,b + [c]), [49, 58, 76, 82, 88, 90],([],[]))
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  let (passed, failed) = partition (&amp;gt;60) [49, 58, 76, 82, 88, 90]
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;7-fetch-and-parse-an-xml-web-service:2953910b393c81e82635af7f2602b860&#34;&gt;7. Fetch and Parse an XML web service&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;val results = XML.load(&amp;ldquo;&lt;a href=&#34;http://search.twitter.com/search.atom?&amp;amp;q=scala&amp;quot;&#34;&gt;http://search.twitter.com/search.atom?&amp;amp;q=scala&amp;quot;&lt;/a&gt;)
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;require &amp;lsquo;open-uri&amp;rsquo;
+  require &amp;lsquo;hpricot&amp;rsquo;
+  results = Hpricot(open(&amp;ldquo;&lt;a href=&#34;http://search.twitter.com/search.atom?&amp;amp;q=scala&amp;quot;)&#34;&gt;http://search.twitter.com/search.atom?&amp;amp;q=scala&amp;quot;)&lt;/a&gt;)
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;request.get { uri:&amp;lsquo;path/to/api.json&amp;rsquo;, json: true }, (err, r, body) -&amp;gt; results = body
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  from xml.dom.minidom import parse, parseString
+  import urllib2
+  print parse(urllib2.urlopen(&amp;ldquo;&lt;a href=&#34;http://search.twitter.com/search.atom?&amp;amp;q=python&amp;quot;)).toprettyxml(encoding=&amp;quot;utf-8&amp;quot;&#34;&gt;http://search.twitter.com/search.atom?&amp;amp;q=python&amp;quot;)).toprettyxml(encoding=&amp;quot;utf-8&amp;quot;&lt;/a&gt;)
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  import Network.Curl
+  import Text.XML.Light
+  import Control.Monad
+  let results = liftM parseXMLDoc $ liftM snd (curlGetString &amp;ldquo;&lt;a href=&#34;http://search.twitter.com/search.atom?&amp;amp;q=haskell&amp;quot;&#34;&gt;http://search.twitter.com/search.atom?&amp;amp;q=haskell&amp;quot;&lt;/a&gt; [])&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;Control.Applicative
+  let results = parseXMLDoc . snd &amp;lt;$&amp;gt; curlGetString &amp;ldquo;&lt;a href=&#34;http://search.twitter.com/search.atom?&amp;amp;q=haskell&amp;quot;&#34;&gt;http://search.twitter.com/search.atom?&amp;amp;q=haskell&amp;quot;&lt;/a&gt; []
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;8-find-minimum-or-maximum-in-a-list:2953910b393c81e82635af7f2602b860&#34;&gt;8. Find minimum (or maximum) in a List&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;List(14, 35, -7, 46, 98).reduceLeft ( _ min _ )
+  List(14, 35, -7, 46, 98).reduceLeft ( _ max _ )
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;[14, 35, -7, 46, 98].min
+  [14, 35, -7, 46, 98].max
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;Math.max.apply @, [14, 35, -7, 46, 98]
+  Math.min.apply @, [14, 35, -7, 46, 98]
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print min([14, 35, -7, 46, 98])
+  print max([14, 35, -7, 46, 98])
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  foldl1 min [14, 35, -7, 46, 98]
+  foldl1 max [14, 35, -7, 46, 98]&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;minimum [14, 35, -7, 46, 98]
+  maximum [14, 35, -7, 46, 98]
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;9-parallel-processing:2953910b393c81e82635af7f2602b860&#34;&gt;9. Parallel Processing&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;val result = dataList.par.map(line =&amp;gt; processItem(line))
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;require &amp;lsquo;parallel&amp;rsquo;&lt;/p&gt;
+
+&lt;p&gt;Parallel.map(lots_of_data) do |chunk|
+    heavy_computation(chunk)
+  end
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;SKIP
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  import multiprocessing
+  import math&lt;/p&gt;
+
+&lt;p&gt;print list(multiprocessing.Pool(processes=4).map(math.exp,range(1,11)))
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  import Control.Parallel
+  import Control.Parallel.Strategies&lt;/p&gt;
+
+&lt;p&gt;parMap rseq (*2) [1..100]
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;10-sieve-of-eratosthenes:2953910b393c81e82635af7f2602b860&#34;&gt;10. Sieve of Eratosthenes&lt;/h1&gt;
+
+&lt;p&gt;Scala&lt;/p&gt;
+
+&lt;p&gt;{{scala&lt;/p&gt;
+
+&lt;p&gt;(n: Int) =&amp;gt; (2 to n) |&amp;gt; (r =&amp;gt; r.foldLeft(r.toSet)((ps, x) =&amp;gt; if (ps(x)) ps &amp;ndash; (x * x to n by x) else ps))
+}}&lt;/p&gt;
+
+&lt;p&gt;Ruby&lt;/p&gt;
+
+&lt;p&gt;{{ruby&lt;/p&gt;
+
+&lt;p&gt;index = 0
+  while primes[index]**2 &amp;lt;= primes.last
+        prime = primes[index]
+        primes = primes.select { |x| x == prime || x % prime != 0 }
+        index += 1
+  end
+  p primes
+}}&lt;/p&gt;
+
+&lt;p&gt;CoffeeScript&lt;/p&gt;
+
+&lt;p&gt;{{coffeescript&lt;/p&gt;
+
+&lt;p&gt;sieve = (num) -&amp;gt;
+      numbers = [2..num]
+      while ((pos = numbers[0]) * pos) &amp;lt;= num
+          delete numbers[i] for n, i in numbers by pos
+          numbers.shift()
+      numbers.indexOf(num) &amp;gt; -1
+}}&lt;/p&gt;
+
+&lt;p&gt;Python&lt;/p&gt;
+
+&lt;p&gt;{{python
+  print sorted(set(range(2,n+1)).difference(set((p * f) for p in range(2,int(n**0.5) + 2) for f in range(2,(n/p)+1))))
+}}&lt;/p&gt;
+
+&lt;p&gt;Haskell&lt;/p&gt;
+
+&lt;p&gt;{{haskell
+  let pgen (p:xs) = p : pgen [x|x &amp;lt;- xs, x &lt;code&gt;mod&lt;/code&gt; p &amp;gt; 0]
+  take 40 (pgen [2..])
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;links:2953910b393c81e82635af7f2602b860&#34;&gt;Links&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://solog.co/47/10-scala-one-liners-to-impress-your-friends/&#34;&gt;10 Scala One Liners to Impress Your Friends&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://programmingzen.com/2011/06/02/10-ruby-one-liners-to-impress-your-friends/&#34;&gt;10 Ruby One Liners to Impress Your Friends&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ricardo.cc/2011/06/02/10-CoffeeScript-One-Liners-to-Impress-Your-Friends.html&#34;&gt;10 CoffeeScript One Liners to Impress Your Friends&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://codeblog.dhananjaynene.com/2011/06/10-python-one-liners-to-impress-your-friends/&#34;&gt;10 Python One Liners to Impress Your Friends&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.fogus.me/2011/06/03/10-haskell-one-liners-to-impress-your-friends/&#34;&gt;10 Haskell One Liners to Impress Your Friends&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A cloud for the tags</title>
+      <link>http://blindgaenger.net/articles/2009-11-03-a-cloud-for-the-tags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-11-03-a-cloud-for-the-tags/</guid>
+      <description>&lt;p&gt;Alright, I&amp;rsquo;ve just added a tag cloud to the &lt;a href=&#34;http://blindgaenger.net/tags/&#34;&gt;Tags tab&lt;/a&gt;. As long as I don&amp;rsquo;t have an online search, I&amp;rsquo;ve to improve the navigation at least. And I hate to scroll when I want to find one of my posts!&lt;/p&gt;
+
+&lt;p&gt;This is an interesting article about &lt;a href=&#34;http://blogs.dekoh.com/dev/2007/10/29/choosing-a-good-font-size-variation-algorithm-for-your-tag-cloud/&#34;&gt;Choosing a good font size variation algorithm for your tag cloud&lt;/a&gt;. Yep, the title explains it all. So I&amp;rsquo;ve tried the &lt;em&gt;Logarithmic mapping&lt;/em&gt; to compute the font-sizes in the cloud. Looks very nice!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Advanced Git aliases</title>
+      <link>http://blindgaenger.net/articles/2009-11-10%20-%20Advanced%20Git%20aliases/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-11-10%20-%20Advanced%20Git%20aliases/</guid>
+      <description>
+
+&lt;p&gt;Started with git&amp;rsquo;s commandline, tried some other tools like &lt;a href=&#34;http://github.com/rtomayko/git-sh/&#34;&gt;git-sh&lt;/a&gt; for a while, I&amp;rsquo;ve returned to the core cli. Not because it is so awesome, but &lt;code&gt;git&lt;/code&gt; has become just another tool for the shell. Which is a good thing!&lt;/p&gt;
+
+&lt;p&gt;Nevertheless I use a lot of aliases. So here are some I&amp;rsquo;ve created and considered as useful extensions to standard aliases like &lt;code&gt;git s&lt;/code&gt;. Simply put them in the &lt;code&gt;[alias]&lt;/code&gt; section of your &lt;code&gt;~/.gitconfig&lt;/code&gt;. By the way, I&amp;rsquo;ve tried not to use aliases in the examples.&lt;/p&gt;
+
+&lt;h1 id=&#34;make-this-a-git-repo:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Make &lt;em&gt;this&lt;/em&gt; a git repo&lt;/h1&gt;
+
+&lt;p&gt;You do this very often? So don&amp;rsquo;t repeat yourself!&lt;/p&gt;
+
+&lt;p&gt;{{&lt;br /&gt;
+this = !git init &amp;amp;&amp;amp; git add . &amp;amp;&amp;amp; git commit -m \&amp;ldquo;initial commit\&amp;rdquo;
+}}&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ mkdir foobar
+$ cd foobar
+$ touch README
+$ git this
+Initialized empty Git repository in /home/blindgaenger/foobar/.git/
+[master (root-commit) 77d19af] initial commit
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;amend-with-the-same-message:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Amend with the same message&lt;/h1&gt;
+
+&lt;p&gt;It&amp;rsquo;s like &lt;code&gt;git commit --amend&lt;/code&gt;, but without your editor prompting you for the message you&amp;rsquo;ve already entered. But remember … &amp;ldquo;With great power comes great responsibility!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;{{
+amend = !git log -n 1 &amp;ndash;pretty=tformat:%s%n%n%b | git commit -F - &amp;ndash;amend
+}}&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ touch foo
+$ touch bar
+$ git add foo
+$ git commit -m &amp;ldquo;added foo and bar&amp;rdquo;
+$ git add bar
+$ git amend
+[master 8335e6e] added foo and bar
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bar
+ create mode 100644 foo
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;remove-files-which-have-been-deleted:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Remove files which have been deleted&lt;/h1&gt;
+
+&lt;p&gt;Based on a command from &lt;a href=&#34;http://technicalpickles.com/&#34;&gt;Technical Pickles&lt;/a&gt;, I&amp;rsquo;ve added correct handling of whitespaces in filenames.&lt;/p&gt;
+
+&lt;p&gt;{{
+r  = !git ls-files -z &amp;ndash;deleted | xargs -0 git rm
+}}&lt;/p&gt;
+
+&lt;p&gt;Example:
+{{bash
+$ touch &amp;ldquo;franz kafka&amp;rdquo;
+$ git add franz\ kafka
+$ git commit -m &amp;ldquo;added franz kafka&amp;rdquo;
+…
+$ rm franz\ kafka
+$ git r
+rm &amp;lsquo;franz kafka&amp;rsquo;
+$ git x &amp;ldquo;deleted it again&amp;rdquo;
+[master 1b993c5] deleted it again
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 you
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;show-all-defined-aliases:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Show all defined aliases&lt;/h1&gt;
+
+&lt;p&gt;You&amp;rsquo;ll need this if you have a lot of aliases. :)&lt;/p&gt;
+
+&lt;p&gt;{{
+alias = !git config &amp;ndash;list | grep &amp;lsquo;alias\.&amp;rsquo; | sed &amp;rsquo;s/alias\.\([^=]&lt;em&gt;\)=\(.&lt;/em&gt;\)/\1\t=&amp;gt; \2/&amp;rsquo; | sort
+}}&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ git alias
+a       =&amp;gt; add .
+alias   =&amp;gt; !git config &amp;ndash;list | grep &amp;lsquo;alias.&amp;rsquo; | sed &amp;rsquo;s/alias.([^=]&lt;em&gt;)=(.&lt;/em&gt;)/\1\t=&amp;gt; \2/&amp;rsquo; | sort
+amend   =&amp;gt; !git log -n 1 &amp;ndash;pretty=tformat:%s%n%n%b | git commit -F - &amp;ndash;amend
+b       =&amp;gt; branch
+cb      =&amp;gt; checkout -b
+co      =&amp;gt; checkout
+…
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;ignore-a-file:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Ignore a file&lt;/h1&gt;
+
+&lt;p&gt;Quickly add a file/dir to &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;{{
+ignore=!([ ! -e .gitignore ] &amp;amp;&amp;amp; touch .gitignore) | echo $1 &amp;gt;&amp;gt;.gitignore
+}}&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ touch xxx
+$ git s&lt;/p&gt;
+
+&lt;h1 id=&#34;on-branch-master:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;On branch master&lt;/h1&gt;
+
+&lt;h1 id=&#34;untracked-files:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Untracked files:&lt;/h1&gt;
+
+&lt;h1 id=&#34;use-git-add-file-to-include-in-what-will-be-committed:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;(use &amp;ldquo;git add &lt;file&gt;&amp;hellip;&amp;rdquo; to include in what will be committed)&lt;/h1&gt;
+
+&lt;p&gt;#&lt;/p&gt;
+
+&lt;h1 id=&#34;xxx:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;xxx&lt;/h1&gt;
+
+&lt;p&gt;nothing added to commit but untracked files present (use &amp;ldquo;git add&amp;rdquo; to track)
+$ git ignore xxx
+$ git s&lt;/p&gt;
+
+&lt;h1 id=&#34;on-branch-master-1:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;On branch master&lt;/h1&gt;
+
+&lt;h1 id=&#34;untracked-files-1:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Untracked files:&lt;/h1&gt;
+
+&lt;h1 id=&#34;use-git-add-file-to-include-in-what-will-be-committed-1:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;(use &amp;ldquo;git add &lt;file&gt;&amp;hellip;&amp;rdquo; to include in what will be committed)&lt;/h1&gt;
+
+&lt;p&gt;#&lt;/p&gt;
+
+&lt;h1 id=&#34;gitignore:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;.gitignore&lt;/h1&gt;
+
+&lt;p&gt;nothing added to commit but untracked files present (use &amp;ldquo;git add&amp;rdquo; to track)
+$ git add .gitignore
+$ git commit -m &amp;ldquo;ignored xxx&amp;rdquo;
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;lil-commit:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Lil commit&lt;/h1&gt;
+
+&lt;p&gt;Nothing special, but very useful. The trick is to put the &lt;code&gt;-m&lt;/code&gt; parameter at the end.&lt;/p&gt;
+
+&lt;p&gt;{{
+x  = commit -m
+xa = commit -a -m&lt;/p&gt;
+
+&lt;h1 id=&#34;just-to-complete-this-combination:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;just to complete this combination&lt;/h1&gt;
+
+&lt;p&gt;a = add
+}}&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ touch baz
+$ git add baz
+$ git x &amp;ldquo;added baz&amp;rdquo;
+[master 2d4690b] added baz
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 baz
+$ echo &amp;ldquo;lala&amp;rdquo; &amp;gt;baz
+$ git xa &amp;ldquo;updated baz&amp;rdquo;
+[master 866f25a] updated baz
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;call-me-master:7a0cad519bc77bac7dd5685cb8dbf268&#34;&gt;Call me master&lt;/h1&gt;
+
+&lt;p&gt;Not a typical alias, because it gets rid of the verb itself. But useful if you keep feature branches.&lt;/p&gt;
+
+&lt;p&gt;{{
+master = checkout master
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Alter huge database tables using a temp table</title>
+      <link>http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/</guid>
+      <description>&lt;p&gt;In this case I had to delete some entries and alter the primary key of a huge
+table. I couldn&amp;rsquo;t just fire up the DELETE and ALTER statements, because this
+would take to long. Causing in unnecessary DB load and a longer down-time.&lt;/p&gt;
+
+&lt;p&gt;The trick is to copy only the needed data to a temporary table, do the changes
+and swap the new and old tables. Please note, that the original table was not
+in productional use at this time, so no data was updated resp. lost!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a new table &lt;code&gt;offer_pop_new&lt;/code&gt; with the content of &lt;code&gt;offer_pop&lt;/code&gt;. Instead
+of deleting the entries just filter them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{sql
+  create table offer_pop_new as
+  select *
+  from offer_pop
+  where id_channel not in (&amp;lsquo;priceminister_product_fr&amp;rsquo;, &amp;lsquo;priceminister_query_fr&amp;rsquo;)
+  ;
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Alter the new table to your needs. For example adding a new primary key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{sql
+  alter table offer_pop_new
+  add PRIMARY KEY (&amp;ldquo;ID_OFFER&amp;rdquo;, &amp;ldquo;ID_CATEGORY&amp;rdquo;, &amp;ldquo;ID_CHANNEL&amp;rdquo;, &amp;ldquo;ID_CHANNELGROUP&amp;rdquo;)
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Swap the two tables &lt;code&gt;current&lt;/code&gt; to &lt;code&gt;old&lt;/code&gt; and &lt;code&gt;new&lt;/code&gt; to &lt;code&gt;current&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{sql
+  alter table offer_pop rename to offer_pop_old;
+  alter table offer_pop_new rename to offer_pop;
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Done!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bitwise operations for flags</title>
+      <link>http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/</guid>
+      <description>
+
+&lt;p&gt;Yep, this is basic, really basic! But currently I&amp;rsquo;m sitting in front of some
+Java code I&amp;rsquo;ve to maintain and it looks like this:&lt;/p&gt;
+
+&lt;p&gt;{% highlight java %}
+public final class SearchConstants {
+  public static final int FLAG_FOO = 1 &amp;lt;&amp;lt; 0;
+  public static final int FLAG_BAR = 1 &amp;lt;&amp;lt; 1;
+  public static final int FLAG_BAZ = 1 &amp;lt;&amp;lt; 2;
+}&lt;/p&gt;
+
+&lt;p&gt;int flags = SearchConstants.FLAG_FOO | SearchConstants.FLAG_BAR;&lt;/p&gt;
+
+&lt;p&gt;public void search(int flags) {
+  if ( ((flags &amp;amp; SearchConstants.FLAG_FOO) != 0) &amp;amp;&amp;amp; ((flags &amp;amp; SearchConstants.FLAG_BAZ) == 0) ) {
+    &amp;hellip;
+  }
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;I simplified the example, reduced the number of available flags from 25 to 3,
+and used a single &lt;code&gt;if&lt;/code&gt; statement. But even if the code would look exaclty as
+above imagine these statements everywhere! In my opinion the pros and cons are:&lt;/p&gt;
+
+&lt;p&gt;Pros:
+* fast and small footprint
+* no special JRE version needed
+* combine flags with &lt;code&gt;|&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Cons:
+* readability, long statements are confusing!
+* flags are not type-safe
+* shifting flag index&lt;/p&gt;
+
+&lt;p&gt;Maybe I&amp;rsquo;m lazy, but I&amp;rsquo;ve really problems reading this. Further the project was
+lacking test-cases, so adding new features (and flags) was even more painful!
+As I&amp;rsquo;ve become the man in charge, I decided to start a refactoring! I came up
+with the following options:&lt;/p&gt;
+
+&lt;h1 id=&#34;bitset:fbcf055f166ed9d86da7499bb82bfc72&#34;&gt;BitSet&lt;/h1&gt;
+
+&lt;p&gt;{% highlight java %}
+private static final int HOT     = 0;
+private static final int FRESH   = 1;
+private static final int PREMIUM = 2;&lt;/p&gt;
+
+&lt;p&gt;@Test
+public void testBitSet() throws Exception {
+  BitSet flags = new BitSet(3);&lt;/p&gt;
+
+&lt;p&gt;// set
+  flags.set(FRESH);
+  flags.set(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// flip and clear
+  flags.flip(HOT);
+  flags.clear(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// get
+  assertTrue(flags.get(HOT));
+  assertTrue(flags.get(FRESH));
+  assertFalse(flags.get(PREMIUM));
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;enumset:fbcf055f166ed9d86da7499bb82bfc72&#34;&gt;EnumSet&lt;/h1&gt;
+
+&lt;p&gt;{% highlight java %}
+private static enum Flag {
+  HOT, FRESH, PREMIUM
+};&lt;/p&gt;
+
+&lt;p&gt;@Test
+public void testEnumSet() throws Exception {
+  EnumSet&lt;Flag&gt; flags = EnumSet.noneOf(Flag.class);&lt;/p&gt;
+
+&lt;p&gt;// set
+  flags.add(Flag.FRESH);
+  flags.add(Flag.PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// flip and clear
+  if (flags.contains(Flag.HOT)) {
+    flags.remove(Flag.HOT);
+  } else {
+    flags.add(Flag.HOT);
+  }
+  flags.remove(Flag.PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// get
+  assertTrue(flags.contains(Flag.HOT));
+  assertTrue(flags.contains(Flag.FRESH));
+  assertFalse(flags.contains(Flag.PREMIUM));
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;own-class:fbcf055f166ed9d86da7499bb82bfc72&#34;&gt;Own class&lt;/h1&gt;
+
+&lt;p&gt;{% highlight java %}
+private static class Flags {
+  private int bits;&lt;/p&gt;
+
+&lt;p&gt;public boolean isSet(int flag) {
+    return (bits &amp;amp; (1 &amp;lt;&amp;lt; flag)) != 0;
+  }&lt;/p&gt;
+
+&lt;p&gt;public void set(int flag) {
+    bits = (bits | (1 &amp;lt;&amp;lt; flag));
+  }&lt;/p&gt;
+
+&lt;p&gt;public void unset(int flag) {
+    bits = (bits &amp;amp; ~(1 &amp;lt;&amp;lt; flag));
+  }&lt;/p&gt;
+
+&lt;p&gt;public void toggle(int flag) {
+    bits = (bits ^ (1 &amp;lt;&amp;lt; flag));
+  }
+}&lt;/p&gt;
+
+&lt;p&gt;@Test
+public void testOwnClass() throws Exception {
+  Flags flags = new Flags();&lt;/p&gt;
+
+&lt;p&gt;// set
+  flags.set(FRESH);
+  flags.set(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// flip and clear
+  flags.toggle(HOT);
+  flags.unset(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// get
+  assertTrue(flags.isSet(HOT));
+  assertTrue(flags.isSet(FRESH));
+  assertFalse(flags.isSet(PREMIUM));
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Actually I like &lt;code&gt;BitSet&lt;/code&gt;. It&amp;rsquo;s easy, small and perfect in my case.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Check for rootkits and run antivirus scanner on Ubuntu</title>
+      <link>http://blindgaenger.net/articles/2008-05-17-check-rootkits-and-antivirus-on-ubuntu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-05-17-check-rootkits-and-antivirus-on-ubuntu/</guid>
+      <description>
+
+&lt;p&gt;One of the main reasons for switching to Linux was a rootkit hitting my Windows
+installation. This was the best time to play with Ubuntu (before reinstalling
+Windows again, as I thought). I stayed, but since then I run these commands
+regularly. :)&lt;/p&gt;
+
+&lt;h1 id=&#34;rootkit-hunter-http-rkhunter-sourceforge-net:f95c4bf6dd4c36c19669128405426a76&#34;&gt;&lt;a href=&#34;http://rkhunter.sourceforge.net/&#34;&gt;Rootkit Hunter&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Although this shouldn&amp;rsquo;t be the main reason to use it, but Rootkit Hunter has a
+very good command line interface. Your shell should support colors to enjoy it!&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+sudo apt-get install rkhunter
+sudo rkhunter &amp;ndash;versioncheck
+sudo rkhunter &amp;ndash;update &amp;ndash;propupd
+sudo rkhunter &amp;ndash;check
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;chkrootkit-http-www-chkrootkit-org:f95c4bf6dd4c36c19669128405426a76&#34;&gt;&lt;a href=&#34;http://www.chkrootkit.org/&#34;&gt;chkrootkit&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Actually chkrootkit seems to check the same stuff as rkhunter. But the
+downside is the missing update command.&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+sudo apt-get install chkrootkit
+sudo chkrootkit -V
+sudo chkrootkit
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;clam-antivirus-http-www-clamav-net:f95c4bf6dd4c36c19669128405426a76&#34;&gt;&lt;a href=&#34;http://www.clamav.net/&#34;&gt;Clam AntiVirus&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;Get new virus definitions with freshclam . But apt-get should have installed an
+update-deamon in /etc/init.d/clamav-freshclam, so this shouldn&amp;rsquo;t be necessary.&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+sudo freshclam
+sudo clamscan &amp;ndash;recursive &amp;ndash;quiet &amp;ndash;bell &amp;ndash;stdout /home &amp;gt;/tmp/clamscan.log
+less /tmp/clamscan.log
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Yep, there are GUIs for clamav out there. Then try
+&lt;a href=&#34;http://clamtk.sourceforge.net/&#34;&gt;clamtk&lt;/a&gt; if you need one.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Colorize Maven Output</title>
+      <link>http://blindgaenger.net/articles/2009-06-09-colorize-maven-output/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-06-09-colorize-maven-output/</guid>
+      <description>
+
+&lt;p&gt;No, Maven still does not support colors. It&amp;rsquo;s a pain to actually &lt;em&gt;read&lt;/em&gt; if
+Maven&amp;rsquo;s build was successful or not, instead of easily &lt;em&gt;seeing&lt;/em&gt; it. But
+&lt;a href=&#34;http://johannes.jakeapp.com/blog/&#34;&gt;Johannes Buchner&lt;/a&gt; eased the pain by &lt;code&gt;sed&lt;/code&gt;ing
+Maven&amp;rsquo;s output to get some basic colors.&lt;/p&gt;
+
+&lt;p&gt;You can find his &lt;a href=&#34;http://johannes.jakeapp.com/blog/category/fun-with-linux/200901/maven-colorized&#34;&gt;Maven: Colorized&lt;/a&gt;
+post here. I&amp;rsquo;ve&amp;rsquo; slightly changed the setup as you can read below.&lt;/p&gt;
+
+&lt;p&gt;Put this in your &lt;code&gt;~/.bashrc&lt;/code&gt; and reload. There is also a second alias &lt;code&gt;maven&lt;/code&gt; to
+the original version, just in case.&lt;/p&gt;
+
+&lt;p&gt;{{bash&lt;/p&gt;
+
+&lt;h1 id=&#34;colorize-maven-output:a15b425068985dbb520d524e46cc6954&#34;&gt;Colorize Maven Output&lt;/h1&gt;
+
+&lt;p&gt;color_maven() {
+  $MAVEN_HOME/bin/mvn $* | sed -e &amp;rsquo;s/Tests run: ([^,]&lt;em&gt;), Failures: ([^,]&lt;/em&gt;), Errors: ([^,]&lt;em&gt;), Skipped: ([^,]&lt;/em&gt;)/ESC[1;32mTests run: \1ESC[0m, Failures: ESC[1;31m\2ESC[0m, Errors: ESC[1;33m\3ESC[0m, Skipped: ESC[1;34m\4ESC[0m/g&amp;rsquo; \
+    -e &amp;rsquo;s/([WARN].&lt;em&gt;)/ESC[1;33m\1ESC[0m/g&amp;rsquo; \
+    -e &amp;rsquo;s/([INFO].&lt;/em&gt;)/ESC[1;34m\1ESC[0m/g&amp;rsquo; \
+    -e &amp;rsquo;s/([ERROR].*)/ESC[1;31m\1ESC[0m/g&amp;rsquo;
+}
+alias mvn=color_maven
+alias maven=$MAVEN_HOME/bin/mvn
+}}&lt;/p&gt;
+
+&lt;p&gt;Please note, this script is pointing to &lt;code&gt;$MAVEN_HOME&lt;/code&gt;, the original script
+does not. So you may set your &lt;code&gt;PATH&lt;/code&gt; first.&lt;/p&gt;
+
+&lt;p&gt;{{bash
+export MAVEN_HOME=/opt/maven
+export PATH=$MAVEN_HOME/bin:$PATH
+}}&lt;/p&gt;
+
+&lt;p&gt;Done!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Compile Nginx</title>
+      <link>http://blindgaenger.net/articles/2008-07-13-compile-nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-13-compile-nginx/</guid>
+      <description>
+
+&lt;p&gt;Download and unzip the sources.
+{{bash
+$ cd /tmp
+$ wget &lt;a href=&#34;http://sysoev.ru/nginx/nginx-0.7.6.tar.gz&#34;&gt;http://sysoev.ru/nginx/nginx-0.7.6.tar.gz&lt;/a&gt;
+$ tar -xzvf nginx-0.7.6.tar.gz
+$ cd nginx-0.7.6/
+}}&lt;/p&gt;
+
+&lt;p&gt;Make sure the OpenSSL is available, needed for &lt;code&gt;--with-http_ssl_module&lt;/code&gt;
+{{bash
+$ sudo apt-get install libssl-dev
+}}&lt;/p&gt;
+
+&lt;p&gt;Configure with SSL and WebDAV module enabled
+&lt;a href=&#34;http://wiki.codemongers.com/NginxInstallOptions&#34;&gt;http://wiki.codemongers.com/NginxInstallOptions&lt;/a&gt;
+{{bash
+$ ./configure &amp;ndash;with-http_ssl_module &amp;ndash;with-http_dav_module
+&amp;hellip;
+Configuration summary
+  + using system PCRE library
+  + using system OpenSSL library
+  + md5 library is not used
+  + sha1 library is not used
+  + using system zlib library&lt;/p&gt;
+
+&lt;p&gt;nginx path prefix: &amp;ldquo;/usr/local/nginx&amp;rdquo;
+  nginx binary file: &amp;ldquo;/usr/local/nginx/sbin/nginx&amp;rdquo;
+  nginx configuration prefix: &amp;ldquo;/usr/local/nginx/conf&amp;rdquo;
+  nginx configuration file: &amp;ldquo;/usr/local/nginx/conf/nginx.conf&amp;rdquo;
+  nginx pid file: &amp;ldquo;/usr/local/nginx/logs/nginx.pid&amp;rdquo;
+  nginx error log file: &amp;ldquo;/usr/local/nginx/logs/error.log&amp;rdquo;
+  nginx http access log file: &amp;ldquo;/usr/local/nginx/logs/access.log&amp;rdquo;
+  nginx http client request body temporary files: &amp;ldquo;/usr/local/nginx/client_body_temp&amp;rdquo;
+  nginx http proxy temporary files: &amp;ldquo;/usr/local/nginx/proxy_temp&amp;rdquo;
+  nginx http fastcgi temporary files: &amp;ldquo;/usr/local/nginx/fastcgi_temp&amp;rdquo;
+}}&lt;/p&gt;
+
+&lt;p&gt;Build and install it.
+{{bash
+$ make
+$ sudo make install
+&amp;hellip;
+}}&lt;/p&gt;
+
+&lt;p&gt;Done!&lt;/p&gt;
+
+&lt;h1 id=&#34;modules:1b24ca547d02c2cfa67a1074f699e88a&#34;&gt;Modules&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.nginx.org/NginxModules&#34;&gt;http://wiki.nginx.org/NginxModules&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.nginx.org/NginxHttpAuthBasicModule&#34;&gt;http://wiki.nginx.org/NginxHttpAuthBasicModule&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.nginx.org/NginxHttpProxyModule&#34;&gt;http://wiki.nginx.org/NginxHttpProxyModule&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.nginx.org/NginxHttpSslModule&#34;&gt;http://wiki.nginx.org/NginxHttpSslModule&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;links:1b24ca547d02c2cfa67a1074f699e88a&#34;&gt;Links&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://articles.slicehost.com/2007/10/16/ubuntu-lts-installing-nginx&#34;&gt;Ubuntu LTS - installing nginx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Compile and install Monit</title>
+      <link>http://blindgaenger.net/articles/2008-07-15-compile-and-install-monit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-15-compile-and-install-monit/</guid>
+      <description>&lt;p&gt;Find the latest stable Monit at &lt;a href=&#34;http://www.tildeslash.com/monit/download/&#34;&gt;http://www.tildeslash.com/monit/download/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Download and unpack
+{{bash
+$ cd /tmp
+$  wget &lt;a href=&#34;http://www.tildeslash.com/monit/dist/monit-4.10.1.tar.gz&#34;&gt;http://www.tildeslash.com/monit/dist/monit-4.10.1.tar.gz&lt;/a&gt;
+$ tar -xvzf monit-4.10.1.tar.gz
+$ cd monit-4.10.1
+}}&lt;/p&gt;
+
+&lt;p&gt;Configure
+{{bash
+$ ./configure
+&amp;hellip;
+monit has been configured with the following options:
+                Architecture: LINUX
+                 SSL support: enabled
+       SSL include directory: /usr/include
+       SSL library directory: /usr/lib
+         resource monitoring: enabled
+               resource code: sysdep_LINUX.c
+         large files support: enabled
+              Compiler flags: -g -O2 -Wall -D _REENTRANT -I/usr/include
+                Linker flags: -lpthread -lcrypt -lresolv -lnsl  -L/usr/lib -lssl -lcrypto
+           pid file location: /var/run
+}}&lt;/p&gt;
+
+&lt;p&gt;Make and install
+{{bash
+$ make
+&amp;hellip;
+$ make install
+flex -i l.l
+gcc -c -DLINUX -DSYSCONFDIR=&amp;rdquo;\&amp;ldquo;/usr/local/etc\&amp;ldquo;&amp;rdquo; -I. -I./device -I./http -I./process -I./protocols -g -O2 -Wall -D _REENTRANT -I/usr/include  lex.yy.c -o lex.yy.o
+gcc  alert.o collector.o control.o daemonize.o env.o event.o file.o gc.o getloadavg.o http.o log.o md5.o monitor.o net.o process.o sendmail.o sha.o signal.o socket.o spawn.o ssl.o state.o status.o util.o validate.o xmalloc.o xml.o device/device_common.o http/base64.o http/cervlet.o http/engine.o http/processor.o process/process_common.o protocols/apache_status.o protocols/clamav.o protocols/default.o protocols/dns.o protocols/dwp.o protocols/ftp.o protocols/generic.o protocols/http.o protocols/imap.o protocols/ldap2.o protocols/ldap3.o protocols/mysql.o protocols/nntp.o protocols/ntp3.o protocols/pgsql.o protocols/pop.o protocols/postfix_policy.o protocols/protocol.o protocols/rdate.o protocols/rsync.o protocols/smtp.o protocols/ssh.o protocols/tns.o device/sysdep_LINUX.o process/sysdep_LINUX.o y.tab.o lex.yy.o  -lfl -lpthread -lcrypt -lresolv -lnsl  -L/usr/lib -lssl -lcrypto -o monit
+/usr/bin/install -c  -m 755 -d /usr/local/bin || exit 1
+/usr/bin/install -c  -m 755 -d /usr/local/share/man/man1 || exit 1
+/usr/bin/install -c  -m 555 -s monit /usr/local/bin || exit 1
+/usr/bin/install -c  -m 444 monit.1 /usr/local/share/man/man1/monit.1 || exit 1
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configure Mongrel cluster for Rails</title>
+      <link>http://blindgaenger.net/articles/2008-07-14-configure-mongrel-cluster-for-rails/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-14-configure-mongrel-cluster-for-rails/</guid>
+      <description>&lt;p&gt;Go to the rails app directory.
+{{bash
+$ cd /var/rails/wzuup
+}}&lt;/p&gt;
+
+&lt;p&gt;Configure the mongrel cluster for this rails app.
+{{bash
+$ mongrel_rails cluster::configure -a 127.0.0.1 -p 8000 -N 1 -e production -c /var/rails/wzuup
+Writing configuration file to config/mongrel_cluster.yml.
+}}&lt;/p&gt;
+
+&lt;p&gt;If server should run under &lt;code&gt;www.example.com/wzuup&lt;/code&gt;. The new &lt;code&gt;--prefix $APP_ROOT&lt;/code&gt;
+command allows Mongrel Applications to properly &lt;em&gt;ignore&lt;/em&gt; the prefix. Prior to
+this enhancement, the web server (not mongrel) needed to be configured to strip
+out the prefix.
+{{bash
+$ mongrel_rails cluster::configure -e production -p 8000 -N 2 -c /var/rails/wzuup -a 127.0.0.1 &amp;ndash;prefix /wzuup
+}}&lt;/p&gt;
+
+&lt;p&gt;The syntax is very easy to understand.
+* listen to localhost only
+  &lt;code&gt;-a 127.0.0.1&lt;/code&gt;
+* use port 8000
+  &lt;code&gt;-p 8000&lt;/code&gt;
+* start only one mongrel server
+  &lt;em&gt;Important:&lt;/em&gt; for &lt;code&gt;N=3&lt;/code&gt; three servers with ports 8000, 8001 and 8002 will be used
+  &lt;code&gt;-N 1&lt;/code&gt;
+* run the rails app in the production environment
+  &lt;code&gt;-e production&lt;/code&gt;
+* the root of the rails app
+  &lt;code&gt;-c /var/rails/wzuup&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Start the mongrel cluster
+{{bash
+$ mongrel_rails cluster::start
+starting port 8000
+}}&lt;/p&gt;
+
+&lt;p&gt;Check if mongrel servers are running
+{{bash
+$ ps ax | grep mongrel
+ 6836 ?        Sl     0:01 /usr/bin/ruby1.8 /usr/bin/mongrel_rails start -d -e production -a 127.0.0.1 -c /var/rails/wzuup -p 8000 -P tmp/pids/mongrel.8000.pid -l log/mongrel.8000.log
+ 6844 pts/0    R+     0:00 grep mongrel
+}}&lt;/p&gt;
+
+&lt;p&gt;Stop the mongrel cluster
+{{bash
+$ mongrel_rails cluster::stop
+stopping port 8000
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configure Monit</title>
+      <link>http://blindgaenger.net/articles/2008-07-15-configure-monit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-15-configure-monit/</guid>
+      <description>
+
+&lt;p&gt;Monit is configured by &lt;code&gt;~/.monitrc&lt;/code&gt; which needs to be created after installation.
+{{bash
+$ vim .monitrc
+}}&lt;/p&gt;
+
+&lt;p&gt;Create a minimal control file.
+{{bash&lt;/p&gt;
+
+&lt;h1 id=&#34;check-every-60sec:f648afa14b0e43b4869bbb44159002f2&#34;&gt;check every 60sec&lt;/h1&gt;
+
+&lt;p&gt;set daemon 60&lt;/p&gt;
+
+&lt;h1 id=&#34;configure-the-notification-on-alert:f648afa14b0e43b4869bbb44159002f2&#34;&gt;configure the notification on alert&lt;/h1&gt;
+
+&lt;p&gt;set mailserver localhost
+set mail-format { from: monit@blindgaenger.net }
+set alert blindgaenger@gmail.com&lt;/p&gt;
+
+&lt;p&gt;set httpd port 2812 and
+    use address localhost  # only accept connection from localhost
+    allow localhost        # allow localhost to connect to the server and
+}}&lt;/p&gt;
+
+&lt;p&gt;Run syntax check for the control file.
+{{bash
+$ monit -t
+monit: The control file &amp;lsquo;/root/.monitrc&amp;rsquo; must have permissions no more than -rwx&amp;mdash;&amp;mdash; (0700); right now permissions are -rw-r&amp;ndash;r&amp;ndash; (0644).
+}}&lt;/p&gt;
+
+&lt;p&gt;Change the permissions and recheck
+{{bash
+$ chmod 0700 .monitrc
+$ monit -t
+Control file syntax OK
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configure Nginx</title>
+      <link>http://blindgaenger.net/articles/2008-07-13-configure-nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-13-configure-nginx/</guid>
+      <description>
+
+&lt;p&gt;Note that these config worked well for me. Please check your needs and read the
+official documentation about &lt;a href=&#34;http://wiki.nginx.org/NginxConfiguration&#34;&gt;Nginx Configuration&lt;/a&gt;
+befor using it for your projects.&lt;/p&gt;
+
+&lt;p&gt;If you followed the instructions described in my previous post
+&lt;a href=&#34;compile-nginx.html&#34;&gt;Compile Nginx&lt;/a&gt;, then the configuration is located in
+&lt;code&gt;/usr/local/nginx/conf/nginx.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration:f51bd01af491830d509b471a226a4609&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;p&gt;Basically it looks like this. The missing server configs are described in detail
+below.&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}&lt;/p&gt;
+
+&lt;h1 id=&#34;user-and-group-to-run-as:f51bd01af491830d509b471a226a4609&#34;&gt;user and group to run as&lt;/h1&gt;
+
+&lt;p&gt;#user   nginx nginx;&lt;/p&gt;
+
+&lt;p&gt;worker_processes  1;
+events {
+  # Number of worker connections. 1024 is a good default
+  worker_connections  1024;
+}&lt;/p&gt;
+
+&lt;p&gt;http {
+  include mime.types;
+  default_type application/octet-stream;&lt;/p&gt;
+
+&lt;p&gt;access_log logs/access.log;
+  error_log logs/error.log debug;&lt;/p&gt;
+
+&lt;p&gt;# no sendfile on OSX
+  sendfile on;&lt;/p&gt;
+
+&lt;p&gt;# These are good default values.
+  tcp_nopush on;
+  tcp_nodelay off;&lt;/p&gt;
+
+&lt;p&gt;# output compression saves bandwidth
+  gzip on;
+  gzip_http_version 1.0;
+  gzip_comp_level 2;
+  gzip_proxied any;
+  gzip_types text/plain text/html text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript;&lt;/p&gt;
+
+&lt;p&gt;##################################
+  # include your server configs here
+  ##################################&lt;/p&gt;
+
+&lt;p&gt;}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;static-pages:f51bd01af491830d509b471a226a4609&#34;&gt;Static pages&lt;/h1&gt;
+
+&lt;p&gt;This server config served our static &amp;ldquo;coming soon&amp;rdquo; page. Actually the page was
+hosted somewhere in the internet at &lt;code&gt;http://wzuup.de&lt;/code&gt;. What I needed to do is to
+redirect the content to &lt;code&gt;wzuup.com&lt;/code&gt;. Users entering &lt;code&gt;www.wzuup.com&lt;/code&gt; will be
+permanently rewritten to &lt;code&gt;wzuup.com&lt;/code&gt;. Pretty simple if you try to read it!&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+##################################&lt;/p&gt;
+
+&lt;h1 id=&#34;http-wzuup-com:f51bd01af491830d509b471a226a4609&#34;&gt;&lt;a href=&#34;http://wzuup.com&#34;&gt;http://wzuup.com&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;server {
+  listen       80;
+  server_name  wzuup.com www.wzuup.com;
+  access_log   logs/wzuup.access.log;&lt;/p&gt;
+
+&lt;p&gt;# www.wzuup.com =&amp;gt; wzuup.com
+  if ($host ~* &amp;ldquo;www&amp;rdquo;) {
+    rewrite ^(.*)$ &lt;a href=&#34;http://wzuup.com$1&#34;&gt;http://wzuup.com$1&lt;/a&gt; permanent;
+    break;
+  }&lt;/p&gt;
+
+&lt;p&gt;location / {
+    # redirect the request
+    # so &lt;a href=&#34;http://wzuup.de/&#34;&gt;http://wzuup.de/&lt;/a&gt; will appear at &lt;a href=&#34;http://wzuup.com/&#34;&gt;http://wzuup.com/&lt;/a&gt;
+    proxy_pass        &lt;a href=&#34;http://wzuup.de&#34;&gt;http://wzuup.de&lt;/a&gt;;
+    proxy_set_header  X-Real-IP  $remote_addr;
+  }&lt;/p&gt;
+
+&lt;p&gt;error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+    root   html;
+  }
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;rails-application:f51bd01af491830d509b471a226a4609&#34;&gt;Rails application&lt;/h1&gt;
+
+&lt;p&gt;At staging we share our last stable build with the rest of the team or some
+chosen people. That&amp;rsquo;s why it uses &lt;code&gt;ssl&lt;/code&gt; and &lt;code&gt;auth_basic&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The interesting part is the &lt;code&gt;mongrel_staging&lt;/code&gt; section. Mongrel instance on
+ports 8001 and 8001 are serving our Rails app. Nginx tries to server the
+requested files from its &lt;code&gt;root&lt;/code&gt; dir (see config). But if the filename does not
+exist (&lt;code&gt;if (!-f $request_filename)&lt;/code&gt;) then the request is passed to one mongrel.&lt;/p&gt;
+
+&lt;p&gt;Of course, you can put multiple mongrel instances in the &lt;code&gt;upstream&lt;/code&gt; section. For
+Rails projects register all servers of a specific cluster. Nginx tries to load
+balance them. (&lt;a href=&#34;http://wiki.nginx.org/NginxChsHttpUpstreamModule&#34;&gt;http://wiki.nginx.org/NginxChsHttpUpstreamModule&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+##################################&lt;/p&gt;
+
+&lt;h1 id=&#34;https-staging-wzuup-com:f51bd01af491830d509b471a226a4609&#34;&gt;&lt;a href=&#34;https://staging.wzuup.com&#34;&gt;https://staging.wzuup.com&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;upstream mongrel_staging {
+  server 127.0.0.1:8000;
+  server 127.0.0.1:8001;
+}&lt;/p&gt;
+
+&lt;p&gt;server {
+  listen               443;
+  ssl                  on;
+  ssl_certificate      wzuup.crt;
+  ssl_certificate_key  wzuup.key;&lt;/p&gt;
+
+&lt;p&gt;server_name  staging.wzuup.com staging.blindgaenger.net;
+  root   /var/rails/wzuup/public;
+  access_log  logs/staging.access.log;&lt;/p&gt;
+
+&lt;p&gt;auth_basic            &amp;ldquo;Wzuup Staging&amp;rdquo;;
+  auth_basic_user_file  htpasswd;&lt;/p&gt;
+
+&lt;p&gt;# this rewrites all the requests to the maintenance.html
+  # page if it exists in the doc root. This is for capistrano&amp;rsquo;s
+  # disable web task
+  if (-f $document_root/maintenance.html){
+    rewrite  ^(.*)$  /maintenance.html last;
+    break;
+  }&lt;/p&gt;
+
+&lt;p&gt;location / {
+    proxy_set_header  X-Real-IP  $remote_addr;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header  X_FORWARDED_PROTO https;
+    proxy_set_header Host $http_host;
+    proxy_redirect false;
+    if (-f $request_filename/index.html) {
+      rewrite (.&lt;em&gt;) $1/index.html break;
+    }
+    if (-f $request_filename.html) {
+      rewrite (.&lt;/em&gt;) $1.html break;
+    }
+    if (!-f $request_filename) {
+      proxy_pass &lt;a href=&#34;http://mongrel_staging&#34;&gt;http://mongrel_staging&lt;/a&gt;;
+      break;
+    }
+  }&lt;/p&gt;
+
+&lt;p&gt;index  index.html index.htm;
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+    root   html;
+  }
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;subversion:f51bd01af491830d509b471a226a4609&#34;&gt;Subversion&lt;/h1&gt;
+
+&lt;p&gt;Unfortunately Nginx can not be used to fully serve a SVN repository, because the
+dav module doesn&amp;rsquo;t support PROPFIND (see &lt;a href=&#34;http://www.ruby-forum.com/topic/140841&#34;&gt;http://www.ruby-forum.com/topic/140841&lt;/a&gt;).
+So currently the best way is to use Apache for SVN and serve it via Nginx.&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+##################################&lt;/p&gt;
+
+&lt;h1 id=&#34;https-svn-wzuup-com:f51bd01af491830d509b471a226a4609&#34;&gt;&lt;a href=&#34;https://svn.wzuup.com/&#34;&gt;https://svn.wzuup.com/&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;server {
+  listen               443;
+  ssl                  on;
+  ssl_certificate      wzuup.crt;
+  ssl_certificate_key  wzuup.key;&lt;/p&gt;
+
+&lt;p&gt;server_name  svn.wzuup.com;
+  access_log   logs/svn.access.log;&lt;/p&gt;
+
+&lt;p&gt;auth_basic    &amp;ldquo;Wzuup Subversion&amp;rdquo;;
+  auth_basic_user_file  htpasswd;&lt;/p&gt;
+
+&lt;p&gt;location /wzuup {
+    proxy_pass      &lt;a href=&#34;http://127.0.0.1:9000&#34;&gt;http://127.0.0.1:9000&lt;/a&gt;;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if ($http_destination ~ &amp;quot;^http://(.+)&amp;quot;) {
+  rewrite  ^(.*)$  https://$1 permanent;
+}
+
+proxy_set_header  X-Real-IP  $remote_addr;
+proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header  X_FORWARDED_PROTO https;
+proxy_set_header Host $http_host;
+proxy_redirect false;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Done!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Create init.d script for Nginx</title>
+      <link>http://blindgaenger.net/articles/2008-07-13-create-init.d-script-for-nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-13-create-init.d-script-for-nginx/</guid>
+      <description>
+
+&lt;p&gt;Copy the attached file attachment:nginx.init.d where it belongs
+{{bash
+$ sudo cp nginx.init.d /etc/init.d/nginx
+$ sudo chmod +x /etc/init.d/nginx
+}}&lt;/p&gt;
+
+&lt;p&gt;Add it to the default run levels.
+{{bash
+$ sudo /usr/sbin/update-rc.d -f nginx defaults
+Adding system startup for /etc/init.d/nginx &amp;hellip;
+   /etc/rc0.d/K20nginx -&amp;gt; ../init.d/nginx
+   /etc/rc1.d/K20nginx -&amp;gt; ../init.d/nginx
+   /etc/rc6.d/K20nginx -&amp;gt; ../init.d/nginx
+   /etc/rc2.d/S20nginx -&amp;gt; ../init.d/nginx
+   /etc/rc3.d/S20nginx -&amp;gt; ../init.d/nginx
+   /etc/rc4.d/S20nginx -&amp;gt; ../init.d/nginx
+   /etc/rc5.d/S20nginx -&amp;gt; ../init.d/nginx
+}}&lt;/p&gt;
+
+&lt;p&gt;Start Server
+{{bash
+$ sudo /etc/init.d/nginx start
+Starting nginx: nginx.
+}}&lt;/p&gt;
+
+&lt;p&gt;Restart server
+Works only if the server is already running
+{{bash
+$ sudo /etc/init.d/nginx restart
+Restarting nginx: nginx.
+}}&lt;/p&gt;
+
+&lt;p&gt;Reload configuration
+{{bash
+$ sudo /etc/init.d/nginx reload
+Reloading nginx configuration: nginx.
+}}&lt;/p&gt;
+
+&lt;p&gt;Stop server
+{{bash
+$ sudo /etc/init.d/nginx stop
+Stopping nginx: nginx.
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;links:3811ae9b59b4989fe565aa835f4ed2f6&#34;&gt;Links&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://articles.slicehost.com/2007/10/17/ubuntu-lts-adding-an-nginx-init-script&#34;&gt;Ubuntu LTS - adding an nginx init script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

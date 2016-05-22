@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>{{ .Title }}</h1>
+  </header>
+  <div class="article__content">
+    {{ .Content }}
+  </div>
+  <footer class="article__footer">
+    <div>Words: {{ .WordCount }}</div>
+    <div>Published: {{ .Date.Format "2006-01-02" }}</div>
+    <div>ReadingTime: {{ .ReadingTime }} min</div>
+    <div>URL: {{ .Permalink }}</div>
+  </footer>
+</article>
+
+{{ partial "footer.html" . }}

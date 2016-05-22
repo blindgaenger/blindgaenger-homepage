@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alias on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/alias/</link>
+    <description>Recent content in Alias on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/alias/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>E-Mail Forwarding from Point to Gmail</title>
+      <link>http://blindgaenger.net/articles/2011-06-04-e-mail-forwarding-from-point-to-gmail/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2011-06-04-e-mail-forwarding-from-point-to-gmail/</guid>
+      <description>
+
+&lt;p&gt;I use &lt;a href=&#34;http://pointhq.com/&#34;&gt;Point&lt;/a&gt; to manage the DNS of all my domains. Actually I think it&amp;rsquo;s one of the best tools out there. All you&amp;rsquo;ve to do is to register the &lt;code&gt;dnsX.pointhq.com&lt;/code&gt; nameservers at your domain provider and start managing your DNS settings from the easy to use Point interface.&lt;/p&gt;
+
+&lt;p&gt;But when I wanted to forward &lt;code&gt;mail@foobar.com&lt;/code&gt; to my &lt;code&gt;myname@gmail.com&lt;/code&gt; account, it didn&amp;rsquo;t work. Note it&amp;rsquo;s a standard Gmail account, not Google Apps. Even the &lt;a href=&#34;http://docs.atechmedia.com/point/user-manual&#34;&gt;User Manual&lt;/a&gt; does not contain a hint, but here&amp;rsquo;s how!&lt;/p&gt;
+
+&lt;h1 id=&#34;point-setup:c83c9ef17c18e6c310fc9f43bd971a65&#34;&gt;Point Setup&lt;/h1&gt;
+
+&lt;p&gt;As I said above the Point&amp;rsquo;s user interface is so easy that it does all the work for you.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edit your domain records&lt;/li&gt;
+&lt;li&gt;Click &lt;code&gt;Manage E-Mail Forwarding&lt;/code&gt; on the right&lt;/li&gt;
+&lt;li&gt;Confirm and the needed &lt;code&gt;MX&lt;/code&gt; records will be added&lt;/li&gt;
+&lt;li&gt;Click &lt;code&gt;Add New E-Mail Alias&lt;/code&gt; on the right&lt;/li&gt;
+&lt;li&gt;Alias &lt;code&gt;mail@foobar.com&lt;/code&gt; to &lt;code&gt;myname@gmail.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Save and done!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;gmail-setup:c83c9ef17c18e6c310fc9f43bd971a65&#34;&gt;Gmail Setup&lt;/h1&gt;
+
+&lt;p&gt;Although the example destination in Point mentions some &lt;code&gt;@gmail.com&lt;/code&gt; address this didn&amp;rsquo;t worked for me out of the box. When I send mails to &lt;code&gt;mail@foobar.com&lt;/code&gt;, but they didn&amp;rsquo;t appear in my Gmail inbox.&lt;/p&gt;
+
+&lt;p&gt;It took me some time to figure out what was wrong: I had to register the mail in Gmail, too.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Login to your &lt;code&gt;myname@gmail.com&lt;/code&gt; Gmail account&lt;/li&gt;
+&lt;li&gt;Go to &lt;code&gt;Settings » Accounts and Imports » Send mail as&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Click &lt;code&gt;Send mail from another address&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;mail@foobar.com&lt;/code&gt; as address and send the verification&lt;/li&gt;
+&lt;li&gt;You&amp;rsquo;ll get a confirmation mail from &lt;code&gt;mail@foobar.com&lt;/code&gt; … Yay, first time!&lt;/li&gt;
+&lt;li&gt;Use the code to confirm the address&lt;/li&gt;
+&lt;li&gt;That&amp;rsquo;s it!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now you can send mails to &lt;code&gt;mail@foobar.com&lt;/code&gt; and they appear in your inbox.&lt;/p&gt;
+
+&lt;h1 id=&#34;note-on-wildcards:c83c9ef17c18e6c310fc9f43bd971a65&#34;&gt;Note on wildcards&lt;/h1&gt;
+
+&lt;p&gt;Point allows to set &lt;code&gt;*&lt;/code&gt; as an alias, but Gmail does not. The catch-all approach is only allowed for Google Apps accounts. Strangely enough you can register &lt;code&gt;*@foobar.com&lt;/code&gt; in Gmail and happily send mails as and to &lt;code&gt;*&lt;/code&gt;. So this is just the name and not a wildcard.&lt;/p&gt;
+
+&lt;p&gt;What I did, I registered the &lt;code&gt;*&lt;/code&gt; in Point and registered my needed mail addresses in Gmail. This way I don&amp;rsquo;t have to configure both.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Bitwise operations for flags - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Bitwise operations for flags</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>Yep, this is basic, really basic! But currently I&rsquo;m sitting in front of some
+Java code I&rsquo;ve to maintain and it looks like this:</p>
+
+<p>{% highlight java %}
+public final class SearchConstants {
+  public static final int FLAG_FOO = 1 &lt;&lt; 0;
+  public static final int FLAG_BAR = 1 &lt;&lt; 1;
+  public static final int FLAG_BAZ = 1 &lt;&lt; 2;
+}</p>
+
+<p>int flags = SearchConstants.FLAG_FOO | SearchConstants.FLAG_BAR;</p>
+
+<p>public void search(int flags) {
+  if ( ((flags &amp; SearchConstants.FLAG_FOO) != 0) &amp;&amp; ((flags &amp; SearchConstants.FLAG_BAZ) == 0) ) {
+    &hellip;
+  }
+}
+{% endhighlight %}</p>
+
+<p>I simplified the example, reduced the number of available flags from 25 to 3,
+and used a single <code>if</code> statement. But even if the code would look exaclty as
+above imagine these statements everywhere! In my opinion the pros and cons are:</p>
+
+<p>Pros:
+* fast and small footprint
+* no special JRE version needed
+* combine flags with <code>|</code></p>
+
+<p>Cons:
+* readability, long statements are confusing!
+* flags are not type-safe
+* shifting flag index</p>
+
+<p>Maybe I&rsquo;m lazy, but I&rsquo;ve really problems reading this. Further the project was
+lacking test-cases, so adding new features (and flags) was even more painful!
+As I&rsquo;ve become the man in charge, I decided to start a refactoring! I came up
+with the following options:</p>
+
+<h1 id="bitset:fbcf055f166ed9d86da7499bb82bfc72">BitSet</h1>
+
+<p>{% highlight java %}
+private static final int HOT     = 0;
+private static final int FRESH   = 1;
+private static final int PREMIUM = 2;</p>
+
+<p>@Test
+public void testBitSet() throws Exception {
+  BitSet flags = new BitSet(3);</p>
+
+<p>// set
+  flags.set(FRESH);
+  flags.set(PREMIUM);</p>
+
+<p>// flip and clear
+  flags.flip(HOT);
+  flags.clear(PREMIUM);</p>
+
+<p>// get
+  assertTrue(flags.get(HOT));
+  assertTrue(flags.get(FRESH));
+  assertFalse(flags.get(PREMIUM));
+}
+{% endhighlight %}</p>
+
+<h1 id="enumset:fbcf055f166ed9d86da7499bb82bfc72">EnumSet</h1>
+
+<p>{% highlight java %}
+private static enum Flag {
+  HOT, FRESH, PREMIUM
+};</p>
+
+<p>@Test
+public void testEnumSet() throws Exception {
+  EnumSet<Flag> flags = EnumSet.noneOf(Flag.class);</p>
+
+<p>// set
+  flags.add(Flag.FRESH);
+  flags.add(Flag.PREMIUM);</p>
+
+<p>// flip and clear
+  if (flags.contains(Flag.HOT)) {
+    flags.remove(Flag.HOT);
+  } else {
+    flags.add(Flag.HOT);
+  }
+  flags.remove(Flag.PREMIUM);</p>
+
+<p>// get
+  assertTrue(flags.contains(Flag.HOT));
+  assertTrue(flags.contains(Flag.FRESH));
+  assertFalse(flags.contains(Flag.PREMIUM));
+}
+{% endhighlight %}</p>
+
+<h1 id="own-class:fbcf055f166ed9d86da7499bb82bfc72">Own class</h1>
+
+<p>{% highlight java %}
+private static class Flags {
+  private int bits;</p>
+
+<p>public boolean isSet(int flag) {
+    return (bits &amp; (1 &lt;&lt; flag)) != 0;
+  }</p>
+
+<p>public void set(int flag) {
+    bits = (bits | (1 &lt;&lt; flag));
+  }</p>
+
+<p>public void unset(int flag) {
+    bits = (bits &amp; ~(1 &lt;&lt; flag));
+  }</p>
+
+<p>public void toggle(int flag) {
+    bits = (bits ^ (1 &lt;&lt; flag));
+  }
+}</p>
+
+<p>@Test
+public void testOwnClass() throws Exception {
+  Flags flags = new Flags();</p>
+
+<p>// set
+  flags.set(FRESH);
+  flags.set(PREMIUM);</p>
+
+<p>// flip and clear
+  flags.toggle(HOT);
+  flags.unset(PREMIUM);</p>
+
+<p>// get
+  assertTrue(flags.isSet(HOT));
+  assertTrue(flags.isSet(FRESH));
+  assertFalse(flags.isSet(PREMIUM));
+}
+{% endhighlight %}</p>
+
+<p>Actually I like <code>BitSet</code>. It&rsquo;s easy, small and perfect in my case.</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 433</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 3 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

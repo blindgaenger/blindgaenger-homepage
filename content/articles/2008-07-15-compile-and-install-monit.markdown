@@ -1,0 +1,47 @@
+---
+title: Compile and install Monit
+tags:
+- wzuup
+- monit
+---
+Find the latest stable Monit at <http://www.tildeslash.com/monit/download/>
+
+Download and unpack
+{{bash
+$ cd /tmp
+$  wget http://www.tildeslash.com/monit/dist/monit-4.10.1.tar.gz
+$ tar -xvzf monit-4.10.1.tar.gz 
+$ cd monit-4.10.1
+}}
+
+Configure
+{{bash
+$ ./configure
+...
+monit has been configured with the following options:
+                Architecture: LINUX
+                 SSL support: enabled
+       SSL include directory: /usr/include
+       SSL library directory: /usr/lib
+         resource monitoring: enabled
+               resource code: sysdep_LINUX.c
+         large files support: enabled
+              Compiler flags: -g -O2 -Wall -D _REENTRANT -I/usr/include
+                Linker flags: -lpthread -lcrypt -lresolv -lnsl  -L/usr/lib -lssl -lcrypto
+           pid file location: /var/run
+}}
+
+Make and install
+{{bash
+$ make
+...
+$ make install
+flex -i l.l
+gcc -c -DLINUX -DSYSCONFDIR="\"/usr/local/etc\"" -I. -I./device -I./http -I./process -I./protocols -g -O2 -Wall -D _REENTRANT -I/usr/include  lex.yy.c -o lex.yy.o
+gcc  alert.o collector.o control.o daemonize.o env.o event.o file.o gc.o getloadavg.o http.o log.o md5.o monitor.o net.o process.o sendmail.o sha.o signal.o socket.o spawn.o ssl.o state.o status.o util.o validate.o xmalloc.o xml.o device/device_common.o http/base64.o http/cervlet.o http/engine.o http/processor.o process/process_common.o protocols/apache_status.o protocols/clamav.o protocols/default.o protocols/dns.o protocols/dwp.o protocols/ftp.o protocols/generic.o protocols/http.o protocols/imap.o protocols/ldap2.o protocols/ldap3.o protocols/mysql.o protocols/nntp.o protocols/ntp3.o protocols/pgsql.o protocols/pop.o protocols/postfix_policy.o protocols/protocol.o protocols/rdate.o protocols/rsync.o protocols/smtp.o protocols/ssh.o protocols/tns.o device/sysdep_LINUX.o process/sysdep_LINUX.o y.tab.o lex.yy.o  -lfl -lpthread -lcrypt -lresolv -lnsl  -L/usr/lib -lssl -lcrypto -o monit 
+/usr/bin/install -c  -m 755 -d /usr/local/bin || exit 1
+/usr/bin/install -c  -m 755 -d /usr/local/share/man/man1 || exit 1
+/usr/bin/install -c  -m 555 -s monit /usr/local/bin || exit 1
+/usr/bin/install -c  -m 444 monit.1 /usr/local/share/man/man1/monit.1 || exit 1
+}}
+

@@ -1,0 +1,4 @@
+<div class="article article--item">
+  <span>{{ .Date.Format "2006-01-02" }}</span>
+  <span><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} :: DRAFT{{end}}</a></span>
+</div>

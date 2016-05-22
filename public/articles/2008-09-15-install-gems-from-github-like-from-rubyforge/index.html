@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Install gems from GitHub like from RubyForge - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-09-15-install-gems-from-github-like-from-rubyforge/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Install gems from GitHub like from RubyForge</h1>
+  </header>
+  <div class="article__content">
+    <p>Install gems from GitHub directly without specifying the source, just like you
+would if you were installing them from RubyForge.</p>
+
+<p>Update rubygems to 2.1
+{% highlight bash %}
+$ sudo gem update &ndash;system
+{% endhighlight %}</p>
+
+<p>Add the sources to rubygems, so the gem names can be resolved to a source url.
+{% highlight bash %}
+$ sudo gem sources -a <a href="http://gems.github.com">http://gems.github.com</a>
+{% endhighlight %}</p>
+
+<p>Try it with a gem on GitHub.
+{% highlight bash %}
+$ sudo gem install simplificator-rwebthumb
+{% endhighlight %}</p>
+
+<p>Links
+<a href="http://github.com/blog/97-github-loves-rubygems-1-2">http://github.com/blog/97-github-loves-rubygems-1-2</a>
+<a href="http://gems.github.com/">http://gems.github.com/</a></p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 87</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-09-15-install-gems-from-github-like-from-rubyforge/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

@@ -3,7 +3,206 @@
   
   <url>
     <loc>http://blindgaenger.net/</loc>
+    <lastmod>2016-05-21T14:13:52+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/yyy/</loc>
+    <lastmod>2016-05-21T14:13:52+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/xxx/</loc>
+    <lastmod>2016-05-21T14:13:52+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2011-06-09-10-xxx-one-liners-to-impress-your-friends/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-11-03-a-cloud-for-the-tags/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-11-10%20-%20Advanced%20Git%20aliases/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-05-17-check-rootkits-and-antivirus-on-ubuntu/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-06-09-colorize-maven-output/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-compile-nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-15-compile-and-install-monit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-14-configure-mongrel-cluster-for-rails/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-15-configure-monit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-configure-nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-create-init.d-script-for-nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-12-10-disable-beep-on-windows/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2011-06-04-e-mail-forwarding-from-point-to-gmail/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-07-07-eclipse-ganymede-startup-problem-in-ubuntu-swterror-xpcom-error/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-09-28-emacs-stuff/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-11-12-enumeration-helpers-for-ruby/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2007-10-02-force-update-of-maven-plugins/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-08-generate-gmaven-projects-groovy-maven/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-11-08%20-%20Generate%20GitHub%20pages%20in%20a%20submodule/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-generate-ssl-certificate/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-10-30-generate-a-sitemap-for-google/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-07-08-initial-commit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-12-install-mysql-and-native-mysql-driver-for-ruby/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-16-install-and-use-sendmail/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-09-15-install-gems-from-github-like-from-rubyforge/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-05-07-mocking-a-single-method-with-powerMock/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-15-monitor-applications-with-monit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-09-oracle-sequences/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-11-12%20-%20Print%20Groovy%27s%20classpath%20for%20debugging/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-put-rails-behind-https/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-10-14-ruby-on-cygwin-no-such-file-to-load-ubygems/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2007-10-06-run-eclipse-with-extended-memory/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-09-03-run-a-main-method-with-maven/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-09-02-run-a-single-test-case-with-maven/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-12-setup-mysql-database-for-rails/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-16-setup-redmine/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-03-31-size-of-a-directory-on-linux/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2007-10-01-skip-or-ignore-junit-tests-in-maven/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-15-start-monit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-start-nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2007-09-28-svn-log-error-on-subclipse-update/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-10-06-syntax-highlight-for-ruby-in-ultraedit/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-06-12-timestamp-in-oracle/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2008-07-13-use-nginx-config-generator/</loc>
+  </url>
+  
+  <url>
+    <loc>http://blindgaenger.net/articles/2009-05-29%20-%20Using%20Git%20with%20Subversion/</loc>
   </url>
   
 </urlset>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eclipse on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/eclipse/</link>
+    <description>Recent content in Eclipse on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/eclipse/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Eclipse Ganymede startup problem in Ubuntu</title>
+      <link>http://blindgaenger.net/articles/2009-07-07-eclipse-ganymede-startup-problem-in-ubuntu-swterror-xpcom-error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-07-07-eclipse-ganymede-startup-problem-in-ubuntu-swterror-xpcom-error/</guid>
+      <description>&lt;p&gt;I installed Ganymede on Ubuntu, but it crashed on startup:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;org.eclipse.swt.SWTError: XPCOM error&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Since a while SWT is able to use Mozilla as browser, that&amp;rsquo;s what the XPCOM is
+about. The problem is SWT trying to use my Mozilla installation and fails.The
+&lt;a href=&#34;http://www.eclipse.org/swt/faq.php#browserlinux&#34;&gt;Eclipse FAQ&lt;/a&gt; describes
+some settings for linux browsers. But this did the trick for me.&lt;/p&gt;
+
+&lt;p&gt;Install a separate version of &lt;code&gt;xulrunner&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+sudo apt-get install xulrunner
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Append this to &lt;code&gt;$ECLIPSE_HOME/eclipse.ini&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/xulrunner
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Done!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Print Groovy&#39;s classpath for debugging</title>
+      <link>http://blindgaenger.net/articles/2009-11-12%20-%20Print%20Groovy%27s%20classpath%20for%20debugging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-11-12%20-%20Print%20Groovy%27s%20classpath%20for%20debugging/</guid>
+      <description>&lt;p&gt;Today I was in need to maintain an old Groovy project. I haven&amp;rsquo;t used Groovy since upgrading to Galileo, so I had to reinstall the &lt;a href=&#34;http://groovy.codehaus.org/Eclipse+Plugin&#34;&gt;GroovyEclipse Plugin&lt;/a&gt;. No problem!&lt;/p&gt;
+
+&lt;p&gt;But although my scripts work on the command line, some dependencies were missing in Eclipse. So I used &lt;a href=&#34;http://paste.lisp.org/display/58599&#34;&gt;this little helper&lt;/a&gt; to print my classpath:&lt;/p&gt;
+
+&lt;p&gt;{{
+def printClassPath(classLoader) {
+  println &amp;ldquo;$classLoader&amp;rdquo;
+  classLoader.getURLs().each {url-&amp;gt;
+     println &amp;ldquo;- ${url.toString()}&amp;rdquo;
+  }
+  if (classLoader.parent) {
+     printClassPath(classLoader.parent)
+  }
+}
+printClassPath this.class.classLoader
+}}&lt;/p&gt;
+
+&lt;p&gt;Raised eyebrows, but the problem was easy to solve. Eclipse&amp;rsquo;s classpath variables containes a &lt;code&gt;GROOVY_HOME&lt;/code&gt; with a trailing slash. Remove the slash and you&amp;rsquo;re good to go.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Run Eclipse with extended memory</title>
+      <link>http://blindgaenger.net/articles/2007-10-06-run-eclipse-with-extended-memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2007-10-06-run-eclipse-with-extended-memory/</guid>
+      <description>&lt;p&gt;{% highlight bash %}
+eclipse -vmargs -Xmx1024M
+{% endhighlight %}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Subclipse Update causes SVN Log entry missing name attribute</title>
+      <link>http://blindgaenger.net/articles/2007-09-28-svn-log-error-on-subclipse-update/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2007-09-28-svn-log-error-on-subclipse-update/</guid>
+      <description>
+
+&lt;h1 id=&#34;problem:d237174786dd72e8e8a6793722d3f968&#34;&gt;Problem&lt;/h1&gt;
+
+&lt;p&gt;During update of Subclipse to version 1.2.0 the following error occured:&lt;/p&gt;
+
+&lt;p&gt;{% highlight bash %}
+svn: Log entry missing name attribute (entry &amp;lsquo;modify-wcprop&amp;rsquo; for directory &amp;hellip;
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;solution:d237174786dd72e8e8a6793722d3f968&#34;&gt;Solution&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://svn.haxx.se/users/archive-2007-02/0618.shtml&#34;&gt;http://svn.haxx.se/users/archive-2007-02/0618.shtml&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I look at the log file located in .svn and one of the modify-wcprop entry was
+missing the name attribute.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;add &lt;code&gt;name=&amp;quot;&amp;quot;&lt;/code&gt; to the XML file&lt;/li&gt;
+&lt;li&gt;Cleanup and refresh the project in Eclipse&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

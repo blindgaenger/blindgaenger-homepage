@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Alter huge database tables using a temp table - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Alter huge database tables using a temp table</h1>
+  </header>
+  <div class="article__content">
+    <p>In this case I had to delete some entries and alter the primary key of a huge
+table. I couldn&rsquo;t just fire up the DELETE and ALTER statements, because this
+would take to long. Causing in unnecessary DB load and a longer down-time.</p>
+
+<p>The trick is to copy only the needed data to a temporary table, do the changes
+and swap the new and old tables. Please note, that the original table was not
+in productional use at this time, so no data was updated resp. lost!</p>
+
+<ul>
+<li>Create a new table <code>offer_pop_new</code> with the content of <code>offer_pop</code>. Instead
+of deleting the entries just filter them.</li>
+</ul>
+
+<p>{{sql
+  create table offer_pop_new as
+  select *
+  from offer_pop
+  where id_channel not in (&lsquo;priceminister_product_fr&rsquo;, &lsquo;priceminister_query_fr&rsquo;)
+  ;
+  }}</p>
+
+<ul>
+<li>Alter the new table to your needs. For example adding a new primary key.</li>
+</ul>
+
+<p>{{sql
+  alter table offer_pop_new
+  add PRIMARY KEY (&ldquo;ID_OFFER&rdquo;, &ldquo;ID_CATEGORY&rdquo;, &ldquo;ID_CHANNEL&rdquo;, &ldquo;ID_CHANNELGROUP&rdquo;)
+  }}</p>
+
+<ul>
+<li>Swap the two tables <code>current</code> to <code>old</code> and <code>new</code> to <code>current</code></li>
+</ul>
+
+<p>{{sql
+  alter table offer_pop rename to offer_pop_old;
+  alter table offer_pop_new rename to offer_pop;
+  }}</p>
+
+<ul>
+<li>Done!</li>
+</ul>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 174</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

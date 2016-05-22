@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Print Groovy&#39;s classpath for debugging - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2009-11-12%20-%20Print%20Groovy%27s%20classpath%20for%20debugging/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Print Groovy&#39;s classpath for debugging</h1>
+  </header>
+  <div class="article__content">
+    <p>Today I was in need to maintain an old Groovy project. I haven&rsquo;t used Groovy since upgrading to Galileo, so I had to reinstall the <a href="http://groovy.codehaus.org/Eclipse+Plugin">GroovyEclipse Plugin</a>. No problem!</p>
+
+<p>But although my scripts work on the command line, some dependencies were missing in Eclipse. So I used <a href="http://paste.lisp.org/display/58599">this little helper</a> to print my classpath:</p>
+
+<p>{{
+def printClassPath(classLoader) {
+  println &ldquo;$classLoader&rdquo;
+  classLoader.getURLs().each {url-&gt;
+     println &ldquo;- ${url.toString()}&rdquo;
+  }
+  if (classLoader.parent) {
+     printClassPath(classLoader.parent)
+  }
+}
+printClassPath this.class.classLoader
+}}</p>
+
+<p>Raised eyebrows, but the problem was easy to solve. Eclipse&rsquo;s classpath variables containes a <code>GROOVY_HOME</code> with a trailing slash. Remove the slash and you&rsquo;re good to go.</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 102</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2009-11-12%20-%20Print%20Groovy%27s%20classpath%20for%20debugging/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

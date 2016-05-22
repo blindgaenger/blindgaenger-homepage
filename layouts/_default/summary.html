@@ -1,0 +1,17 @@
+<article class="article article--summary">
+  <header class="article__header">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} :: DRAFT{{end}}</a></h2>
+    <div>{{ .Date.Format "2006-01-02" }}</div>
+  </header>
+  <div class="article__content">
+    {{ if .Description }}
+      {{ .Description }}
+    {{ else }}
+      {{ .Summary }}
+    {{ end }}
+    {{ if .Truncated }} …{{end}}
+  </div>
+  <footer class="article__footer">
+    <a href='{{ .RelPermalink }}'><nobr>Read more …</nobr></a>
+  </footer>
+</article>

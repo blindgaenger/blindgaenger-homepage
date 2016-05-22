@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+
+<h1>{{ .Title }}</h1>
+<ul>
+{{ range .Data.Pages }}
+  <li class="article article--item">
+    <span>{{ .Date.Format "2006-01-02" }}</span>
+    <span><a href="{{ .RelPermalink }}">{{ .Title }}{{ if .Draft }} :: DRAFT{{end}}</a></span>
+  </li>
+{{ end }}
+</ul>
+
+{{ partial "footer.html" . }}

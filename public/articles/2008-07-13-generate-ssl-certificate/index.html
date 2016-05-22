@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Generate SSL certificate - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-07-13-generate-ssl-certificate/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Generate SSL certificate</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p><a href="http://www.akadia.com/services/ssh_test_certificate.html">http://www.akadia.com/services/ssh_test_certificate.html</a></p>
+
+<h1 id="generate-a-complex-pass-phrase:d8a21bf4e076ac0970a161f0ef73b331">Generate a complex pass-phrase.</h1>
+
+<p>In the following it&rsquo;s shown as XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</p>
+
+<h1 id="generate-a-csr-certificate-signing-request:d8a21bf4e076ac0970a161f0ef73b331">Generate a CSR (Certificate Signing Request)</h1>
+
+<p>{% highlight bash %}
+$ openssl genrsa -des3 -out wzuup.key 1024
+Generating RSA private key, 1024 bit long modulus
+&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.++++++
+&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;++++++
+e is 65537 (0x10001)
+Enter pass phrase for cert.key:
+Verifying - Enter pass phrase for wzuup.key:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+{% endhighlight %}</p>
+
+<h1 id="generate-a-csr-certificate-signing-request-1:d8a21bf4e076ac0970a161f0ef73b331">Generate a CSR (Certificate Signing Request)</h1>
+
+<p>{% highlight bash %}
+$ sudo openssl req -new -key wzuup.key -out wzuup.csr
+Enter pass phrase for wzuup.key:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,</p>
+
+<h2 id="if-you-enter-the-field-will-be-left-blank:d8a21bf4e076ac0970a161f0ef73b331">If you enter &lsquo;.&rsquo;, the field will be left blank.</h2>
+
+<p>Country Name (2 letter code) [AU]:DE
+State or Province Name (full name) [Some-State]:Baden-Württemberg
+Locality Name (eg, city) []:Karlsruhe
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:WZUUP.de
+Organizational Unit Name (eg, section) []:
+Common Name (eg, YOUR name) []:www.wzuup.de
+Email Address []:kontakt@wzuup.de</p>
+
+<p>Please enter the following &lsquo;extra&rsquo; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+{% endhighlight %}</p>
+
+<h1 id="remove-passphrase-from-key:d8a21bf4e076ac0970a161f0ef73b331">Remove Passphrase from Key</h1>
+
+<p>{% highlight bash %}
+$ sudo cp wzuup.key wzuup.key.org
+$ sudo openssl rsa -in wzuup.key.org -out wzuup.key
+Enter pass phrase for wzuup.key.org:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+writing RSA key
+{% endhighlight %}</p>
+
+<h1 id="self-sign-certificate:d8a21bf4e076ac0970a161f0ef73b331">Self-sign certificate</h1>
+
+<p>Create a self-signed certificate, which is valid to for 365 days.
+So it will not officially be cerificated by the certification authority.
+The request is useless for self-signed certificates.</p>
+
+<p>{% highlight bash %}
+$ sudo openssl x509 -req -days 365 -signkey wzuup.key -in wzuup.csr -out wzuup.crt
+Signature ok
+subject=/C=DE/ST=Baden-W\xC3\xBCrttemberg/L=Karlsruhe/O=WZUUP.de/CN=www.wzuup.de/emailAddress=kontakt@wzuup.de
+Getting Private key
+{% endhighlight %}</p>
+
+<h1 id="use-the-certificate:d8a21bf4e076ac0970a161f0ef73b331">Use the certificate</h1>
+
+<p>Now you have four files:
+* <code>wzuup.key.org</code>: the certificate key with passphrase
+* <code>wzuup.key</code>: the certificate key without passphrase
+* <code>wzuup.csr</code>: the request for the certificate
+* <code>wzuup.crt</code>: the self-signed certificate</p>
+
+<p>But only upload and use <code>wzuup.key</code> and <code>wzuup.crt</code> in your applications.</p>
+
+<p>Done!</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 347</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 2 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-07-13-generate-ssl-certificate/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+
