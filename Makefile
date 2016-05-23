@@ -10,6 +10,7 @@ build: clean
 	hugo
 
 deploy:
+	git push origin master
 	git push origin `git subtree split --prefix=public master`:gh-pages --force
 
 .PHONY: dev clean build deploy

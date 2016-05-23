@@ -7,3 +7,13 @@ description: From da foo to da bar
 ## Foobar Body
 
 Some foobar text
+
+### Header 3
+
+- list
+- with
+- items
+
+#### Header 4
+
+What about this?

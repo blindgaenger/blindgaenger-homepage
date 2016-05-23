@@ -20,6 +20,18 @@
 &lt;h2 id=&#34;foobar-body:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Foobar Body&lt;/h2&gt;
 
 &lt;p&gt;Some foobar text&lt;/p&gt;
+
+&lt;h3 id=&#34;header-3:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Header 3&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;list&lt;/li&gt;
+&lt;li&gt;with&lt;/li&gt;
+&lt;li&gt;items&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;header-4:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Header 4&lt;/h4&gt;
+
+&lt;p&gt;What about this?&lt;/p&gt;
 </description>
     </item>
     
