@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mongrel on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/mongrel/</link>
+    <description>Recent content in Mongrel on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/mongrel/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Configure Mongrel cluster for Rails</title>
+      <link>http://blindgaenger.net/articles/2008-07-14-configure-mongrel-cluster-for-rails/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-14-configure-mongrel-cluster-for-rails/</guid>
+      <description>&lt;p&gt;Go to the rails app directory.
+{{bash
+$ cd /var/rails/wzuup
+}}&lt;/p&gt;
+
+&lt;p&gt;Configure the mongrel cluster for this rails app.
+{{bash
+$ mongrel_rails cluster::configure -a 127.0.0.1 -p 8000 -N 1 -e production -c /var/rails/wzuup
+Writing configuration file to config/mongrel_cluster.yml.
+}}&lt;/p&gt;
+
+&lt;p&gt;If server should run under &lt;code&gt;www.example.com/wzuup&lt;/code&gt;. The new &lt;code&gt;--prefix $APP_ROOT&lt;/code&gt;
+command allows Mongrel Applications to properly &lt;em&gt;ignore&lt;/em&gt; the prefix. Prior to
+this enhancement, the web server (not mongrel) needed to be configured to strip
+out the prefix.
+{{bash
+$ mongrel_rails cluster::configure -e production -p 8000 -N 2 -c /var/rails/wzuup -a 127.0.0.1 &amp;ndash;prefix /wzuup
+}}&lt;/p&gt;
+
+&lt;p&gt;The syntax is very easy to understand.
+* listen to localhost only
+  &lt;code&gt;-a 127.0.0.1&lt;/code&gt;
+* use port 8000
+  &lt;code&gt;-p 8000&lt;/code&gt;
+* start only one mongrel server
+  &lt;em&gt;Important:&lt;/em&gt; for &lt;code&gt;N=3&lt;/code&gt; three servers with ports 8000, 8001 and 8002 will be used
+  &lt;code&gt;-N 1&lt;/code&gt;
+* run the rails app in the production environment
+  &lt;code&gt;-e production&lt;/code&gt;
+* the root of the rails app
+  &lt;code&gt;-c /var/rails/wzuup&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Start the mongrel cluster
+{{bash
+$ mongrel_rails cluster::start
+starting port 8000
+}}&lt;/p&gt;
+
+&lt;p&gt;Check if mongrel servers are running
+{{bash
+$ ps ax | grep mongrel
+ 6836 ?        Sl     0:01 /usr/bin/ruby1.8 /usr/bin/mongrel_rails start -d -e production -a 127.0.0.1 -c /var/rails/wzuup -p 8000 -P tmp/pids/mongrel.8000.pid -l log/mongrel.8000.log
+ 6844 pts/0    R+     0:00 grep mongrel
+}}&lt;/p&gt;
+
+&lt;p&gt;Stop the mongrel cluster
+{{bash
+$ mongrel_rails cluster::stop
+stopping port 8000
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

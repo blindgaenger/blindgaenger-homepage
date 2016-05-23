@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Compile Nginx - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-07-13-compile-nginx/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Compile Nginx</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>Download and unzip the sources.
+{{bash
+$ cd /tmp
+$ wget <a href="http://sysoev.ru/nginx/nginx-0.7.6.tar.gz">http://sysoev.ru/nginx/nginx-0.7.6.tar.gz</a>
+$ tar -xzvf nginx-0.7.6.tar.gz
+$ cd nginx-0.7.6/
+}}</p>
+
+<p>Make sure the OpenSSL is available, needed for <code>--with-http_ssl_module</code>
+{{bash
+$ sudo apt-get install libssl-dev
+}}</p>
+
+<p>Configure with SSL and WebDAV module enabled
+<a href="http://wiki.codemongers.com/NginxInstallOptions">http://wiki.codemongers.com/NginxInstallOptions</a>
+{{bash
+$ ./configure &ndash;with-http_ssl_module &ndash;with-http_dav_module
+&hellip;
+Configuration summary
+  + using system PCRE library
+  + using system OpenSSL library
+  + md5 library is not used
+  + sha1 library is not used
+  + using system zlib library</p>
+
+<p>nginx path prefix: &ldquo;/usr/local/nginx&rdquo;
+  nginx binary file: &ldquo;/usr/local/nginx/sbin/nginx&rdquo;
+  nginx configuration prefix: &ldquo;/usr/local/nginx/conf&rdquo;
+  nginx configuration file: &ldquo;/usr/local/nginx/conf/nginx.conf&rdquo;
+  nginx pid file: &ldquo;/usr/local/nginx/logs/nginx.pid&rdquo;
+  nginx error log file: &ldquo;/usr/local/nginx/logs/error.log&rdquo;
+  nginx http access log file: &ldquo;/usr/local/nginx/logs/access.log&rdquo;
+  nginx http client request body temporary files: &ldquo;/usr/local/nginx/client_body_temp&rdquo;
+  nginx http proxy temporary files: &ldquo;/usr/local/nginx/proxy_temp&rdquo;
+  nginx http fastcgi temporary files: &ldquo;/usr/local/nginx/fastcgi_temp&rdquo;
+}}</p>
+
+<p>Build and install it.
+{{bash
+$ make
+$ sudo make install
+&hellip;
+}}</p>
+
+<p>Done!</p>
+
+<h1 id="modules:1b24ca547d02c2cfa67a1074f699e88a">Modules</h1>
+
+<ul>
+<li><a href="http://wiki.nginx.org/NginxModules">http://wiki.nginx.org/NginxModules</a></li>
+<li><a href="http://wiki.nginx.org/NginxHttpAuthBasicModule">http://wiki.nginx.org/NginxHttpAuthBasicModule</a></li>
+<li><a href="http://wiki.nginx.org/NginxHttpProxyModule">http://wiki.nginx.org/NginxHttpProxyModule</a></li>
+<li><a href="http://wiki.nginx.org/NginxHttpSslModule">http://wiki.nginx.org/NginxHttpSslModule</a></li>
+</ul>
+
+<h1 id="links:1b24ca547d02c2cfa67a1074f699e88a">Links</h1>
+
+<ul>
+<li><a href="http://articles.slicehost.com/2007/10/16/ubuntu-lts-installing-nginx">Ubuntu LTS - installing nginx</a></li>
+</ul>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 156</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-07-13-compile-nginx/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

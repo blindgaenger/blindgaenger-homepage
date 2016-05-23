@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/windows/</link>
+    <description>Recent content in Windows on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Disable Beep on Windows</title>
+      <link>http://blindgaenger.net/articles/2008-12-10-disable-beep-on-windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-12-10-disable-beep-on-windows/</guid>
+      <description>&lt;p&gt;Just switched the team/room and it&amp;rsquo;s, oh, so quiet here. Even replaced my
+keyboard because the keys were too loud. No Kidding!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open &lt;code&gt;regedit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;find &lt;code&gt;HKEY_CURRENT_USER\Control Panel\Sound&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;create or edit the Key &lt;code&gt;Beep&lt;/code&gt; and set it to &lt;code&gt;no&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;silence!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Syntax Highlight for Ruby in UltraEdit</title>
+      <link>http://blindgaenger.net/articles/2008-10-06-syntax-highlight-for-ruby-in-ultraedit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-10-06-syntax-highlight-for-ruby-in-ultraedit/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.ultraedit.com/&#34;&gt;UltraEdit&lt;/a&gt; provides a ruby wordfile at &lt;a href=&#34;ftp://www.ultraedit.com/wf/ruby.txt&#34;&gt;ftp://www.ultraedit.com/wf/ruby.txt&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Download the wordfile and include its contents into your UltraEdit wordfile.txt
+By default, this file is at &lt;code&gt;C:\Program Files\UltraEdit-32\wordlist.txt&lt;/code&gt;. Open
+it easily by clicking &lt;code&gt;Advanced &amp;gt; Configuration &amp;gt; Editor Display &amp;gt; Syntax Highlighting &amp;gt; Open&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Append the contents of &lt;code&gt;ruby.txt&lt;/code&gt; from above to the newly opened &lt;code&gt;wordlist.txt&lt;/code&gt;.
+Save and close &lt;code&gt;wordlist.txt&lt;/code&gt;. Now, Ruby should be an option under
+&lt;code&gt;View &amp;gt; View As(Highlighting File Type&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

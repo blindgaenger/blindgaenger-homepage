@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Subclipse Update causes SVN Log entry missing name attribute - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2007-09-28-svn-log-error-on-subclipse-update/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Subclipse Update causes SVN Log entry missing name attribute</h1>
+  </header>
+  <div class="article__content">
+    
+
+<h1 id="problem:d237174786dd72e8e8a6793722d3f968">Problem</h1>
+
+<p>During update of Subclipse to version 1.2.0 the following error occured:</p>
+
+<p>{% highlight bash %}
+svn: Log entry missing name attribute (entry &lsquo;modify-wcprop&rsquo; for directory &hellip;
+{% endhighlight %}</p>
+
+<h1 id="solution:d237174786dd72e8e8a6793722d3f968">Solution</h1>
+
+<p><a href="http://svn.haxx.se/users/archive-2007-02/0618.shtml">http://svn.haxx.se/users/archive-2007-02/0618.shtml</a></p>
+
+<blockquote>
+<p>I look at the log file located in .svn and one of the modify-wcprop entry was
+missing the name attribute.</p>
+</blockquote>
+
+<ul>
+<li>add <code>name=&quot;&quot;</code> to the XML file</li>
+<li>Cleanup and refresh the project in Eclipse</li>
+</ul>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 65</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2007-09-28-svn-log-error-on-subclipse-update/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

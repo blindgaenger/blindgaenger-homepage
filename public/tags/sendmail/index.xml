@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sendmail on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/sendmail/</link>
+    <description>Recent content in Sendmail on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/sendmail/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install and use sendmail</title>
+      <link>http://blindgaenger.net/articles/2008-07-16-install-and-use-sendmail/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-16-install-and-use-sendmail/</guid>
+      <description>
+
+&lt;h1 id=&#34;install:55c709c304f6b7388898021b70ef03df&#34;&gt;Install&lt;/h1&gt;
+
+&lt;p&gt;Install via &lt;code&gt;apt-get&lt;/code&gt;:
+{{bash
+$ apt-get install make
+$ apt-get install sendmail sendmail-bin
+}}&lt;/p&gt;
+
+&lt;p&gt;Send a mail from command line with &lt;code&gt;mail&lt;/code&gt;, which uses &lt;code&gt;sendmail&lt;/code&gt; for transmission.
+Enter mail, end with &amp;ldquo;.&amp;rdquo; on a line by itself.
+{{bash
+$ mail you@home.com
+Subject: Enter your subject here
+And this is the body. End it with a &amp;ldquo;.&amp;rdquo; on a line by itself.
+.
+Cc:
+}}&lt;/p&gt;
+
+&lt;p&gt;Monitor at the log, which mails have been sent.
+{{bash
+$ less /var/log/mail.log
+&amp;hellip;
+Jul 19 13:22:48 vs184010 sendmail[8071]: alias database /etc/mail/aliases rebuilt by root
+Jul 19 13:22:48 vs184010 sendmail[8071]: /etc/mail/aliases: 13 aliases, longest 10 bytes, 144 bytes total
+Jul 19 13:22:49 vs184010 sm-mta[8151]: starting daemon (8.13.8): SMTP+queueing@00:10:00
+Jul 19 13:25:45 vs184010 sendmail[21524]: m6JDOqDR021524: from=me@work.com, size=0, class=0, nrcpts=7, relay=root@localhost
+Jul 19 13:27:49 vs184010 sm-mta[7402]: starting daemon (8.13.8): SMTP+queueing@00:10:00
+Jul 19 13:28:35 vs184010 sm-mta[11380]: m6JDSZoG011380: from=&lt;a href=&#34;mailto:monit@blindgaenger.net&#34;&gt;monit@blindgaenger.net&lt;/a&gt;, size=553, class=0, nrcpts=1, msgid=&lt;a href=&#34;mailto:1216474115@vs184010.vserver.de&#34;&gt;1216474115@vs184010.vserver.de&lt;/a&gt;, proto=SMTP, daemon=MTA-v4, relay=localhost.localdomain [127.0.0.1]
+Jul 19 13:28:36 vs184010 sm-mta[11383]: m6JDSZoG011380: to=&lt;a href=&#34;mailto:mail@wzuup.com&#34;&gt;mail@wzuup.com&lt;/a&gt;, delay=00:00:01, xdelay=00:00:01, mailer=esmtp, pri=120553, relay=gmail-smtp-in.l.google.com. [209.85.129.27], dsn=2.0.0, stat=Sent (OK 1216474116 13si6851157fks.6)
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;start-restart-stop:55c709c304f6b7388898021b70ef03df&#34;&gt;Start, Restart, Stop&lt;/h1&gt;
+
+&lt;p&gt;Start
+{{bash
+$ sudo /etc/init.d/sendmail start
+Starting Mail Transport Agent: sendmail.
+}}&lt;/p&gt;
+
+&lt;p&gt;Restart
+{{bash
+$ sudo /etc/init.d/sendmail restart
+Restarting Transport Agent: sendmail.
+}}&lt;/p&gt;
+
+&lt;p&gt;Stop
+{{bash
+$ sudo /etc/init.d/sendmail stop
+Stopping Mail Transport Agent: sendmail.
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Start Monit - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-07-15-start-monit/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Start Monit</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>Start monit in interactive mode.
+{{bash
+$ vs184010:~# monit -I
+Starting monit daemon with http interface at [localhost:2812]
+Starting monit HTTP server at [localhost:2812]
+monit HTTP server started
+Monit started
+}}</p>
+
+<p>To stop press <code>CTRL+C</code>
+{{bash
+Shutting down monit HTTP server
+monit HTTP server stopped
+monit daemon with pid [21987] killed
+Monit stopped
+$
+}}</p>
+
+<p>Inspect the log at <code>/var/log/monit</code>
+{{bash
+$ less /var/log/monit
+[UTC Jul 19 13:29:29] info     : Starting monit daemon with http interface at [localhost:7000]
+[UTC Jul 19 13:29:29] info     : Starting monit HTTP server at [localhost:7000]
+[UTC Jul 19 13:29:29] info     : monit HTTP server started
+[UTC Jul 19 13:29:29] info     : Monit started
+[UTC Jul 19 13:30:29] info     : Monit has not changed
+[UTC Jul 19 13:37:10] info     : Shutting down monit HTTP server
+[UTC Jul 19 13:37:10] info     : monit HTTP server stopped
+[UTC Jul 19 13:37:10] info     : monit daemon with pid [15731] killed
+[UTC Jul 19 13:37:10] info     : Monit stopped
+}}</p>
+
+<h1 id="notes:d0610d013b990c549c8d4a1b7be7f8a5">Notes</h1>
+
+<p>Another way is to start monit in the background.
+{{bash
+$ monit
+}}</p>
+
+<p>But to stop it, you need to kill it.
+{{bash
+$ kill <code>cat /var/run/monit.pid</code>
+}}</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 189</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-07-15-start-monit/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

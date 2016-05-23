@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Eclipse Ganymede startup problem in Ubuntu - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2009-07-07-eclipse-ganymede-startup-problem-in-ubuntu-swterror-xpcom-error/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Eclipse Ganymede startup problem in Ubuntu</h1>
+  </header>
+  <div class="article__content">
+    <p>I installed Ganymede on Ubuntu, but it crashed on startup:</p>
+
+<blockquote>
+<p>org.eclipse.swt.SWTError: XPCOM error</p>
+</blockquote>
+
+<p>Since a while SWT is able to use Mozilla as browser, that&rsquo;s what the XPCOM is
+about. The problem is SWT trying to use my Mozilla installation and fails.The
+<a href="http://www.eclipse.org/swt/faq.php#browserlinux">Eclipse FAQ</a> describes
+some settings for linux browsers. But this did the trick for me.</p>
+
+<p>Install a separate version of <code>xulrunner</code>:</p>
+
+<p>{% highlight bash %}
+sudo apt-get install xulrunner
+{% endhighlight %}</p>
+
+<p>Append this to <code>$ECLIPSE_HOME/eclipse.ini</code>:</p>
+
+<p>{% highlight bash %}
+-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/xulrunner
+{% endhighlight %}</p>
+
+<p>Done!</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 87</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2009-07-07-eclipse-ganymede-startup-problem-in-ubuntu-swterror-xpcom-error/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

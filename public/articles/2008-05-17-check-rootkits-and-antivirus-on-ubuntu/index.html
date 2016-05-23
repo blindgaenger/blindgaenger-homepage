@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Check for rootkits and run antivirus scanner on Ubuntu - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-05-17-check-rootkits-and-antivirus-on-ubuntu/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Check for rootkits and run antivirus scanner on Ubuntu</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>One of the main reasons for switching to Linux was a rootkit hitting my Windows
+installation. This was the best time to play with Ubuntu (before reinstalling
+Windows again, as I thought). I stayed, but since then I run these commands
+regularly. :)</p>
+
+<h1 id="rootkit-hunter-http-rkhunter-sourceforge-net:f95c4bf6dd4c36c19669128405426a76"><a href="http://rkhunter.sourceforge.net/">Rootkit Hunter</a></h1>
+
+<p>Although this shouldn&rsquo;t be the main reason to use it, but Rootkit Hunter has a
+very good command line interface. Your shell should support colors to enjoy it!</p>
+
+<p>{% highlight bash %}
+sudo apt-get install rkhunter
+sudo rkhunter &ndash;versioncheck
+sudo rkhunter &ndash;update &ndash;propupd
+sudo rkhunter &ndash;check
+{% endhighlight %}</p>
+
+<h1 id="chkrootkit-http-www-chkrootkit-org:f95c4bf6dd4c36c19669128405426a76"><a href="http://www.chkrootkit.org/">chkrootkit</a></h1>
+
+<p>Actually chkrootkit seems to check the same stuff as rkhunter. But the
+downside is the missing update command.</p>
+
+<p>{% highlight bash %}
+sudo apt-get install chkrootkit
+sudo chkrootkit -V
+sudo chkrootkit
+{% endhighlight %}</p>
+
+<h1 id="clam-antivirus-http-www-clamav-net:f95c4bf6dd4c36c19669128405426a76"><a href="http://www.clamav.net/">Clam AntiVirus</a></h1>
+
+<p>Get new virus definitions with freshclam . But apt-get should have installed an
+update-deamon in /etc/init.d/clamav-freshclam, so this shouldn&rsquo;t be necessary.</p>
+
+<p>{% highlight bash %}
+sudo freshclam
+sudo clamscan &ndash;recursive &ndash;quiet &ndash;bell &ndash;stdout /home &gt;/tmp/clamscan.log
+less /tmp/clamscan.log
+{% endhighlight %}</p>
+
+<p>Yep, there are GUIs for clamav out there. Then try
+<a href="http://clamtk.sourceforge.net/">clamtk</a> if you need one.</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 186</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-05-17-check-rootkits-and-antivirus-on-ubuntu/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+
