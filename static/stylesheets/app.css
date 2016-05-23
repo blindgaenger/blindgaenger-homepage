@@ -1,43 +1,19 @@
-.page__header {
-  background-color: green;
-}
-.page__nav {
-  background-color: lightgreen;
-}
-.page__content {
-  background-color: red;
-  padding: 10px;
-}
-.page__footer {
-  background-color: green;
+.page {
+  font-size: 1em;
 }
 
-.article {
-  padding: 10px;
+.article h1 {
+  font-size: 2.5rem;
 }
-.article--full {
-  background-color: orange;
+.article h2 {
+  font-size: 2rem;
 }
-.article--summary {
-  background-color: lemon;
+.article h3 {
+  font-size: 1.5rem;
 }
-.article--item {
-  background-color: yellow;
+.article h4 {
+  font-size: 1.25rem;
 }
-
-.article__header {
-  background-color: #FFD96B;
-}
-.article__content {
-  background-color: #FFD96B;
-}
-.article__footer {
-  background-color: #FFD96B;
-}
-
-.tag {
-  padding: 10px;
-}
-.tag--item {
-  background-color: silver;
+.article p {
+  font-size: 1rem;
 }
