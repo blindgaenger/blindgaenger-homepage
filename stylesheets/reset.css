@@ -48,7 +48,7 @@ ol, ul {
  * Remove default margin.
  */
 html, body,
-div, h1, h2, p, ol, ul, li,
+div, h1, h2, h3, h4, p, ol, ul, li,
 span, a, i, strong,
 header, footer, main, nav, article, section {
   margin: 0;
