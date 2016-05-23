@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Setup on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/setup/</link>
+    <description>Recent content in Setup on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Emacs stuff</title>
+      <link>http://blindgaenger.net/articles/2009-09-28-emacs-stuff/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-09-28-emacs-stuff/</guid>
+      <description>
+
+&lt;p&gt;Yep, I think almost every developer out there has a &lt;em&gt;try Emacs&lt;/em&gt; todo on their
+list. All others seems to already use it for decades. In the ruby community
+people like defunkt caused a little renaissance, but I might be wrong and this
+is my very own impression.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I&amp;rsquo;ve installed Emacs several times (even before GitHub &amp;amp; Co.). But
+honestly I still can&amp;rsquo;t get used to it. Nevertheless its a tool in your box, and
+you should know how to close it at least. Just kidding! :)&lt;/p&gt;
+
+&lt;p&gt;Try it yourself. Maybe you&amp;rsquo;ll find something which makes you to switch to Emacs.
+On this page I&amp;rsquo;m collecting all stuff to learn and pimp my setup. Enjoy!&lt;/p&gt;
+
+&lt;h1 id=&#34;cheat-sheet-for-shortcuts:6213b6758c255eff59045a970816226d&#34;&gt;Cheat sheet for shortcuts&lt;/h1&gt;
+
+&lt;p&gt;The problem you have to take care of when learing Emacs is to learn its
+keys/shortcuts. As with for example &lt;code&gt;vim&lt;/code&gt; its real power is a quick navigation
+of all functions under your fingertips. So the first weeks you definitely need a
+&lt;a href=&#34;http://www.digilife.be/quickreferences/QRC/XEmacs%20Reference%20Card.pdf&#34;&gt;XEmacs Reference Card&lt;/a&gt;.
+This one may be a little outdated, but very instructable and handy if printed out.&lt;/p&gt;
+
+&lt;h1 id=&#34;useful-links:6213b6758c255eff59045a970816226d&#34;&gt;Useful Links&lt;/h1&gt;
+
+&lt;p&gt;Some useful sites with instructions, tips and tricks. I&amp;rsquo;ve found most of the
+stuff below on these sites.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.emacswiki.org/&#34;&gt;EmacsWiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://steve.yegge.googlepages.com/effective-emacs&#34;&gt;10 Specific Ways to Improve Your Productivity With Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://emacs-fu.blogspot.com/&#34;&gt;emacs-fu - useful tricks for emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.com/technomancy/emacs-starter-kit&#34;&gt;Emacs Starter Kit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;add-a-dark-color-theme:6213b6758c255eff59045a970816226d&#34;&gt;Add a dark color theme&lt;/h1&gt;
+
+&lt;p&gt;Just because I like the colors of the &lt;a href=&#34;http://tango.freedesktop.org&#34;&gt;Tango Desktop Project&lt;/a&gt;
+and a dark background color. The &lt;a href=&#34;http://www.emacswiki.org/&#34;&gt;Emacs Wiki&lt;/a&gt; gives
+more detailed informations about &lt;a href=&#34;http://www.emacswiki.org/emacs/ColorTheme&#34;&gt;Color themes&lt;/a&gt;
+in general.&lt;/p&gt;
+
+&lt;p&gt;But this is how I installed this sweet &lt;a href=&#34;http://jblevins.org/projects/emacs-color-themes/&#34;&gt;color-theme-subdued&lt;/a&gt;
+by Jason Blevins I came across.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create a &lt;code&gt;~/.emacs.d/vendor&lt;/code&gt; directory&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Open or create the &lt;code&gt;~/.emacs&lt;/code&gt; file and add the dir to &lt;code&gt;load_path&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{cl
+  (add-to-list &amp;lsquo;load-path &amp;ldquo;~/.emacs.d/vendor&amp;rdquo;)
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Download the &lt;a href=&#34;http://code.jblevins.org/misc.git/plain/color-theme-subdued.el&#34;&gt;color-theme-subdued&lt;/a&gt; file&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Move the file in the just created &lt;code&gt;~/.emacs.d/vendor&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Load the scheme in your &lt;code&gt;~/.emacs&lt;/code&gt; file&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{cl
+  ;; default color scheme
+  (require &amp;lsquo;color-theme-subdued)
+    (color-theme-subdued)
+  }}&lt;/p&gt;
+
+&lt;h1 id=&#34;map-caps-lock-to-control:6213b6758c255eff59045a970816226d&#34;&gt;Map Caps Lock to Control&lt;/h1&gt;
+
+&lt;p&gt;In Emacs you have to use CTRL for nearly every command. So moving your hand to
+much is very uncomfortable. The solution is to map the (almost) unused CAPS-LOCK
+as a second CTRL key. This is even the no. 1 tip of Steve Yegge&amp;rsquo;s great post
+&lt;a href=&#34;http://steve.yegge.googlepages.com/effective-emacs&#34;&gt;10 Specific Ways to Improve Your Productivity With Emacs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;After using it a while I even remapped CAPS-LOCK not for Emacs only, but for the
+whole OS. Here is an easy description how you can &lt;a href=&#34;http://devlab.ca/?p=4188&amp;amp;cpage=1&#34;&gt;Map CAPS-LOCK to Control in Ubuntu and Mac OS X&lt;/a&gt;.
+Without all these neat screenshots in Ubuntu it&amp;rsquo;s quite simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open the dialog &lt;code&gt;System » Preferences » Keyboard » Layout Options…&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set the radio button &lt;code&gt;Ctrl key position » Make CapsLock an additional Ctrl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Done!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;highlight-the-current-line:6213b6758c255eff59045a970816226d&#34;&gt;Highlight the current line&lt;/h1&gt;
+
+&lt;p&gt;For more options please read &lt;a href=&#34;http://emacsblog.org/2007/04/09/highlight-the-current-line/&#34;&gt;Highlight the Current Line&lt;/a&gt;
+post of the &lt;a href=&#34;http://emacsblog.org/&#34;&gt;M-x all-things-emacs&lt;/a&gt; blog.&lt;/p&gt;
+
+&lt;p&gt;But this is what I put in my &lt;code&gt;~/.emacs&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;p&gt;{{cl
+(global-hl-line-mode 1)
+(set-face-background &amp;lsquo;hl-line &amp;ldquo;#330&amp;rdquo;)
+}}&lt;/p&gt;
+
+&lt;h1 id=&#34;reload-emacs-without-restarting-emacs:6213b6758c255eff59045a970816226d&#34;&gt;Reload .emacs without restarting Emacs&lt;/h1&gt;
+
+&lt;p&gt;Ok, almost everything is configured in your &lt;code&gt;~/.emacs&lt;/code&gt; file. And as a beginner
+it&amp;rsquo;s quite annoying to edit, save, close, open and find the file again. But
+there&amp;rsquo;s a way on &lt;a href=&#34;http://www.saltycrane.com/blog/2007/07/how-to-reload-your-emacs-file-while/&#34;&gt;How to reload your .emacs file while emacs is running&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;M-x load-file&lt;/code&gt; &lt;code&gt;ENTER&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;~/.emacs&lt;/code&gt; &lt;code&gt;ENTER&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More advanced users may add a shortcut for this. It&amp;rsquo;s up to you to find out how. :)&lt;/p&gt;
+
+&lt;h1 id=&#34;use-a-line-instead-a-block-cursor:6213b6758c255eff59045a970816226d&#34;&gt;Use a line instead a block cursor&lt;/h1&gt;
+
+&lt;p&gt;Block cursors as old-school as CRT displays. Further all commands use the
+beginning of the block cursor (for example delete). Which confused me a little,
+because I was used to the line cursors.&lt;/p&gt;
+
+&lt;p&gt;But of course you can change everything in Emacs! Again, the Emacs Wiki gives
+instructions how to &lt;a href=&#34;http://www.emacswiki.org/emacs/ChangingCursorDynamically&#34;&gt;Change the Cursor Dynamically&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Add this &lt;a href=&#34;http://www.emacswiki.org/emacs/download/cursor-chg.el&#34;&gt;cursor-chg.el&lt;/a&gt; to your &lt;code&gt;load-path&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add this to your &lt;code&gt;~/.emacs&lt;/code&gt; file to require it.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{cl
+  (require &amp;lsquo;cursor-chg)
+  (toggle-cursor-type-when-idle -1)
+  (change-cursor-mode 1)
+  }}&lt;/p&gt;
+
+&lt;h1 id=&#34;add-markdown-support:6213b6758c255eff59045a970816226d&#34;&gt;Add Markdown support&lt;/h1&gt;
+
+&lt;p&gt;Jason Blevins created a great &lt;a href=&#34;http://jblevins.org/projects/markdown-mode/&#34;&gt;Emacs markdown-mode&lt;/a&gt;.
+A must have these days!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Clone the repository and put the files in your &lt;code&gt;load-path&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{bash
+  git clone git://jblevins.org/git/markdown-mode.git
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Set &lt;code&gt;markdown-mode&lt;/code&gt; manually for the current file:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{cl
+  M-x markdown-mode
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Register the mode for &lt;code&gt;md&lt;/code&gt;, &lt;code&gt;mkdn&lt;/code&gt; and &lt;code&gt;markdown&lt;/code&gt; files:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{cl
+  ;; markdown-mode
+  (setq auto-mode-alist
+     (cons &amp;lsquo;(&amp;rdquo;\.md&amp;rdquo; . markdown-mode) auto-mode-alist))
+  (setq auto-mode-alist
+     (cons &amp;lsquo;(&amp;rdquo;\.mkdn&amp;rdquo; . markdown-mode) auto-mode-alist))
+  (setq auto-mode-alist
+     (cons &amp;lsquo;(&amp;rdquo;\.markdown&amp;rdquo; . markdown-mode) auto-mode-alist))
+  }}&lt;/p&gt;
+
+&lt;h1 id=&#34;move-lines-up-and-down:6213b6758c255eff59045a970816226d&#34;&gt;Move lines up and down&lt;/h1&gt;
+
+&lt;p&gt;I got used to moveing lines in Eclipse and Gedit. Actually I can&amp;rsquo;t handle my
+TODO lists without these shortcuts anymore! This is the
+&lt;a href=&#34;http://www.emacswiki.org/emacs/MoveLine&#34;&gt;Move Line&lt;/a&gt; script by Joe Smith.
+Basically it maps some global keys to the &lt;code&gt;move-line&lt;/code&gt; function. Nice!&lt;/p&gt;
+
+&lt;p&gt;{{cl
+(defun move-line (n)
+  &amp;ldquo;Move the current line up or down by N lines.&amp;rdquo;
+  (interactive &amp;ldquo;p&amp;rdquo;)
+  (setq col (current-column))
+  (beginning-of-line) (setq start (point))
+  (end-of-line) (forward-char) (setq end (point))
+  (let ((line-text (delete-and-extract-region start end)))
+    (forward-line n)
+    (insert line-text)
+    ;; restore point to original column in moved line
+    (forward-line -1)
+    (forward-char col)))&lt;/p&gt;
+
+&lt;p&gt;(defun move-line-up (n)
+  &amp;ldquo;Move the current line up by N lines.&amp;rdquo;
+  (interactive &amp;ldquo;p&amp;rdquo;)
+  (move-line (if (null n) -1 (- n))))&lt;/p&gt;
+
+&lt;p&gt;(defun move-line-down (n)
+  &amp;ldquo;Move the current line down by N lines.&amp;rdquo;
+  (interactive &amp;ldquo;p&amp;rdquo;)
+  (move-line (if (null n) 1 n)))&lt;/p&gt;
+
+&lt;p&gt;(global-set-key (kbd &amp;ldquo;M-&lt;up&gt;&amp;rdquo;) &amp;lsquo;move-line-up)
+(global-set-key (kbd &amp;ldquo;M-&lt;down&gt;&amp;rdquo;) &amp;lsquo;move-line-down)
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

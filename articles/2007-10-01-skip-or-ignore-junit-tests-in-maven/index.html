@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Skip or Ignore Junit tests in Maven - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2007-10-01-skip-or-ignore-junit-tests-in-maven/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Skip or Ignore Junit tests in Maven</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>We all know, this is a very bad practice. Even the <a href="http://maven.apache.org/plugins/maven-surefire-plugin/test-mojo.html">Surfire plugin</a>
+documentation says that its use is <code>NOT RECOMMENDED</code>.</p>
+
+<p>Nevertheless as a good developer you should know these switches. So keep them in
+your mind (in my case on this page), but don&rsquo;t keep them in your repository!</p>
+
+<h1 id="command-line:0884f8020f40059683e5fa9e241f744e">Command line</h1>
+
+<p>{% highlight bash %}
+mvn -Dmaven.test.skip=true package
+mvn -Dmaven.test.failure.ignore=true package
+{% endhighlight %}</p>
+
+<h1 id="pom-file:0884f8020f40059683e5fa9e241f744e">POM file</h1>
+
+<p>{% highlight xml %}
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <configuration>
+    <skipTests>true</skipTests>
+    <testFailureIgnore>true</testFailureIgnore>
+  </configuration>
+</plugin>
+{% endhighlight %}</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 78</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2007-10-01-skip-or-ignore-junit-tests-in-maven/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

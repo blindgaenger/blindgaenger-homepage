@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/test/</link>
+    <description>Recent content in Test on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Run a main method with Maven</title>
+      <link>http://blindgaenger.net/articles/2008-09-03-run-a-main-method-with-maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-09-03-run-a-main-method-with-maven/</guid>
+      <description>&lt;p&gt;Use maven&amp;rsquo;s &lt;code&gt;exec&lt;/code&gt; plugin (&lt;a href=&#34;http://mojo.codehaus.org/exec-maven-plugin/&#34;&gt;http://mojo.codehaus.org/exec-maven-plugin/&lt;/a&gt;):&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ mvn exec:java -Dexec.mainClass=net.blindgaenger.toolbox.ssh.Main -Dexec.args=&amp;ldquo;1154&amp;rdquo;
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Run a single test-case with Maven</title>
+      <link>http://blindgaenger.net/articles/2008-09-02-run-a-single-test-case-with-maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-09-02-run-a-single-test-case-with-maven/</guid>
+      <description>&lt;p&gt;Use the name with wildcards ()&lt;a href=&#34;http://maven.apache.org/plugins/maven-surefire-plugin/examples/single-test.html&#34;&gt;http://maven.apache.org/plugins/maven-surefire-plugin/examples/single-test.html&lt;/a&gt;):
+{{bash
+$ mvn -Dtest=Server*Test test
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

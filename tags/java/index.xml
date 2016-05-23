@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/java/</link>
+    <description>Recent content in Java on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bitwise operations for flags</title>
+      <link>http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-11-26-bitwise-operations-for-flags/</guid>
+      <description>
+
+&lt;p&gt;Yep, this is basic, really basic! But currently I&amp;rsquo;m sitting in front of some
+Java code I&amp;rsquo;ve to maintain and it looks like this:&lt;/p&gt;
+
+&lt;p&gt;{% highlight java %}
+public final class SearchConstants {
+  public static final int FLAG_FOO = 1 &amp;lt;&amp;lt; 0;
+  public static final int FLAG_BAR = 1 &amp;lt;&amp;lt; 1;
+  public static final int FLAG_BAZ = 1 &amp;lt;&amp;lt; 2;
+}&lt;/p&gt;
+
+&lt;p&gt;int flags = SearchConstants.FLAG_FOO | SearchConstants.FLAG_BAR;&lt;/p&gt;
+
+&lt;p&gt;public void search(int flags) {
+  if ( ((flags &amp;amp; SearchConstants.FLAG_FOO) != 0) &amp;amp;&amp;amp; ((flags &amp;amp; SearchConstants.FLAG_BAZ) == 0) ) {
+    &amp;hellip;
+  }
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;I simplified the example, reduced the number of available flags from 25 to 3,
+and used a single &lt;code&gt;if&lt;/code&gt; statement. But even if the code would look exaclty as
+above imagine these statements everywhere! In my opinion the pros and cons are:&lt;/p&gt;
+
+&lt;p&gt;Pros:
+* fast and small footprint
+* no special JRE version needed
+* combine flags with &lt;code&gt;|&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Cons:
+* readability, long statements are confusing!
+* flags are not type-safe
+* shifting flag index&lt;/p&gt;
+
+&lt;p&gt;Maybe I&amp;rsquo;m lazy, but I&amp;rsquo;ve really problems reading this. Further the project was
+lacking test-cases, so adding new features (and flags) was even more painful!
+As I&amp;rsquo;ve become the man in charge, I decided to start a refactoring! I came up
+with the following options:&lt;/p&gt;
+
+&lt;h1 id=&#34;bitset:fbcf055f166ed9d86da7499bb82bfc72&#34;&gt;BitSet&lt;/h1&gt;
+
+&lt;p&gt;{% highlight java %}
+private static final int HOT     = 0;
+private static final int FRESH   = 1;
+private static final int PREMIUM = 2;&lt;/p&gt;
+
+&lt;p&gt;@Test
+public void testBitSet() throws Exception {
+  BitSet flags = new BitSet(3);&lt;/p&gt;
+
+&lt;p&gt;// set
+  flags.set(FRESH);
+  flags.set(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// flip and clear
+  flags.flip(HOT);
+  flags.clear(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// get
+  assertTrue(flags.get(HOT));
+  assertTrue(flags.get(FRESH));
+  assertFalse(flags.get(PREMIUM));
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;enumset:fbcf055f166ed9d86da7499bb82bfc72&#34;&gt;EnumSet&lt;/h1&gt;
+
+&lt;p&gt;{% highlight java %}
+private static enum Flag {
+  HOT, FRESH, PREMIUM
+};&lt;/p&gt;
+
+&lt;p&gt;@Test
+public void testEnumSet() throws Exception {
+  EnumSet&lt;Flag&gt; flags = EnumSet.noneOf(Flag.class);&lt;/p&gt;
+
+&lt;p&gt;// set
+  flags.add(Flag.FRESH);
+  flags.add(Flag.PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// flip and clear
+  if (flags.contains(Flag.HOT)) {
+    flags.remove(Flag.HOT);
+  } else {
+    flags.add(Flag.HOT);
+  }
+  flags.remove(Flag.PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// get
+  assertTrue(flags.contains(Flag.HOT));
+  assertTrue(flags.contains(Flag.FRESH));
+  assertFalse(flags.contains(Flag.PREMIUM));
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;h1 id=&#34;own-class:fbcf055f166ed9d86da7499bb82bfc72&#34;&gt;Own class&lt;/h1&gt;
+
+&lt;p&gt;{% highlight java %}
+private static class Flags {
+  private int bits;&lt;/p&gt;
+
+&lt;p&gt;public boolean isSet(int flag) {
+    return (bits &amp;amp; (1 &amp;lt;&amp;lt; flag)) != 0;
+  }&lt;/p&gt;
+
+&lt;p&gt;public void set(int flag) {
+    bits = (bits | (1 &amp;lt;&amp;lt; flag));
+  }&lt;/p&gt;
+
+&lt;p&gt;public void unset(int flag) {
+    bits = (bits &amp;amp; ~(1 &amp;lt;&amp;lt; flag));
+  }&lt;/p&gt;
+
+&lt;p&gt;public void toggle(int flag) {
+    bits = (bits ^ (1 &amp;lt;&amp;lt; flag));
+  }
+}&lt;/p&gt;
+
+&lt;p&gt;@Test
+public void testOwnClass() throws Exception {
+  Flags flags = new Flags();&lt;/p&gt;
+
+&lt;p&gt;// set
+  flags.set(FRESH);
+  flags.set(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// flip and clear
+  flags.toggle(HOT);
+  flags.unset(PREMIUM);&lt;/p&gt;
+
+&lt;p&gt;// get
+  assertTrue(flags.isSet(HOT));
+  assertTrue(flags.isSet(FRESH));
+  assertFalse(flags.isSet(PREMIUM));
+}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;Actually I like &lt;code&gt;BitSet&lt;/code&gt;. It&amp;rsquo;s easy, small and perfect in my case.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mocking a single method with PowerMock</title>
+      <link>http://blindgaenger.net/articles/2009-05-07-mocking-a-single-method-with-powerMock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2009-05-07-mocking-a-single-method-with-powerMock/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s say this is the Bean under test. Here the method &lt;code&gt;convert()&lt;/code&gt; is not
+implemented. But it could also fire up calls to some remote system DB or be just
+to complex. In any case, we want to test &lt;code&gt;say()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;{% highlight java %}
+public class Bean {&lt;/p&gt;
+
+&lt;p&gt;public String say(String name) {
+      return &amp;ldquo;Hi, &amp;rdquo; + convert(name) + &amp;ldquo;!&amp;rdquo;;
+   }&lt;/p&gt;
+
+&lt;p&gt;protected String convert(String name) {
+      throw new UnsupportedOperationException(&amp;ldquo;not implemented yet&amp;rdquo;);
+   }&lt;/p&gt;
+
+&lt;p&gt;}
+{% endhighlight %}&lt;/p&gt;
+
+&lt;p&gt;The example test both, the unsupported operation and our mock, to show that it
+works. The magic happens in … wait for it … &lt;code&gt;createStrictPartialMockForAllMethodsExcept()&lt;/code&gt;. A
+very, very long name, but it explains exactly what it&amp;rsquo;s doing. It leaves our
+&lt;code&gt;say()&lt;/code&gt; untouched, but mocks all other internal calls.&lt;/p&gt;
+
+&lt;p&gt;We expect the &lt;code&gt;convert()&lt;/code&gt; method to be called with &lt;code&gt;world&lt;/code&gt; and returns the
+uppercase &lt;code&gt;WORLD&lt;/code&gt;. But it can be any value as long as you can compare it in the
+&lt;code&gt;assertThat&lt;/code&gt; statement. That&amp;rsquo;s it!&lt;/p&gt;
+
+&lt;p&gt;{% highlight java %}
+import org.junit.Test;
+import org.powermock.api.easymock.PowerMock;&lt;/p&gt;
+
+&lt;p&gt;import static org.easymock.EasyMock.expect;&lt;/p&gt;
+
+&lt;p&gt;import static org.fest.assertions.Assertions.assertThat;&lt;/p&gt;
+
+&lt;p&gt;public class BeanTest {&lt;/p&gt;
+
+&lt;p&gt;@Test(expected = UnsupportedOperationException.class)
+   public void sayNotInplementedYet() throws Exception {
+      // raises an exception, because the convert method was called
+      new Bean().say(&amp;ldquo;world&amp;rdquo;);
+   }&lt;/p&gt;
+
+&lt;p&gt;@Test
+   public void sayHowItShouldBe() throws Exception {
+      Bean beanMock = PowerMock.createStrictPartialMockForAllMethodsExcept(Bean.class, &amp;ldquo;say&amp;rdquo;);&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  // mock the unimplemented method
+  expect(beanMock.convert(&amp;quot;world&amp;quot;)).andReturn(&amp;quot;WORLD&amp;quot;);
+
+  PowerMock.replay(beanMock);
+
+  assertThat(beanMock.say(&amp;quot;world&amp;quot;)).isEqualTo(&amp;quot;Hi, WORLD!&amp;quot;);
+
+  PowerMock.verify(beanMock);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;}
+{% endhighlight %}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Run a main method with Maven</title>
+      <link>http://blindgaenger.net/articles/2008-09-03-run-a-main-method-with-maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-09-03-run-a-main-method-with-maven/</guid>
+      <description>&lt;p&gt;Use maven&amp;rsquo;s &lt;code&gt;exec&lt;/code&gt; plugin (&lt;a href=&#34;http://mojo.codehaus.org/exec-maven-plugin/&#34;&gt;http://mojo.codehaus.org/exec-maven-plugin/&lt;/a&gt;):&lt;/p&gt;
+
+&lt;p&gt;{{bash
+$ mvn exec:java -Dexec.mainClass=net.blindgaenger.toolbox.ssh.Main -Dexec.args=&amp;ldquo;1154&amp;rdquo;
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Run a single test-case with Maven</title>
+      <link>http://blindgaenger.net/articles/2008-09-02-run-a-single-test-case-with-maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-09-02-run-a-single-test-case-with-maven/</guid>
+      <description>&lt;p&gt;Use the name with wildcards ()&lt;a href=&#34;http://maven.apache.org/plugins/maven-surefire-plugin/examples/single-test.html&#34;&gt;http://maven.apache.org/plugins/maven-surefire-plugin/examples/single-test.html&lt;/a&gt;):
+{{bash
+$ mvn -Dtest=Server*Test test
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

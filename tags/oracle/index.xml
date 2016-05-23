@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/oracle/</link>
+    <description>Recent content in Oracle on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Alter huge database tables using a temp table</title>
+      <link>http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-10-07-alter-huge-database-tables-using-a-temp-table/</guid>
+      <description>&lt;p&gt;In this case I had to delete some entries and alter the primary key of a huge
+table. I couldn&amp;rsquo;t just fire up the DELETE and ALTER statements, because this
+would take to long. Causing in unnecessary DB load and a longer down-time.&lt;/p&gt;
+
+&lt;p&gt;The trick is to copy only the needed data to a temporary table, do the changes
+and swap the new and old tables. Please note, that the original table was not
+in productional use at this time, so no data was updated resp. lost!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a new table &lt;code&gt;offer_pop_new&lt;/code&gt; with the content of &lt;code&gt;offer_pop&lt;/code&gt;. Instead
+of deleting the entries just filter them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{sql
+  create table offer_pop_new as
+  select *
+  from offer_pop
+  where id_channel not in (&amp;lsquo;priceminister_product_fr&amp;rsquo;, &amp;lsquo;priceminister_query_fr&amp;rsquo;)
+  ;
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Alter the new table to your needs. For example adding a new primary key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{sql
+  alter table offer_pop_new
+  add PRIMARY KEY (&amp;ldquo;ID_OFFER&amp;rdquo;, &amp;ldquo;ID_CATEGORY&amp;rdquo;, &amp;ldquo;ID_CHANNEL&amp;rdquo;, &amp;ldquo;ID_CHANNELGROUP&amp;rdquo;)
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Swap the two tables &lt;code&gt;current&lt;/code&gt; to &lt;code&gt;old&lt;/code&gt; and &lt;code&gt;new&lt;/code&gt; to &lt;code&gt;current&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;{{sql
+  alter table offer_pop rename to offer_pop_old;
+  alter table offer_pop_new rename to offer_pop;
+  }}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Done!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Oracle Sequences</title>
+      <link>http://blindgaenger.net/articles/2008-07-09-oracle-sequences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-09-oracle-sequences/</guid>
+      <description>&lt;p&gt;Just talked to our DB admin and asked him to grant me access to alter sequences.
+He fired up it&amp;rsquo;s browser, selected the checkbox, looked at me and said: &amp;ldquo;Didn&amp;rsquo;t
+know this option exists. But what are sequences?&amp;rdquo; No comment!&lt;/p&gt;
+
+&lt;p&gt;{% highlight sql %}
+&amp;ndash; new value from sequence
+SELECT seq_catalog_profile.NEXTVAL FROM dual;&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; current value from sequence
+SELECT seq_catalog_profile.CURRVAL FROM dual;
+{% endhighlight %}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Timestamp in Oracle</title>
+      <link>http://blindgaenger.net/articles/2008-06-12-timestamp-in-oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-06-12-timestamp-in-oracle/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.oracle.com/technology/products/database/sql_developer/index.html&#34;&gt;Oracle SQL Developer&lt;/a&gt;
+application doesn&amp;rsquo;t know how to handle invalid timestamps, so I set them to
+unixtime 0 instead of 0.&lt;/p&gt;
+
+&lt;p&gt;{{sql
+update merchants
+set updated_at = timestamp(&amp;lsquo;1970-01-01 10:00:00&amp;rsquo;)
+where updated_at = 0
+;
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

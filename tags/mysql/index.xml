@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on blindgaenger</title>
+    <link>http://blindgaenger.net/tags/mysql/</link>
+    <description>Recent content in Mysql on blindgaenger</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blindgaenger.net/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install MySQL and native MySQL driver for Ruby</title>
+      <link>http://blindgaenger.net/articles/2008-07-12-install-mysql-and-native-mysql-driver-for-ruby/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-12-install-mysql-and-native-mysql-driver-for-ruby/</guid>
+      <description>
+
+&lt;h1 id=&#34;mysql-installation:a28cf0bf75fb9c34da84e47e96ff6692&#34;&gt;MySQL Installation&lt;/h1&gt;
+
+&lt;p&gt;Linux is pretty straight forward, so install with &lt;code&gt;apt-get&lt;/code&gt; as usual.
+{{bash
+$ sudo apt-get install mysql mysql-client mysql-server
+}}&lt;/p&gt;
+
+&lt;p&gt;For the developers on Windows, go to the &lt;a href=&#34;http://dev.mysql.com/downloads/mysql/5.0.html&#34;&gt;MySQL Homepage&lt;/a&gt;.
+Scroll down to &lt;code&gt;Windows downloads&lt;/code&gt; and download the &lt;code&gt;Windows ZIP/Setup.EXE (x86)&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Follow the setup instructions.&lt;/p&gt;
+
+&lt;h1 id=&#34;building-native-mysql-driver-for-ruby:a28cf0bf75fb9c34da84e47e96ff6692&#34;&gt;Building native MySQL driver for Ruby&lt;/h1&gt;
+
+&lt;p&gt;It&amp;rsquo;s much faster and more secure to use a native database driver to MySQL.
+Otherwise Ruby will use its internal default driver.&lt;/p&gt;
+
+&lt;p&gt;So install the Ruby binding for MySQL Server:
+{{bash
+$ sudo apt-get install libmysql-ruby
+Reading Package Lists&amp;hellip; Done
+Building Dependency Tree&amp;hellip; Done
+0 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 50 not upgraded.
+Need to get 0B/4984B of archives.
+After unpacking 0B of additional disk space will be used.
+Do you want to continue? &lt;a href=&#34;Reading database ... 40083 files and directories currently installed.&#34;&gt;Y/n&lt;/a&gt;
+Preparing to replace libmysql-ruby 2.7.1-1 (using &amp;hellip;/libmysql-ruby_2.7.1-1_all.deb) &amp;hellip;
+Unpacking replacement libmysql-ruby &amp;hellip;
+Setting up libmysql-ruby (2.7.1-1) &amp;hellip;
+}}&lt;/p&gt;
+
+&lt;p&gt;Now try to install the gem for the mysql driver. It builds the native driver
+against the MySQL binding.&lt;/p&gt;
+
+&lt;p&gt;If you miss the packages you may see something like this:
+{{bash
+$ sudo gem install mysql
+Building native extensions.  This could take a while&amp;hellip;
+ERROR:  Error installing mysql:
+    ERROR: Failed to build gem native extension.&lt;/p&gt;
+
+&lt;p&gt;/usr/local/bin/ruby extconf.rb install mysql
+checking for mysql_query() in -lmysqlclient&amp;hellip; no
+checking for main() in -lm&amp;hellip; yes
+checking for mysql_query() in -lmysqlclient&amp;hellip; no
+checking for main() in -lz&amp;hellip; yes
+checking for mysql_query() in -lmysqlclient&amp;hellip; no
+checking for main() in -lsocket&amp;hellip; no
+checking for mysql_query() in -lmysqlclient&amp;hellip; no
+checking for main() in -lnsl&amp;hellip; yes
+checking for mysql_query() in -lmysqlclient&amp;hellip; no
+* extconf.rb failed *
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.&lt;/p&gt;
+
+&lt;p&gt;Provided configuration options:
+    &amp;ndash;with-opt-dir
+    &amp;ndash;without-opt-dir
+    …
+    &amp;ndash;without-mysqlclientlib&lt;/p&gt;
+
+&lt;p&gt;Gem files will remain installed in /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7 for inspection.
+Results logged to /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/gem_make.out
+}}&lt;/p&gt;
+
+&lt;p&gt;If the error above occures, you need to install the development packages, too.
+{{bash
+$ sudo apt-get install libmysqlclient15-dev
+}}&lt;/p&gt;
+
+&lt;p&gt;Now the mysql gem should work and the native driver is available. It&amp;rsquo;s
+automatically used as default MySQL driver, for example in all rails apps.
+{{bash
+$ sudo gem install mysql
+Building native extensions.  This could take a while&amp;hellip;
+Successfully installed mysql-2.7
+1 gem installed
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setup MySQL database for Rails</title>
+      <link>http://blindgaenger.net/articles/2008-07-12-setup-mysql-database-for-rails/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blindgaenger.net/articles/2008-07-12-setup-mysql-database-for-rails/</guid>
+      <description>&lt;p&gt;Login to the MySQL instance.
+{{bash
+$ sudo mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 174
+Server version: 5.0.32-Debian_7etch5-log Debian etch distribution&lt;/p&gt;
+
+&lt;p&gt;Type &amp;lsquo;help;&amp;rsquo; or &amp;lsquo;\h&amp;rsquo; for help. Type &amp;lsquo;\c&amp;rsquo; to clear the buffer.&lt;/p&gt;
+
+&lt;p&gt;mysql&amp;gt;
+}}&lt;/p&gt;
+
+&lt;p&gt;Create the database for the rails app.
+{{bash
+mysql&amp;gt; CREATE DATABASE IF NOT EXISTS wzuup_production;
+}}&lt;/p&gt;
+
+&lt;p&gt;Create a user and give him a password.
+{{bash
+mysql&amp;gt; GRANT ALL PRIVILEGES ON wzuup_production.*
+    -&amp;gt; TO &amp;ldquo;wzuup_username&amp;rdquo;@&amp;ldquo;localhost&amp;rdquo;
+    -&amp;gt; IDENTIFIED BY &amp;ldquo;wzuup_password&amp;rdquo;;
+}}&lt;/p&gt;
+
+&lt;p&gt;Type &lt;em&gt;quit&lt;/em&gt; or press CTRL+D to quit MySQL.
+{{bash
+mysql&amp;gt; quit
+Bye
+}}&lt;/p&gt;
+
+&lt;p&gt;Change the RAILS_PROJECT/config/attachment:database.yml to have the same user and password as in the SQL statement above.
+{{bash
+production:
+  adapter: mysql
+  encoding: utf8
+  database: wzuup_production
+  username: wzuup_username
+  password: wzuup_password
+  socket: /var/run/mysqld/mysqld.sock
+}}&lt;/p&gt;
+
+&lt;p&gt;Create the schema in the created database using the migrations.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Important:&lt;/em&gt; Set the environment to production!
+{{bash
+$ rake RAILS_ENV=production db:migrate
+}}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

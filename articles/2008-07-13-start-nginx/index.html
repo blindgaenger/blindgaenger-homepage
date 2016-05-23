@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Start Nginx - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-07-13-start-nginx/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Start Nginx</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>Check it&rsquo;s not running.
+{% highlight bash %}
+$ curl localhost
+curl: (7) couldn&rsquo;t connect to host
+{% endhighlight %}</p>
+
+<p>Start it directly (without init.d script)
+{% highlight bash %}
+$ sudo /usr/local/nginx/sbin/nginx
+{% endhighlight %}</p>
+
+<p>Check it&rsquo;s running in the background.
+{% highlight bash %}
+$ curl localhost
+<html>
+<head>
+<title>Welcome to nginx!</title>
+</head>
+<body bgcolor="white" text="black">
+<center><h1>Welcome to nginx!</h1></center>
+</body>
+</html>
+{% endhighlight %}</p>
+
+<p>Stop/kill the server again.
+{% highlight bash %}
+$ sudo kill <code>cat /usr/local/nginx/logs/nginx.pid</code>
+{% endhighlight %}</p>
+
+<p>Check it&rsquo;s not running.
+{% highlight bash %}
+$ curl localhost
+curl: (7) couldn&rsquo;t connect to host
+{% endhighlight %}</p>
+
+<h1 id="notes:f524ac6e4521c2d1c2dfc12b7484c123">Notes</h1>
+
+<p>If the server needs a pass phrase on start up, see
+<a href="/generate-ssl-certificate">Generate SSL certificate</a> how to avoid this.
+{{bash
+$ sudo /etc/init.d/nginx start
+Starting nginx: Enter PEM pass phrase:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+nginx.
+}}</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 126</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 1 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-07-13-start-nginx/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

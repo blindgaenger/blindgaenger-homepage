@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Enumeration helpers for Ruby - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2008-11-12-enumeration-helpers-for-ruby/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Enumeration helpers for Ruby</h1>
+  </header>
+  <div class="article__content">
+    
+
+<p>I was in need of some enumeration, I mean in the kind of way you know them
+from Java for example. Turns out some other people had the same problem before:</p>
+
+<ul>
+<li><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/150456">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/150456</a></li>
+<li><a href="http://snippets.dzone.com/posts/show/2163">http://snippets.dzone.com/posts/show/2163</a></li>
+<li><a href="http://www.lesismore.co.za/2008/02/simple-ruby-enums.html">http://www.lesismore.co.za/2008/02/simple-ruby-enums.html</a></li>
+</ul>
+
+<p>Yep, I was inspired by these sites and combined them. Thanks again! :)</p>
+
+<p>As you can see I opened the <code>Kernel</code> module. This way you can use it in every
+place without including/extending.</p>
+
+<p>{{ruby
+module Kernel</p>
+
+<p>def enum(hash)
+    if hash
+      hash.each {|k, v| const_set(k.to_sym, v) }
+    end
+  end</p>
+
+<p>def enum_syms(*args)
+    if args
+      enum Hash[*args.map {|k| [k.to_sym, k.to_sym] }.flatten]
+    end
+  end</p>
+
+<p>def enum_indexes(*args)
+    if args
+      enum Hash[*args.inject([]) { |arr, k| arr &lt;&lt; [k.to_sym, arr.length] }.flatten]
+    end
+  end</p>
+
+<p>def enum_bits(*args)
+    if args
+      enum Hash[*args.inject([]) { |arr, k| arr &lt;&lt; [k.to_sym, 2**arr.length] }.flatten]
+    end
+  end</p>
+
+<p>end
+}}</p>
+
+<h1 id="test-cases-and-usage:04a83dcca73a54e979abbb57741d1852">Test cases and usage</h1>
+
+<p>In my opinion, the best examples for a snippet/helper/util are its test cases. So here&rsquo;s the rspec:</p>
+
+<p>{{ruby
+describe &ldquo;Enumeration extension&rdquo; do</p>
+
+<p>it &ldquo;should define enum for hash&rdquo; do
+    module HashModule
+      h = {:A =&gt; &lsquo;aaa&rsquo;, :B =&gt; :bbb, :C =&gt; nil}
+      enum h
+    end</p>
+
+<pre><code>HashModule::A.should eql('aaa')
+HashModule::B.should eql(:bbb)
+HashModule::C.should eql(nil)
+
+lambda {HashModule::NOT_EXISTING}.should raise_error(NameError)
+</code></pre>
+
+<p>end</p>
+
+<p>it &ldquo;should define enum for syms&rdquo; do
+    module SymsModule
+      enum_syms :A, :B, &lsquo;C&rsquo;
+    end</p>
+
+<pre><code>SymsModule::A.should eql(:A)
+SymsModule::B.should eql(:B)
+SymsModule::C.should eql(:C)
+
+lambda {SymsModule::NOT_EXISTING}.should raise_error(NameError)
+</code></pre>
+
+<p>end</p>
+
+<p>it &ldquo;should define enum for indexes&rdquo; do
+    module IndexesModule
+      enum_indexes :A, :B, :C
+    end</p>
+
+<pre><code>IndexesModule::A.should eql(0)
+IndexesModule::B.should eql(1)
+IndexesModule::C.should eql(2)
+
+lambda {IndexesModule::NOT_EXISTING}.should raise_error(NameError)
+</code></pre>
+
+<p>end</p>
+
+<p>it &ldquo;should define enum for bits&rdquo; do
+    module BitsModule
+      enum_bits :A, :B, :C
+    end</p>
+
+<pre><code>BitsModule::A.should eql(1)
+BitsModule::B.should eql(2)
+BitsModule::C.should eql(4)
+
+lambda {BitsModule::NOT_EXISTING}.should raise_error(NameError)
+</code></pre>
+
+<p>end</p>
+
+<p>end
+}}</p>
+
+<p>You can find the code at <a href="http://snippets.dzone.com/posts/show/6256">DZone Snippets</a>,
+too.</p>
+
+<p>Have fun!</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 272</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 2 min</div>
+    <div>URL: http://blindgaenger.net/articles/2008-11-12-enumeration-helpers-for-ruby/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+

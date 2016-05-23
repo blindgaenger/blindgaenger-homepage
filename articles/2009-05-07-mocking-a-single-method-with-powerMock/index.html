@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="utf-8">
+      <title>Mocking a single method with PowerMock - blindgaenger</title>
+      
+      <link rel="stylesheet" href="/stylesheets/reset.css">
+      <link rel="stylesheet" href="/stylesheets/app.css">
+      <link rel="canonical" href="http://blindgaenger.net/articles/2009-05-07-mocking-a-single-method-with-powerMock/">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body lang="en">
+    <header class="page__header">
+      <h1>blindgaenger</h1>
+    </header>
+    <nav class="page__nav">
+      <ul>
+        <li><a href="http://blindgaenger.net/">Home</a></li>
+        <li><a href="/articles/">Articles</a></li>
+        <li><a href="/tags/">Tags</a></li>
+      </ul>
+    </nav>
+    <main role="main" class="page__content">
+
+
+<article class="article article--full">
+  <header class="article__header">
+    <h1>Mocking a single method with PowerMock</h1>
+  </header>
+  <div class="article__content">
+    <p>Let&rsquo;s say this is the Bean under test. Here the method <code>convert()</code> is not
+implemented. But it could also fire up calls to some remote system DB or be just
+to complex. In any case, we want to test <code>say()</code>.</p>
+
+<p>{% highlight java %}
+public class Bean {</p>
+
+<p>public String say(String name) {
+      return &ldquo;Hi, &rdquo; + convert(name) + &ldquo;!&rdquo;;
+   }</p>
+
+<p>protected String convert(String name) {
+      throw new UnsupportedOperationException(&ldquo;not implemented yet&rdquo;);
+   }</p>
+
+<p>}
+{% endhighlight %}</p>
+
+<p>The example test both, the unsupported operation and our mock, to show that it
+works. The magic happens in … wait for it … <code>createStrictPartialMockForAllMethodsExcept()</code>. A
+very, very long name, but it explains exactly what it&rsquo;s doing. It leaves our
+<code>say()</code> untouched, but mocks all other internal calls.</p>
+
+<p>We expect the <code>convert()</code> method to be called with <code>world</code> and returns the
+uppercase <code>WORLD</code>. But it can be any value as long as you can compare it in the
+<code>assertThat</code> statement. That&rsquo;s it!</p>
+
+<p>{% highlight java %}
+import org.junit.Test;
+import org.powermock.api.easymock.PowerMock;</p>
+
+<p>import static org.easymock.EasyMock.expect;</p>
+
+<p>import static org.fest.assertions.Assertions.assertThat;</p>
+
+<p>public class BeanTest {</p>
+
+<p>@Test(expected = UnsupportedOperationException.class)
+   public void sayNotInplementedYet() throws Exception {
+      // raises an exception, because the convert method was called
+      new Bean().say(&ldquo;world&rdquo;);
+   }</p>
+
+<p>@Test
+   public void sayHowItShouldBe() throws Exception {
+      Bean beanMock = PowerMock.createStrictPartialMockForAllMethodsExcept(Bean.class, &ldquo;say&rdquo;);</p>
+
+<pre><code>  // mock the unimplemented method
+  expect(beanMock.convert(&quot;world&quot;)).andReturn(&quot;WORLD&quot;);
+
+  PowerMock.replay(beanMock);
+
+  assertThat(beanMock.say(&quot;world&quot;)).isEqualTo(&quot;Hi, WORLD!&quot;);
+
+  PowerMock.verify(beanMock);
+</code></pre>
+
+<p>}</p>
+
+<p>}
+{% endhighlight %}</p>
+
+  </div>
+  <footer class="article__footer">
+    <div>Words: 225</div>
+    <div>Published: 0001-01-01</div>
+    <div>ReadingTime: 2 min</div>
+    <div>URL: http://blindgaenger.net/articles/2009-05-07-mocking-a-single-method-with-powerMock/</div>
+  </footer>
+</article>
+
+    </main>
+    <footer class="page__footer">
+      <div>FOOTER</div>
+    </footer>
+  </body>
+</html>
+
